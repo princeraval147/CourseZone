@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import Home from './Components/Home'
 
 const App = () => {
 
   return (
     <>
-      <h1>Couse Zone</h1>
+      {/* <h1>Couse Zone</h1> */}
+      <Home />
     </>
   )
 }
