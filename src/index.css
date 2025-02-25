@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.headerLinks {
+    display: flex;
+    gap: 25px;
+}
+
+.headerLinks li a {
+    color: rgb(44, 44, 44);
+}
+
+.headerLinks li a:hover {
+    color: black;
+    border-bottom: 1px solid black;
+}
