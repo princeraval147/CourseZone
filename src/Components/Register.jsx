@@ -46,9 +46,22 @@ function Register() {
         <>
           <h2>Register</h2>
           <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Username" required onChange={(e) => setForm({ ...form, username: e.target.value })} />
-            <input type="email" placeholder="Email" required onChange={(e) => setForm({ ...form, email: e.target.value })} />
-            <input type="password" placeholder="Password" required onChange={(e) => setForm({ ...form, password: e.target.value })} />
+            <input
+              type="text"
+              placeholder="Username"
+              required onChange={(e) => setForm({ ...form, username: e.target.value })}
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              required onChange={(e) => setForm({ ...form, email: e.target.value })}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              required
+              onChange={(e) => setForm({ ...form, password: e.target.value })}
+            />
             <button type="submit">Register</button>
           </form>
         </>
@@ -58,7 +71,12 @@ function Register() {
         <>
           <h2>Verify OTP</h2>
           <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Enter OTP" required onChange={(e) => setForm({ ...form, otp: e.target.value })} />
+            <input
+              type="text"
+              placeholder="Enter OTP"
+              required
+              onChange={(e) => setForm({ ...form, otp: e.target.value })}
+            />
             <button type="submit">Verify OTP</button>
           </form>
         </>
