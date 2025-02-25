@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom'
+import Modal from "@mui/material/modal"
+import LoginModal from './LoginModal';
+import '../index.css';
 
 const Header = () => {
+
+    const [loginOpen, loginSetOpen] = React.useState(false);
+    const handleOpen = () => loginSetOpen(true);
+    const loginClose = () => loginSetOpen(false);
+
     return (
         <>
             <div className="header">
@@ -22,9 +30,27 @@ const Header = () => {
                             Contact Us
                         </NavLink>
                     </li>
-                    <li>
-                        <NavLink>
+                    {/* <li>
+                        <NavLink to='/login'>
                             Login
+                        </NavLink>
+                    </li> */}
+                    <li>
+                        <span onClick={handleOpen} className='hoverEffct'>
+                            Login
+                        </span>
+                        <Modal
+                            open={loginOpen}
+                            onClose={loginClose}
+                            aria-labelledby="modal-modal-title"
+                            aria-describedby="modal-modal-description"
+                        >
+                            <LoginModal loginClose={loginClose} />
+                        </Modal>
+                    </li>
+                    <li>
+                        <NavLink to='/register'>
+                            Register
                         </NavLink>
                     </li>
                 </ul>
