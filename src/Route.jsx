@@ -6,6 +6,7 @@ import Error from "./Components/Error";
 import Register from "./Components/Register";
 import ForgetPassword from "./Components/ForgetPassword";
 import UpdateProfile from "./Components/UpdateProfile";
+import VerifyOTP from "./Components/VerifyOTP";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -15,6 +16,7 @@ const router = createBrowserRouter(
             <Route path='login' element={<Login />} />
             <Route path='forgot-password' element={<ForgetPassword />} />
             <Route path='updateProfile' element={<UpdateProfile />} />
+            <Route path='VerifyOTP' element={<VerifyOTP />} />
             <Route path='*' element={<Error />} />
         </Route>
     )
