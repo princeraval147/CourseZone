@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom'
-import Modal from "@mui/material/modal"
+import { Modal } from '@mui/material';
 import LoginModal from './LoginModal';
 import '../index.css';
 
@@ -36,9 +36,9 @@ const Header = () => {
                         </NavLink>
                     </li> */}
                     <li>
-                        <span onClick={handleOpen} className='hoverEffct'>
+                        <NavLink onClick={handleOpen}>
                             Login
-                        </span>
+                        </NavLink>
                         <Modal
                             open={loginOpen}
                             onClose={loginClose}
