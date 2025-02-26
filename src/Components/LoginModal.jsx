@@ -37,7 +37,7 @@ const LoginModal = (props) => {
                     <input
                         type="email"
                         placeholder="Enter Email"
-                        className="inputFeild"
+                        className="inputText"
                         required
                     />
                 </FormControl>
@@ -45,7 +45,7 @@ const LoginModal = (props) => {
                     <input
                         placeholder="Password"
                         type="password"
-                        className="inputFeild"
+                        className="inputText"
                     />
                 </FormControl>
                 <button type="submit" color="primary" className="Btn">
