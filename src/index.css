@@ -1,3 +1,5 @@
+/* --------------------------------    Global    -------------------------------- */
+
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -9,6 +11,23 @@ ul {
 a {
     text-decoration: none;
 }
+
+.inputText {
+    width: 85%;
+    font-weight: 500;
+    border: 2px solid rgba(0, 0, 0, 0.288);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    font-size: 15px;
+}
+
+.inputText:focus {
+    outline: none;
+    border: 2px solid #f75d34;
+}
+
+/* --------------------------------     Header      -------------------------------- */
 
 .header {
     display: flex;
@@ -29,3 +48,6 @@ a {
     color: black;
     border-bottom: 1px solid black;
 }
+
+
+/* --------------------------------         -------------------------------- */
