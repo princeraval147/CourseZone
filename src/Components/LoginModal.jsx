@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Box, FormControl, Typography } from "@mui/material";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Box, FormControl } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 const style = {
     position: "absolute",
@@ -18,8 +18,6 @@ const style = {
 };
 
 const LoginModal = (props) => {
-    const { handleClose } = props;
-    const navigate = useNavigate();
 
     return (
         <Box sx={style}>
@@ -48,18 +46,23 @@ const LoginModal = (props) => {
                         className="inputText"
                     />
                 </FormControl>
-                <button type="submit" color="primary" className="Btn">
+                <button type="submit">
                     Login
                 </button>
             </form>
-            <Typography variant="body2" sx={{ mt: 2 }}>
+
+            <NavLink to='/forgotPassword'>Forgot Password ?</NavLink>
+            {/* <p>{message}</p> */}
+
+            <div variant="body2" sx={{ mt: 2 }}>
                 <p style={{ color: "#333" }}>
                     By Continuing I accept the Privacy Policy, Terms & Conditions.
                 </p>
-            </Typography>
-            <Typography variant="body2" sx={{ mt: 2 }}>
-                Don't have an account? <NavLink to="/">Sign up</NavLink>
-            </Typography>
+            </div>
+            <div variant="body2" sx={{ mt: 2 }}>
+                Don't have an account? <NavLink to="/register">Sign up</NavLink>
+            </div>
+
         </Box>
     );
 };

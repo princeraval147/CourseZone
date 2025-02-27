@@ -14,7 +14,7 @@ const router = createBrowserRouter(
             <Route index element={<Home />} />
             <Route path='register' element={<Register />} />
             {/* <Route path='login' element={<Login />} /> */}
-            <Route path='forgot-password' element={<ForgetPassword />} />
+            <Route path='forgotPassword' element={<ForgetPassword />} />
             <Route path='updateProfile' element={<UpdateProfile />} />
             <Route path='VerifyOTP' element={<VerifyOTP />} />
             <Route path='*' element={<Error />} />
