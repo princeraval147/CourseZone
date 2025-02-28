@@ -80,12 +80,14 @@ a {
 }
 
 .headerLinks li a {
-    color: rgb(44, 44, 44);
+    color: rgba(0, 0, 0, 0.637);
 }
 
 .headerLinks li a:hover {
     color: black;
     border-bottom: 1px solid black;
+    transition: 1s;
+    font-weight: 500;
 }
 
 
