@@ -6,7 +6,7 @@ const Home = () => {
             <div className="homeContainer">
                 <div className="homeTxt">
                     <h2 className='homeHeading'>All the skills you need in one place</h2>
-                    <p>From critical skills to technical topics, Udemy supports your professional development.</p>
+                    <p>From critical skills to technical topics, <strong> Course Zone</strong> supports your professional development.</p>
                 </div>
                 <div>
                     <img
