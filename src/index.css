@@ -27,7 +27,28 @@ a {
     border: 2px solid #f75d34;
 }
 
-/* --------------------------------     Header      -------------------------------- */
+.Btn {
+    background: #f75d34;
+    border: 1px solid orangered;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.2) 1px 2px 4px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 15px 25px;
+    text-align: center;
+    text-transform: none;
+}
+
+.Btn:hover {
+    background-color: orangered;
+    color: #000000a9;
+    transition: 0.5s;
+    border-radius: 8px;
+}
+
+/* --------------------------------   HEADER   -------------------------------- */
 
 .header {
     display: flex;
@@ -50,4 +71,66 @@ a {
 }
 
 
-/* --------------------------------         -------------------------------- */
+/* --------------------------------   HOME   -------------------------------- */
+
+.homeContainer {
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
+}
+
+.img {
+    border-radius: 25px;
+}
+
+.homeTxt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    color: #303141;
+}
+
+.homeHeading {
+    font-family: serif;
+    font-size: 40px;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --------------------------------   LOGIN MODAL   -------------------------------- */
+
+.loginFp {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fp {
+    color: #303141;
+    margin: 10px;
+}
+
+.fp:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+/* --------------------------------   HEADER   -------------------------------- */
+
+
+
+/* --------------------------------   HEADER   -------------------------------- */
+
+
+
+/* --------------------------------   HEADER   -------------------------------- */
+
+
+
+/* --------------------------------   HEADER   -------------------------------- */

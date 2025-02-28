@@ -46,20 +46,22 @@ const LoginModal = (props) => {
                         className="inputText"
                     />
                 </FormControl>
-                <button type="submit">
-                    Login
-                </button>
+                <div className="loginFp">
+                    <button type="submit" className='Btn'>
+                        Login
+                    </button>
+                    <NavLink to='/forgotPassword' className='fp'>Forgot Password ?</NavLink>
+                </div>
             </form>
 
-            <NavLink to='/forgotPassword'>Forgot Password ?</NavLink>
             {/* <p>{message}</p> */}
 
-            <div variant="body2" sx={{ mt: 2 }}>
+            <div>
                 <p style={{ color: "#333" }}>
                     By Continuing I accept the Privacy Policy, Terms & Conditions.
                 </p>
             </div>
-            <div variant="body2" sx={{ mt: 2 }}>
+            <div>
                 Don't have an account? <NavLink to="/register">Sign up</NavLink>
             </div>
 
