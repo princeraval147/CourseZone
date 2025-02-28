@@ -94,7 +94,6 @@ a {
 /* --------------------------------   HOME   -------------------------------- */
 
 .homeContainer {
-    /* border: 2px solid red; */
     display: flex;
     justify-content: space-evenly;
     margin: 10px;
@@ -116,7 +115,7 @@ a {
 .homeHeading {
     font-family: serif;
     font-size: 40px;
-    margin: 0px;
+    margin: 24px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -140,10 +139,72 @@ a {
     align-items: center;
 }
 
+/* --------------------------------   FOOTER   -------------------------------- */
 
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
 
-/* --------------------------------   HEADER   -------------------------------- */
+.footer-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+}
 
+.footer-section {
+    max-width: 275px;
+}
+
+.footer-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.footer-text {
+    color: #bbb;
+}
+
+.footer-subtitle {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.footer-link {
+    color: #bbb;
+    text-decoration: none;
+    display: block;
+    margin: 5px 0;
+}
+
+.footer-link:hover {
+    color: white;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-icon {
+    color: #bbb;
+    font-size: 24px;
+    transition: color 0.3s;
+}
+
+.footer-icon:hover {
+    color: white;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    color: #bbb;
+}
 
 
 /* --------------------------------   HEADER   -------------------------------- */
