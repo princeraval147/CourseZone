@@ -50,10 +50,10 @@ const LoginModal = (props) => {
                     <button type="submit" className='Btn'>
                         Login
                     </button>
-                    <NavLink to='/forgotPassword' className='fp'>Forgot Password ?</NavLink>
+                    <NavLink to='/forgotPassword' className='link'>Forgot Password ?</NavLink>
                 </div>
             </form>
-
+            <br /><br />
             {/* <p>{message}</p> */}
 
             <div>
@@ -62,10 +62,10 @@ const LoginModal = (props) => {
                 </p>
             </div>
             <div>
-                Don't have an account? <NavLink to="/register">Sign up</NavLink>
+                New to CourseZone? <NavLink to="/register" className='link'>Sign up</NavLink>
             </div>
 
-        </Box>
+        </Box >
     );
 };
 

@@ -18,7 +18,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <div id="About">
+            <div id="About" >
                 <p> We are one of the leading prep providers for finance-related courses and we could not make it this far without you! Since our inception, our mission is to help people grow and gain a good trajectory in the finance industry. The journey so far has been thrilling as we have seen people come to us and leave transformed with knowledge and the tools needed for a finance career.</p>
             </div>
         </>
