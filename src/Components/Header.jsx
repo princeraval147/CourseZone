@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom'
-import { Modal } from '@mui/material';
-import LoginModal from './LoginModal';
 import '../index.css';
 
 const Header = () => {
@@ -35,7 +33,7 @@ const Header = () => {
                             Login
                         </NavLink>
                     </li> */}
-                    <li>
+                    {/* <li>
                         <NavLink onClick={handleOpen}>
                             Login
                         </NavLink>
@@ -52,8 +50,13 @@ const Header = () => {
                         <NavLink to='/register'>
                             Register
                         </NavLink>
-                    </li>
+                    </li> */}
                 </ul>
+                <div>
+                    <NavLink to='login' className='link'>
+                        Login / Register
+                    </NavLink>
+                </div>
             </div>
         </>
     )
