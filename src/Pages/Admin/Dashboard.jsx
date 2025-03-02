@@ -35,12 +35,23 @@ const demoTheme = createTheme({
 function DemoPageContent({ pathname }) {
     return (
         <Box
+            // sx={{
+            //     py: 4,
+            //     display: 'flex',
+            //     flexDirection: 'column',
+            //     alignItems: 'center',
+            //     textAlign: 'center',
+            // }}
             sx={{
                 py: 4,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 textAlign: 'center',
+                width: "100%",
+                maxWidth: "1200px",
+                mx: "auto",
+                overflow: "visible",
             }}
         >
             <Typography>Dashboard content for {pathname}</Typography>
@@ -88,7 +99,7 @@ const Dashboard = (props) => {
 
     return (
         <>
-            <Box sx={{ width: "100vw", overflowX: "hidden", overflowY: "visible" }}>
+            <Box>
 
                 <AppProvider
                     session={session}
