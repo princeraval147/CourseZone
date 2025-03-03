@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@formspree/react": "^2.5.4",
     "@mui/icons-material": "^6.4.6",
     "@mui/material": "^6.4.6",
     "@toolpad/core": "^0.12.1",
