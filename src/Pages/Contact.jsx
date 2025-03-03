@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm, ValidationError } from '@formspree/react';
-import './contact.css'
+import style from './Contact.module.css'
 
 const Contact = () => {
     const [state, handleSubmit] = useForm("mpwqvkaw");
@@ -19,13 +19,13 @@ const Contact = () => {
 
     return (
         <>
-            <div className="contactAll">
-                <div className="part1">
-                    <h1 className="contactHeading">Get in touch :</h1>
-                    <p className="contactText">
+            <div className={style.contactAll}>
+                <div className={style.part1}>
+                    <h1 className={style.contactHeading}>Get in touch :</h1>
+                    <p className={style.contactText}>
                         Fill in the form to start a conversation
                     </p>
-                    <div className="contactDetail">
+                    <div className={style.contactDetail}>
                         <svg
                             fill="none"
                             stroke="currentColor"
@@ -54,7 +54,7 @@ const Contact = () => {
                         <div>Surat, Gujarat, 123456</div>
                     </div>
 
-                    <div className="contactDetail">
+                    <div className={style.contactDetail}>
                         <svg
                             fill="none"
                             stroke="currentColor"
@@ -75,7 +75,7 @@ const Contact = () => {
                         <div>+91 12345 67890</div>
                     </div>
 
-                    <div className="contactDetail">
+                    <div className={style.contactDetail}>
                         <svg
                             fill="none"
                             stroke="currentColor"
@@ -97,7 +97,7 @@ const Contact = () => {
                     </div>
                 </div>
 
-                <form className="contactForm" onSubmit={handleSubmit}>
+                <form className={style.contactForm} onSubmit={handleSubmit}>
                     <div>
                         <input
                             type="text"
