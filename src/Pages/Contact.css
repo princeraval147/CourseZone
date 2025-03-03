@@ -1,0 +1,32 @@
+.contactAll {
+    display: flex;
+    justify-content: space-between;
+    margin: 100px 150px;
+}
+
+.part1 {
+    background-color: rgb(209 213 219);
+    padding: 4rem 6rem;
+    border-radius: 70px 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.contactDetail {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.contactHeading {
+    font-weight: 900;
+}
+
+.contactText {
+    font-weight: 600;
+}
+
+.contactForm {
+    width: 400px;
+}
