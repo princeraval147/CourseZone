@@ -8,6 +8,8 @@ import ForgetPassword from "./Components/ForgetPassword";
 import VerifyOTP from "./Components/VerifyOTP";
 import Dashboard from "./Pages/Admin/Dashboard";
 import Contact from "./Pages/Contact";
+import Payment from "./Pages/Payment";
+// import Payment2 from "./Pages/Payment2";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -15,6 +17,7 @@ const router = createBrowserRouter(
             <Route index element={<Home />} />
             <Route path='register' element={<Register />} />
             <Route path='login' element={<Login />} />
+            <Route path='payment' element={<Payment />} />
             <Route path='forgotPassword' element={<ForgetPassword />} />
             <Route path='contact' element={<Contact />} />
             <Route path='VerifyOTP' element={<VerifyOTP />} />
