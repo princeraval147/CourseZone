@@ -1,17 +1,18 @@
-.container {
+.logincontainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 75vh;
-    background-color: #f8f9fa;
+    height: 100vh;
+    /* background: #e7f4ff; */
     padding: 20px;
+
 }
 
-.form-box {
+.formBox {
     background: white;
-    padding: 20px;
+    padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.253);
     width: 360px;
     text-align: center;
     max-width: 100%;
@@ -58,20 +59,6 @@
     text-align: center;
 }
 
-.form label {
-    font-weight: 500;
-    margin-bottom: 5px;
-}
-
-/* .form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-} */
-
 .otp-input {
     text-align: center;
     font-size: 18px;
@@ -81,7 +68,7 @@
 
 .form button {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     background: black;
     color: white;
     font-size: 16px;
@@ -95,21 +82,19 @@
     background: #333;
 }
 
-/* Forgot Password button */
-.forgot-password {
+.forgotPassword {
     text-align: center;
     margin-top: 15px;
 }
 
-.forgot-password a {
+.forgotPassword a {
     font-size: 14px;
     color: #007bff;
     text-decoration: none;
     transition: 0.3s;
-
 }
 
-.forgot-password a:hover {
+.forgotPassword a:hover {
     text-decoration: underline;
 }
 
@@ -121,16 +106,12 @@
 }
 
 @media (max-width: 480px) {
-    .container {
+    .logincontainer {
         height: auto;
         padding: 20px;
     }
 
-    input {
-        width: 1000%;
-    }
-
-    .form-box {
+    .formBox {
         width: 100%;
         padding: 15px;
     }
@@ -144,7 +125,7 @@
         padding: 14px;
     }
 
-    .forgot-password a {
+    .forgotPassword a {
         font-size: 16px;
     }
 }
