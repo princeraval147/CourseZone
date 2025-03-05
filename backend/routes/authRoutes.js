@@ -1,5 +1,5 @@
 const express = require("express");
-const { register, verifyOTP, login, logout, forgotPassword, resetPassword, getProfile, updateProfile, authenticate, userrole } = require("../controllers/authController");
+const { register, verifyOTP, login, logout, forgotPassword, resetPassword, getProfile, updateProfile, authenticate, userrole, isLoggedIn } = require("../controllers/authController");
 const authenticateUser = require("../middleware/authMiddleware");
 const upload = require("../utils/multer");
 
@@ -15,6 +15,7 @@ router.get("/profile", authenticateUser, getProfile);
 router.get("/authenticate", authenticateUser, authenticate);
 // router.put("/update-profile", authenticateUser, updateProfile); 
 router.put("/update-profile", authenticateUser, upload.single("profilePhoto"), updateProfile);
-router.get("/me", authenticateUser, userrole)
+router.get("/me", authenticateUser, userrole);
+router.get("/isLoggedIn", authenticateUser, isLoggedIn);
 
 module.exports = router;
