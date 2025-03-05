@@ -33,7 +33,6 @@ const Header = () => {
     };
     checkLoginStatus();
     // }, []);
-    console.log("Login Status = ", isLoggedIn);
 
     const handleLogout = async () => {
         try {
