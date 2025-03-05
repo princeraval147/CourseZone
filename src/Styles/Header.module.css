@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2rem;
+}
+
+.headerLinks {
+    display: flex;
+    gap: 25px;
+}
+
+.headerLinks li a {
+    color: rgba(0, 0, 0, 0.637);
+}
+
+.headerLinks li a:hover {
+    color: black;
+    border-bottom: 1px solid black;
+    transition: 1s;
+    font-weight: 500;
+}

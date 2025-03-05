@@ -1,0 +1,36 @@
+.homeContainer {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
+}
+
+.img {
+    border-radius: 25px;
+}
+
+.homeTxt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    color: #303141;
+}
+
+.homeHeading {
+    font-family: serif;
+    font-size: 40px;
+    margin: 24px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.About {
+    padding: 2rem;
+    word-spacing: 5px;
+    letter-spacing: 3px;
+    margin: auto;
+    text-align: center;
+    width: 55%;
+}
