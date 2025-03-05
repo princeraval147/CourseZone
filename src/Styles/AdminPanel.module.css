@@ -1,0 +1,5 @@
+.adminPanel {
+    display: flex;
+    min-height: 80vh;
+    height: auto;
+}
