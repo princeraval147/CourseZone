@@ -16,7 +16,6 @@
 
 .imagecontainer {
     width: 100%;
-    /* height: auto !important; */
     overflow: hidden;
 }
 
@@ -66,3 +65,7 @@
     color: red;
     font-weight: bold;
 }
+
+/* .Buy {
+    background: red;
+} */

@@ -1,7 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useParams } from "react-router-dom";
 import axios from 'axios'
 
 const Payment = () => {
+    const [course, setCourse] = useState([]);
+    const { id } = useParams();
+
+    useEffect(() => {
+        const fetchCourse = async () => {
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/courses/${id}`);
+                const data = await response.json();
+                if (data.success) {
+                    setCourse(data.course);
+                }
+            } catch (error) {
+                console.error("Error fetching course details:", error);
+            }
+        };
+        fetchCourse();
+    }, [id]);
+    console.log("Course Data = ", course.price);
 
     const [responseId, setResponseId] = useState("");
     const [responseState, setResponseState] = useState([]);
@@ -108,7 +127,6 @@ const Payment = () => {
     return (
         <>
             <div className="payment">
-
                 <h1>Payment Gateway</h1>
                 <button onClick={() => createRazorpayOrder(100)}>
                     Payment of 100₹
