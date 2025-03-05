@@ -71,8 +71,7 @@ function DemoPageContent({ pathname }) {
 }
 
 DemoPageContent.propTypes = {
-    // pathname: PropTypes.string.isRequired,
-    Navlink
+    pathname: PropTypes.string.isRequired,
 };
 
 const Dashboard = (props) => {
