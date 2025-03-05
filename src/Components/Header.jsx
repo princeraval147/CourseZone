@@ -73,7 +73,7 @@ const Header = () => {
                 <div>
                     {
                         isLoggedIn ? (
-                            <button onClick={handleLogout}>
+                            <button onClick={handleLogout} className='Btn'>
                                 Logout
                             </button>
                         ) : (
