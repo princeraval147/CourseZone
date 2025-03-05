@@ -8,15 +8,17 @@ const authenticateAdmin = async (req, res, next) => {
       return res.status(401).json({ message: "Unauthorized. No token provided." });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET); 
-    console.log(decoded);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findById(decoded.userId)
-    console.log(user);
-    if (!user || user.role !== "instructor") {
-      return res.status(403).json({ message: "Access denied. Only instructors can create courses." });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found." });
+    }
+    if (user.role !== "instructor") {
+      return res.status(403).json({ message: "Access denied. Only instructors can perform this action." });
     }
 
-    req.user = user; 
+    req.user = user;
     next();
   } catch (error) {
     res.status(401).json({ message: "Invalid token" });

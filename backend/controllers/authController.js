@@ -30,8 +30,7 @@ exports.register = async (req, res) => {
 
     res.json({ message: "User registered! Please verify OTP." });
   } catch (error) {
-    console.log(error)
-    res.status(500).json({ message: error, error });
+    res.status(500).json({ message: "Serverrrrrrrrrr error", error });
   }
 };
 
@@ -57,27 +56,8 @@ exports.verifyOTP = async (req, res) => {
   }
 };
 
+
 // Login User & Set JWT in HTTP-only Cookie
-// exports.login = async (req, res) => {
-//   const { email, password } = req.body;
-
-//   try {
-//     const user = await User.findOne({ email });
-
-//     if (!user || !user.isVerified) return res.status(400).json({ message: "Invalid credentials or unverified email." });
-
-//     const isMatch = await bcrypt.compare(password, user.password);
-//     if (!isMatch) return res.status(400).json({ message: "Invalid credentials." });
-
-//     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
-
-//     res.cookie("token", token, { httpOnly: true, secure: false, sameSite: "none" }); // Secure: false for local testing
-//     res.json({ message: "Login successful" });
-//   } catch (error) {
-//     res.status(500).json({ message: "Server error", error });
-//   }
-// };
-
 exports.login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -153,6 +133,7 @@ exports.resetPassword = async (req, res) => {
   res.json({ message: "Password reset successfully" });
 };
 
+// Get User Profile
 exports.getProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user).select("-password"); // Use userId, not id
@@ -164,6 +145,7 @@ exports.getProfile = async (req, res) => {
   }
 };
 
+// Get User Profile (Protected Route)
 exports.authenticate = async (req, res) => {
   try {
     // `req.user` contains the decoded token data from `authenticateToken` middleware
@@ -179,67 +161,7 @@ exports.authenticate = async (req, res) => {
   }
 };
 
-// exports.updateProfile = async (req, res) => {
-//   try {
-//     const userId = req.user;
-//     const { username, oldPassword, newPassword } = req.body;
-//     const profilePhoto = req.file;
-
-//     // Find the user
-//     const user = await User.findById(userId);
-//     if (!user) {
-//       return res.status(404).json({
-//         success: false,
-//         message: "User not found",
-//       });
-//     }
-
-//     let photoUrl = user.photoUrl;
-
-//     // Handle profile photo update
-//     if (profilePhoto) {
-//       if (user.photoUrl) {
-//         const publicId = user.photoUrl.split("/").pop().split(".")[0];
-//         await cloudinary.uploader.destroy(publicId);
-//       }
-
-//       const cloudResponse = await cloudinary.uploader.upload(profilePhoto.path, {
-//         folder: "profile_pictures",
-//       });
-
-//       photoUrl = cloudResponse.secure_url;
-//     }
-
-//     // Handle password update
-//     if (oldPassword && newPassword) {
-//       const isMatch = await bcrypt.compare(oldPassword, user.password);
-//       if (!isMatch) {
-//         return res.status(400).json({
-//           success: false,
-//           message: "Old password is incorrect",
-//         });
-//       }
-
-//       // Hash the new password before saving
-//       const salt = await bcrypt.genSalt(10);
-//       const hashedPassword = await bcrypt.hash(newPassword, salt);
-//       user.password = hashedPassword;
-//     }
-
-//     // Update user data
-//     user.username = username || user.username;
-//     user.photoUrl = photoUrl;
-//     await user.save();
-
-//     return res.status(200).json({success: true,message: "Profile updated successfully."});
-//   } catch (error) {
-//     console.error(error);
-//     return res.status(500).json({
-//       success: false,
-//       message: "Failed to update profile",
-//     });
-//   }
-// };
+// Update User Profile 
 exports.updateProfile = async (req, res) => {
   try {
     const userId = req.user; // User ID from token
@@ -307,9 +229,16 @@ exports.updateProfile = async (req, res) => {
   }
 };
 
+
+// Get User Role
 exports.userrole = async (req, res) => {
   person = req.user;
   userdata = await User.findById(person);
   role = userdata.role;
   res.json(role);
+};
+
+//isloggedin or not
+exports.isLoggedIn = (req, res) => {
+  res.status(200).json({ message: "User is logged in", userId: req.user });
 };

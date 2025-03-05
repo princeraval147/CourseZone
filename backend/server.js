@@ -7,6 +7,7 @@ const authRoutes = require("./routes/authRoutes");
 const courseRoutes = require("./routes/courseRoute");
 const Razorpay = require("razorpay");
 const crypto = require('crypto');
+const path = require("path");
 
 dotenv.config();
 connectDB();
@@ -17,8 +18,21 @@ app.use(cookieParser());
 
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 
+app.get('/image/course-thumbnail/:imageName', (req, res) => {
+    const imageName = req.params.imageName;
+    const imagePath = path.join(__dirname, 'public/image/course-thumbnail', imageName);
+
+    res.sendFile(imagePath, (err) => {
+        if (err) {
+            res.status(404).send('Image not found');
+        }
+    });
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/courses", courseRoutes);
+app.use("/images/course-thumbnail", express.static(path.join(__dirname, "images/course-thumbnail")));
+
 
 
 //  Payment Gateway
