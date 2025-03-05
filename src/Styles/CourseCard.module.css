@@ -1,0 +1,68 @@
+.courseCard {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    width: 18rem;
+    height: 22rem;
+    border: 1px solid #ddd;
+}
+
+.courseCard:hover {
+    transform: translateY(-10px);
+}
+
+.imagecontainer {
+    width: 100%;
+    /* height: auto !important; */
+    overflow: hidden;
+}
+
+.courseImage {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+.courseContent {
+    padding: 1.5rem;
+}
+
+.courseTitle {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.courseInstructor {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 1rem;
+}
+
+.priceContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.currentPrice {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.oldPrice {
+    font-size: 1rem;
+    text-decoration: line-through;
+    color: #888;
+}
+
+.discount {
+    font-size: 0.9rem;
+    color: red;
+    font-weight: bold;
+}
