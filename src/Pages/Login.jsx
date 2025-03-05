@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './login.css'
+import styles from "../Styles/Login.module.css";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -40,7 +40,7 @@ const Login = () => {
 
         if (step === 1) {
             // Register Request
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/register`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/register`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(signupData),
@@ -55,7 +55,7 @@ const Login = () => {
             }
         } else {
             // Verify OTP Request
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/verify-otp`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/verify-otp`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: signupData.email, otp: signupData.otp }),
@@ -71,7 +71,7 @@ const Login = () => {
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/login`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include", // Important for setting cookies
@@ -83,7 +83,6 @@ const Login = () => {
 
             if (response.ok) {
                 document.cookie = `token=${data.token}; path=/;`;
-                // window.location.href = "/"; // Redirect on success
                 Navigate('/');
             }
         } catch (error) {
@@ -96,7 +95,7 @@ const Login = () => {
         e.preventDefault();
         setMessage("");
 
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/forgot-password`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/forgot-password`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email: resetData.email }),
@@ -112,7 +111,7 @@ const Login = () => {
         e.preventDefault();
         setMessage("");
 
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/reset-password`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/reset-password`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(resetData),
@@ -128,12 +127,12 @@ const Login = () => {
     };
 
     return (
-        <div className="container">
-            <div className="form-box">
+        <div className={styles.logincontainer}>
+            <div className={styles.formBox}>
                 {/* Tabs */}
-                <div className="tabs">
+                <div className={styles.tabs}>
                     <button
-                        className={activeTab === "signup" ? "active" : ""}
+                        className={activeTab === "signup" ? styles.active : ""}
                         onClick={() => {
                             setActiveTab("signup");
                             setResetStep(0);
@@ -142,7 +141,7 @@ const Login = () => {
                         Signup
                     </button>
                     <button
-                        className={activeTab === "login" ? "active" : ""}
+                        className={activeTab === "login" ? styles.active : ""}
                         onClick={() => {
                             setActiveTab("login");
                             setResetStep(0);
@@ -154,7 +153,7 @@ const Login = () => {
 
                 {/* Signup Form */}
                 {activeTab === "signup" && step === 1 && (
-                    <form onSubmit={handleSignupSubmit} className="form">
+                    <form onSubmit={handleSignupSubmit} className={styles.form}>
                         <h2>Signup</h2>
                         <p>Create an account to get started.</p>
 
@@ -172,8 +171,8 @@ const Login = () => {
                             name="email"
                             placeholder="Email"
                             value={signupData.email}
-                            className="inputText"
                             onChange={(e) => handleChange(e, setSignupData)}
+                            className="inputText"
                             required
                         />
                         <input
@@ -191,7 +190,7 @@ const Login = () => {
 
                 {/* OTP Verification Form */}
                 {activeTab === "signup" && step === 2 && (
-                    <form onSubmit={handleSignupSubmit} className="form">
+                    <form onSubmit={handleSignupSubmit} className={styles.form}>
                         <h2>Verify OTP</h2>
                         <p>Enter the 6-digit OTP sent to your email.</p>
 
@@ -211,7 +210,7 @@ const Login = () => {
 
                 {/* Login & Forgot Password */}
                 {activeTab === "login" && resetStep === 0 && (
-                    <form onSubmit={handleLoginSubmit} className="form">
+                    <form onSubmit={handleLoginSubmit} className={styles.form}>
                         <h2>Login</h2>
 
                         <input
@@ -234,7 +233,7 @@ const Login = () => {
                         />
 
                         <button type="submit">Login</button>
-                        <button type="button" className="forgot-password" onClick={() => setResetStep(1)}>
+                        <button type="button" className={styles.forgotPassword} onClick={() => setResetStep(1)}>
                             Forgot Password?
                         </button>
                     </form>
@@ -242,9 +241,8 @@ const Login = () => {
 
                 {/* Forgot Password - Enter Email */}
                 {resetStep === 1 && (
-                    <form onSubmit={handleForgotPassword} className="form">
+                    <form onSubmit={handleForgotPassword} className={styles.form}>
                         <h2>Forgot Password</h2>
-
                         <input
                             type="email"
                             name="email"
@@ -260,7 +258,7 @@ const Login = () => {
 
                 {/* Forgot Password - Enter OTP & New Password */}
                 {resetStep === 2 && (
-                    <form onSubmit={handleResetPassword} className="form">
+                    <form onSubmit={handleResetPassword} className={styles.form}>
                         <h2>Reset Password</h2>
 
                         <input
@@ -285,7 +283,7 @@ const Login = () => {
                     </form>
                 )}
 
-                <p className="message">{message}</p>
+                <p className={styles.message}>{message}</p>
             </div>
         </div>
     );

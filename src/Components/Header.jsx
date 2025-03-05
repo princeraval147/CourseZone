@@ -2,41 +2,42 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom'
 import '../index.css';
 import { useNavigate } from "react-router-dom";
+import styles from "../styles/Header.module.css";
 
 const Header = () => {
-
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userRole, setUserRole] = useState(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const checkLoginStatus = async () => {
-            try {
-                const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/isloggedin`, {
+    // useEffect(() => {
+    const checkLoginStatus = async () => {
+        try {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/isloggedin`, {
+                credentials: "include",
+            });
+
+            if (res.ok) {
+                setIsLoggedIn(true);
+                const roleRes = await fetch(`${import.meta.env.VITE_API_URL}/auth/me`, {
                     credentials: "include",
                 });
-
-                if (res.ok) {
-                    setIsLoggedIn(true);
-                    const roleRes = await fetch(`${import.meta.env.VITE_API_URL}/auth/me`, {
-                        credentials: "include",
-                    });
-                    const role = await roleRes.json();
-                    setUserRole(role);
-                } else {
-                    setIsLoggedIn(false);
-                    setUserRole(null);
-                }
-            } catch (error) {
-                console.error("Error checking login status:", error);
+                const role = await roleRes.json();
+                setUserRole(role);
+            } else {
+                setIsLoggedIn(false);
+                setUserRole(null);
             }
-        };
-        checkLoginStatus();
-    }, []);
+        } catch (error) {
+            console.error("Error checking login status:", error);
+        }
+    };
+    checkLoginStatus();
+    // }, []);
+    console.log("Login Status = ", isLoggedIn);
 
     const handleLogout = async () => {
         try {
-            await fetch("${import.meta.env.VITE_API_URL}/auth/logout", {
+            await fetch(`${import.meta.env.VITE_API_URL}/auth/logout`, {
                 method: "POST",
                 credentials: "include",
             });
@@ -47,12 +48,11 @@ const Header = () => {
             console.error("Logout failed:", error);
         }
     };
-
     return (
         <>
-            <div className="header">
+            <div className={styles.header}>
                 <h3>Course Zone</h3>
-                <ul className='headerLinks'>
+                <ul className={styles.headerLinks}>
                     <li>
                         <NavLink to='/'>
                             Home
@@ -73,7 +73,9 @@ const Header = () => {
                 <div>
                     {
                         isLoggedIn ? (
-                            <button onClick={handleLogout}>Logout</button>
+                            <button onClick={handleLogout}>
+                                Logout
+                            </button>
                         ) : (
                             <NavLink to='login' className='link'>
                                 Login / Register
