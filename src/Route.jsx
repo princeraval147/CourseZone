@@ -6,10 +6,10 @@ import Error from "./Components/Error";
 import Register from "./Components/Register";
 import ForgetPassword from "./Components/ForgetPassword";
 import VerifyOTP from "./Components/VerifyOTP";
-import Dashboard from "./Pages/Admin/Dashboard";
 import Contact from "./Pages/Contact";
 import Payment from "./Pages/Payment";
-// import Payment2 from "./Pages/Payment2";
+import AdminPanel from './Pages/Admin/AdminPanel'
+import Dashboard from "./Pages/Admin/Dashboard";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -21,7 +21,11 @@ const router = createBrowserRouter(
             <Route path='forgotPassword' element={<ForgetPassword />} />
             <Route path='contact' element={<Contact />} />
             <Route path='VerifyOTP' element={<VerifyOTP />} />
-            <Route path='dashboard' element={<Dashboard />} />
+            //Admin Panel
+            <Route path="admin" element={<AdminPanel />} >
+                <Route path='dashboard' element={<Dashboard />} />
+            </Route>
+
             <Route path='*' element={<Error />} />
         </Route>
     )

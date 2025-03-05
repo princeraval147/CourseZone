@@ -4,6 +4,9 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import AddIcon from '@mui/icons-material/Add';
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+import SchoolIcon from '@mui/icons-material/School';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { useDemoRouter } from '@toolpad/core/internal';
@@ -13,6 +16,21 @@ const NAVIGATION = [
         segment: 'dashboard',
         title: 'Dashboard',
         icon: <DashboardIcon />,
+    },
+    {
+        segment: 'addcourse',
+        title: 'Add Course',
+        icon: <AddIcon />,
+    },
+    {
+        segment: 'mycourses',
+        title: 'My Course',
+        icon: <FormatListNumberedIcon />,
+    },
+    {
+        segment: 'studentenrolled',
+        title: 'Student Enrolled',
+        icon: <SchoolIcon />,
     },
 ];
 
@@ -35,13 +53,6 @@ const demoTheme = createTheme({
 function DemoPageContent({ pathname }) {
     return (
         <Box
-            // sx={{
-            //     py: 4,
-            //     display: 'flex',
-            //     flexDirection: 'column',
-            //     alignItems: 'center',
-            //     textAlign: 'center',
-            // }}
             sx={{
                 py: 4,
                 display: 'flex',
@@ -60,13 +71,11 @@ function DemoPageContent({ pathname }) {
 }
 
 DemoPageContent.propTypes = {
-    pathname: PropTypes.string.isRequired,
+    // pathname: PropTypes.string.isRequired,
+    Navlink
 };
 
-
-// function DashboardLayoutAccount(props) {
 const Dashboard = (props) => {
-    // const { window } = props;
 
     const [session, setSession] = React.useState({
         user: {
@@ -93,14 +102,13 @@ const Dashboard = (props) => {
         };
     }, []);
 
-    const router = useDemoRouter('/dashboard');
+    const router = useDemoRouter('/admin');
 
     const demoWindow = props?.window ?? undefined;
 
     return (
         <>
             <Box>
-
                 <AppProvider
                     session={session}
                     authentication={authentication}
@@ -108,6 +116,11 @@ const Dashboard = (props) => {
                     router={router}
                     theme={demoTheme}
                     window={demoWindow}
+                    branding={{
+                        logo: <img src="https://mui.com/static/logo.png" alt="Adnin Panel" />,
+                        title: 'Admin Panel',
+                        homeUrl: '/admin',
+                    }}
                 >
                     <DashboardLayout sx={{ padding: "0px", margin: "0px", width: "100%" }}>
                         <DemoPageContent pathname={router.pathname} />
