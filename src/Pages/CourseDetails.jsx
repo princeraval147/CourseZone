@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import styles from "../styles/CourseDetails.module.css";
 import axios from "axios";
 
@@ -162,7 +162,13 @@ const CourseDetails = () => {
                     Enroll Now
                 </button>
                 <br /><br />
-                <h4>What's in the course?</h4>
+                {/* <h4>What's in the course?</h4> */}
+                <p className={styles.termCondition}>
+                    <input type="checkbox" name="checkBox" id="checkBox" />
+                    <label htmlFor="checkBox">
+                        By Confirm you are agree with our <NavLink to='/term-condition'>Term And Condition</NavLink>
+                    </label>
+                </p>
                 <ul className={styles.courseBenefitsUnique}>
                     {course.courseBenefits.map((benefit, index) => (
                         <li key={index}>✅ {benefit}</li>

@@ -146,6 +146,16 @@
     color: #444;
 }
 
+.termCondition {
+    color: #333;
+    cursor: pointer;
+}
+
+.termCondition a {
+    color: black;
+    text-decoration: underline;
+}
+
 @media (max-width: 768px) {
     .courseDetailsContainerUnique {
         flex-direction: column;
