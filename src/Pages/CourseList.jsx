@@ -2,17 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import styles from "../styles/CourseList.module.css";
 import CourseCard from "./CourseCard";
-import useAuth from "../Components/hooks/useAuth";
 
 const CourseList = () => {
-
-    const isAuthenticated = useAuth();
 
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState("");
 
-    const navigate = useNavigate(); // Initialize useNavigate
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchCourses = async () => {
@@ -60,6 +57,7 @@ const CourseList = () => {
                         filteredCourses.map((course) => (
                             <div key={course._id} onClick={() => navigate(`/course-details/${course._id}`)} className={styles.courseCardWrapper}>
                                 <CourseCard
+                                    id={course._id}
                                     image={course.courseImage}
                                     title={course.title}
                                     instructor={course.instructor?.username || "Unknown Instructor"} // Handle missing instructor

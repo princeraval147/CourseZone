@@ -9,7 +9,6 @@ const CourseCard = ({ image, title, instructor, price, oldPrice }) => {
             <div className={styles.imageContainer}>
                 <img
                     src={`http://localhost:5000/image/course-thumbnail/${image}` || "/default-course.png"}
-                    // src="https://www.pankajkumarseo.com/wp-content/uploads/2022/06/React-Js-Course-Delhi.png"
                     alt={title}
                     className={styles.courseImage}
                 />
