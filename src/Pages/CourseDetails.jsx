@@ -1,19 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styles from "../styles/CourseDetails.module.css";
-import useAuth from "../Components/hooks/useAuth";
 import axios from "axios";
 
 const CourseDetails = () => {
 
-    const isAuthenticated = useAuth();
-
     const { id } = useParams();
     const [course, setCourse] = useState(null);
     const [openSections, setOpenSections] = useState({});
-    const [payableAmount, setPayableAmount] = useState();
-
-    const Navigate = useNavigate();
 
     useEffect(() => {
         const fetchCourse = async () => {
@@ -102,20 +96,17 @@ const CourseDetails = () => {
         }
         const response = await axios.request(config);
         console.log("Order Data:", response.data);
-        setPayableAmount(response.data.amount)
 
         // Call function to open Razorpay checkout popup with order details
         await handleRazorpayScreen(response.data);
         axios.request(config)
             .then((response) => {
                 console.log(JSON.stringify(response.data))
-                // handleRazorpayScreen(response.data.amount)
             })
             .catch((error) => {
                 console.log("Error at", error)
             })
     }
-    console.log("Pay Amount = ", payableAmount / 100);
 
     const coursePrice = course.price;
 
