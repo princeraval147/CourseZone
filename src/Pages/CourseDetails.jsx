@@ -15,7 +15,30 @@ const CourseDetails = () => {
 
     const Navigate = useNavigate();
 
-    //  Payment Method
+    useEffect(() => {
+        const fetchCourse = async () => {
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/courses/${id}`);
+                const data = await response.json();
+                if (data.success) {
+                    setCourse(data.course);
+                }
+            } catch (error) {
+                console.error("Error fetching course details:", error);
+            }
+        };
+        fetchCourse();
+    }, [id]);
+
+    const toggleSection = (section) => {
+        setOpenSections((prev) => ({
+            ...prev,
+            [section]: !prev[section],
+        }));
+    };
+    if (!course) return <p>Loading...</p>;
+
+    //          Payment Method
     const loadScript = (src) => {
         return new Promise((resolve) => {
             const script = document.createElement("script");
@@ -30,7 +53,7 @@ const CourseDetails = () => {
         })
     }
 
-    const handleRazorpayScreen = async (amount) => {
+    const handleRazorpayScreen = async (orderData) => {
         const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js")
         if (!res) {
             alert("Some Error at razorpay Screen Loading")
@@ -38,7 +61,7 @@ const CourseDetails = () => {
         }
         const options = {
             key: "rzp_test_wwpkm13Z4MY1Dv",
-            amount: amount,
+            amount: orderData.amount,
             currency: "INR",
             name: "Course Zone",
             description: "Payment to Couese Zone",
@@ -63,9 +86,9 @@ const CourseDetails = () => {
         paymentObject.open();
     }
 
-    const createRazorpayOrder = async (amount) => {
+    const createRazorpayOrder = async (payableAmount) => {
         let data = JSON.stringify({
-            amount: amount * 100,
+            amount: payableAmount * 100,
             currency: "INR"
         })
         let config = {
@@ -79,11 +102,10 @@ const CourseDetails = () => {
         }
         const response = await axios.request(config);
         console.log("Order Data:", response.data);
+        setPayableAmount(response.data.amount)
 
         // Call function to open Razorpay checkout popup with order details
         await handleRazorpayScreen(response.data);
-        // console.log("Res = ", response.data.amount)
-        // setPayableAmount(response.data.amount)
         axios.request(config)
             .then((response) => {
                 console.log(JSON.stringify(response.data))
@@ -93,34 +115,9 @@ const CourseDetails = () => {
                 console.log("Error at", error)
             })
     }
-
-    useEffect(() => {
-        const fetchCourse = async () => {
-            try {
-                const response = await fetch(`${import.meta.env.VITE_API_URL}/courses/${id}`);
-                const data = await response.json();
-                if (data.success) {
-                    setCourse(data.course);
-                }
-            } catch (error) {
-                console.error("Error fetching course details:", error);
-            }
-        };
-        fetchCourse();
-    }, [id]);
-
-
-    const toggleSection = (section) => {
-        setOpenSections((prev) => ({
-            ...prev,
-            [section]: !prev[section],
-        }));
-    };
-
-    if (!course) return <p>Loading...</p>;
+    console.log("Pay Amount = ", payableAmount / 100);
 
     const coursePrice = course.price;
-    // console.log("Price = ", coursePrice)
 
     return (
         <div className={styles.courseDetailsContainerUnique}>
