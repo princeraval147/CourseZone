@@ -112,12 +112,12 @@ const Header = () => {
                                                 <IconButton
                                                     onClick={handleClick}
                                                     size="small"
-                                                    sx={{ padding: "10px", gap: "10px", }}
+                                                    sx={{ padding: "8px", gap: "10px", }}
                                                     aria-controls={open ? "account-menu" : undefined}
                                                     aria-haspopup="true"
                                                     aria-expanded={open ? "true" : undefined}
                                                 >
-                                                    <Avatar sx={{ width: 40, height: 40 }}>
+                                                    <Avatar sx={{ width: 30, height: 30 }}>
                                                         {/* {isAdmin ? "A" : "U"} */}
                                                         {/* {role} */}
                                                     </Avatar>
