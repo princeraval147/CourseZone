@@ -74,7 +74,15 @@ const Header = () => {
     return (
         <>
             <div className={styles.header}>
-                <h3>Course Zone</h3>
+                {/* <h3>Course Zone</h3> */}
+                <NavLink to='/'>
+                    <img
+                        src="../../public/Img/CourseZone.png"
+                        alt="CourseZone Logo"
+                        height={85}
+                        width={95}
+                    />
+                </NavLink>
                 <ul className={styles.headerLinks}>
                     <li>
                         <NavLink to='/'>

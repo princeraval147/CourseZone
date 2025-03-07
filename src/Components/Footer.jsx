@@ -9,7 +9,15 @@ const Footer = () => {
                 <div className="footer-container">
                     {/* Logo & Description */}
                     <div className="footer-section">
-                        <h2 className="footer-title">Course Zone</h2>
+                        {/* <h2 className="footer-title">Course Zone</h2> */}
+                        <NavLink to='/'>
+                            <img
+                                src="../../public/Img/CourseZone.png"
+                                alt="CourseZone Logo"
+                                height={85}
+                                width={95}
+                            />
+                        </NavLink>
                         <p className="footer-text">Delivering quality content and services to our users.</p>
                     </div>
 
