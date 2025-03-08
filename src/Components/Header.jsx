@@ -15,6 +15,7 @@ import {
 import { IoMdSettings } from "react-icons/io";
 import { MdLogout } from "react-icons/md";
 import { IoPersonAdd } from "react-icons/io5";
+import { IoBookmarkOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/Header.module.css";
 
@@ -177,10 +178,10 @@ const Header = () => {
                                                     Profile
                                                 </NavLink>
                                             </MenuItem>
-                                            <MenuItem onClick={handleClose}>
-                                                <Avatar />
+                                            <MenuItem onClick={handleClose} sx={{ display: "flex", gap: "10px", padding: "10px 10px" }} >
+                                                <IoBookmarkOutline size={30} />
                                                 <NavLink to="#" style={{ color: "#212121" }}>
-                                                    My account
+                                                    Saved
                                                 </NavLink>
                                             </MenuItem>
                                             <Divider />
