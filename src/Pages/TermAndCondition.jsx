@@ -9,9 +9,9 @@ const TermAndCondition = () => {
                 </h1>
                 <br />
                 For the purpose of these Terms and Conditions, The term "we", "us",
-                "our" used anywhere on this page shall mean
+                "our" used anywhere on this page shall mean {" "}
                 <strong>
-                    CourseZone,
+                    CourseZone, {" "}
                 </strong>
                 whose registered/operational
                 office is <br />
