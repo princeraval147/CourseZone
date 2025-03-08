@@ -6,6 +6,34 @@ const { uploadMedia, deleteMediaFromCloudinary } = require("../utils/cloudinary"
 
 
 // Register User & Send OTP
+// exports.register = async (req, res) => {
+//   const { username, email, password } = req.body;
+//   try {
+//     let user = await User.findOne({ email });
+
+//     if (user) {
+//       if (!user.isVerified) {
+//         return res.status(400).json({ message: "User already registered. Please verify OTP." });
+//       }
+//       return res.status(400).json({ message: "Email already exists." });
+//     }
+
+//     const hashedPassword = await bcrypt.hash(password, 10);
+//     const otp = Math.floor(100000 + Math.random() * 900000).toString();
+//     console.log(otp);
+//     const otpExpires = new Date(Date.now() + 10 * 60 * 1000);
+
+//     user = new User({ username, email, password: hashedPassword, otp, otpExpires });
+
+//     await user.save();
+//     // sendEmail(email, otp);
+
+//     res.json({ message: "User registered! Please verify OTP." });
+//   } catch (error) {
+//     res.status(500).json({ message: "Serverrrrrrrrrr error", error });
+//   }
+// };
+
 exports.register = async (req, res) => {
   const { username, email, password } = req.body;
   try {
@@ -26,7 +54,7 @@ exports.register = async (req, res) => {
     user = new User({ username, email, password: hashedPassword, otp, otpExpires });
 
     await user.save();
-    // sendEmail(email, otp);
+    await sendEmail(email, otp, username);
 
     res.json({ message: "User registered! Please verify OTP." });
   } catch (error) {

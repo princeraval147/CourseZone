@@ -13,7 +13,7 @@ const sendEmail = async (email, otp) => {
     from: process.env.EMAIL,
     to: email,
     subject: "Your OTP Code",
-    text: `Your OTP is: ${otp}. It is valid for 10 minutes.`,
+    text: `Your OTP For CourseZone is: ${otp}. It is valid for 10 minutes.`,
   };
 
   try {
@@ -24,4 +24,4 @@ const sendEmail = async (email, otp) => {
   }
 };
 
-module.exports = sendEmail;
+module.exports = sendEmail;
