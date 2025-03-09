@@ -134,7 +134,7 @@ exports.forgotPassword = async (req, res) => {
   const otp = Math.floor(100000 + Math.random() * 900000);
   otpStore[email] = otp;
   console.log(otp, email);
-  // await sendOTP(email, otp); // Function to send OTP via email
+  await sendEmail(email, otp, user.username);
   res.json({ message: "OTP sent to your email" });
 };
 
