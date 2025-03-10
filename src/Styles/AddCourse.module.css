@@ -3,9 +3,13 @@
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-h2 {
+.AddHeadign {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
@@ -13,8 +17,27 @@ h2 {
 
 .courseForm {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.formParts {
+    display: flex;
+    gap: 50px;
+}
+
+.firstPart,
+.secondPart {
+    display: flex;
     flex-direction: column;
     gap: 15px;
+    width: 20rem;
+}
+
+.errorMessage {
+    color: red;
 }
 
 .inputGroup {
@@ -136,6 +159,7 @@ h2 {
     border-radius: 5px;
     border-left: 3px solid #0056b3;
 }
+
 
 .addSectionBtn,
 .submitBtn {

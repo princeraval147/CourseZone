@@ -2,37 +2,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const sendEmail = require("../utils/sendEmail");
+const Course = require('../models/Course');
 const { uploadMedia, deleteMediaFromCloudinary } = require("../utils/cloudinary");
-
-
-// Register User & Send OTP
-// exports.register = async (req, res) => {
-//   const { username, email, password } = req.body;
-//   try {
-//     let user = await User.findOne({ email });
-
-//     if (user) {
-//       if (!user.isVerified) {
-//         return res.status(400).json({ message: "User already registered. Please verify OTP." });
-//       }
-//       return res.status(400).json({ message: "Email already exists." });
-//     }
-
-//     const hashedPassword = await bcrypt.hash(password, 10);
-//     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-//     console.log(otp);
-//     const otpExpires = new Date(Date.now() + 10 * 60 * 1000);
-
-//     user = new User({ username, email, password: hashedPassword, otp, otpExpires });
-
-//     await user.save();
-//     // sendEmail(email, otp);
-
-//     res.json({ message: "User registered! Please verify OTP." });
-//   } catch (error) {
-//     res.status(500).json({ message: "Serverrrrrrrrrr error", error });
-//   }
-// };
 
 exports.register = async (req, res) => {
   const { username, email, password } = req.body;
@@ -256,6 +227,36 @@ exports.updateProfile = async (req, res) => {
     });
   }
 };
+
+// Check Course availability
+exports.checkCourse = async (req, res) => {
+  try {
+    const { title } = req.body;
+    if (!title) {
+      return res.status(400).json({ success: false, message: "Course title is required" });
+    }
+    const existingCourse = await Course.findOne({ title });
+    if (existingCourse) {
+      return res.status(200).json({
+        success: true,
+        message: "Course is already available",
+        course: existingCourse,
+      });
+    } else {
+      return res.status(404).json({
+        success: false,
+        message: "Course is not available",
+      });
+    }
+  } catch (error) {
+    console.error("Error checking course:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Server error",
+    });
+  }
+};
+
 
 
 // Get User Role
