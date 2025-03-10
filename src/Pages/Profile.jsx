@@ -51,7 +51,7 @@ const Profile = () => {
         if (profileData.profilePhoto) formData.append("profilePhoto", profileData.profilePhoto);
 
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/update-profile`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/update-profile`, {
                 method: "PUT",
                 body: formData,
                 credentials: "include",
