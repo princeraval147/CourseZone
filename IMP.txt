@@ -9,5 +9,10 @@
     - ✅ Promote instructur
     - ✅ instructur Can Show Earning
     - Student Enrolled
+Proper Validation
 Save courses
-Student Can see instructur Profile
+Instructur Profile
+Contact us  for courses
+Discount Manage
+Resume show for instructo
+✅ Date For Course
