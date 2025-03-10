@@ -149,11 +149,9 @@ exports.authenticate = async (req, res) => {
   try {
     // `req.user` contains the decoded token data from `authenticateToken` middleware
     const user = await User.findById(req.user.id).select("-password"); // Exclude password
-
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
-
     res.json(user);
   } catch (error) {
     res.status(500).json({ error: "Server error" });
@@ -270,4 +268,83 @@ exports.userrole = async (req, res) => {
 //isloggedin or not
 exports.isLoggedIn = (req, res) => {
   res.status(200).json({ message: "User is logged in", userId: req.user });
+};
+
+exports.myCourses = async (req, res) => {
+  try {
+    const user = await User.findById(req.user).populate("enrolledCourses");
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+    res.json({ success: true, courses: user.enrolledCourses });
+  } catch (error) {
+    console.error("Error fetching enrolled courses:", error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+};
+
+exports.toggleSavedCourse = async (req, res) => {
+  try {
+    const userId = req.user;
+    const { courseId } = req.body;
+
+    if (!courseId) {
+      return res.status(400).json({ message: "Course ID is required" });
+    }
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const courseIndex = user.savedCourses.indexOf(courseId);
+
+    if (courseIndex > -1) {
+      // If course is already saved, remove it
+      user.savedCourses.splice(courseIndex, 1);
+      await user.save();
+      return res.status(200).json({ message: "Course removed from saved", saved: false });
+    } else {
+      // If course is not saved, add it
+      user.savedCourses.push(courseId);
+      await user.save();
+      return res.status(200).json({ message: "Course added to saved", saved: true });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
+  }
+};
+
+
+exports.getSavedCourses = async (req, res) => {
+  try {
+    const userId = req.user;
+    const user = await User.findById(userId).populate("savedCourses");
+
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    res.status(200).json(user.savedCourses);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
+  }
+};
+
+exports.instructorrequest = async (req, res) => {
+  try {
+    const userId = req.user;
+    const user = await User.findById(userId);
+
+    if (!user) return res.status(404).json({ message: "User not found" });
+    if (user.role !== "student") return res.status(400).json({ message: "Only students can request instructor access" });
+
+    const existingRequest = await InstructorRequest.findOne({ userId });
+    if (existingRequest) return res.status(400).json({ message: "Request already submitted" });
+
+    const request = new InstructorRequest({ userId });
+    await request.save();
+
+    res.status(201).json({ message: "Instructor request submitted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
+  }
 };
