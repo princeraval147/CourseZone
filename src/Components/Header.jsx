@@ -10,7 +10,6 @@ import {
     Divider,
     IconButton,
     Tooltip,
-    Modal,
 } from "@mui/material";
 import { IoMdSettings } from "react-icons/io";
 import { MdLogout } from "react-icons/md";
@@ -76,13 +75,12 @@ const Header = () => {
         <>
             <div className={styles.header}>
                 {/* <h3>Course Zone</h3> */}
-
                 <NavLink to='/'>
                     <img
                         src="/Img/CourseZone.png"
                         alt="CourseZone Logo"
-                        height={85}
-                        width={95}
+                        height={75}
+                        width={85}
                     />
                 </NavLink>
                 <ul className={styles.headerLinks}>
@@ -102,7 +100,12 @@ const Header = () => {
                         </NavLink>
                     </li>
                     <li>
-                        {userRole === "instructor" && <NavLink to="/admin" className={styles.headerLinks}>Dashboard</NavLink>}
+                        {
+                            userRole === "instructor" &&
+                            <NavLink to="/admin">
+                                Dashboard
+                            </NavLink>
+                        }
                     </li>
                 </ul>
                 <div>
@@ -173,21 +176,21 @@ const Header = () => {
                                             anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                                         >
                                             <NavLink to='/profile' style={{ color: "#212121" }}>
-
                                                 <MenuItem onClick={handleClose}>
                                                     <Avatar />
-                                                    {/* <NavLink to="/profile" style={{ color: "#212121" }}> */}
                                                     Profile
-                                                    {/* </NavLink> */}
                                                 </MenuItem>
                                             </NavLink>
-                                            <MenuItem onClick={handleClose} sx={{ display: "flex", gap: "10px", padding: "10px 10px" }} >
-                                                <IoBookmarkOutline size={30} />
-                                                <NavLink to="#" style={{ color: "#212121" }}>
+
+                                            <NavLink to="/saved-course" style={{ color: "#212121" }}>
+                                                <MenuItem onClick={handleClose} sx={{ display: "flex", gap: "10px", padding: "10px 10px" }} >
+                                                    <IoBookmarkOutline size={30} />
                                                     Saved
-                                                </NavLink>
-                                            </MenuItem>
+                                                </MenuItem>
+                                            </NavLink>
+
                                             <Divider />
+
                                             <MenuItem onClick={handleClose}>
                                                 <ListItemIcon>
                                                     <IoPersonAdd />
