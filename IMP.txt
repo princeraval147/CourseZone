@@ -9,9 +9,9 @@
     - ✅ Promote instructur
     - ✅ instructur Can Show Earning
     - Student Enrolled
-Proper Validation
+✅ Proper Validation
 Save courses
-Instructur Profile
+✅ Instructur Profile
 Contact us  for courses
 Discount Manage
 Resume show for instructo
