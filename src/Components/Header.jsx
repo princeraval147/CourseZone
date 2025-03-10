@@ -172,12 +172,15 @@ const Header = () => {
                                             transformOrigin={{ horizontal: "right", vertical: "top" }}
                                             anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                                         >
-                                            <MenuItem onClick={handleClose}>
-                                                <Avatar />
-                                                <NavLink to="#" style={{ color: "#212121" }}>
+                                            <NavLink to='/profile' style={{ color: "#212121" }}>
+
+                                                <MenuItem onClick={handleClose}>
+                                                    <Avatar />
+                                                    {/* <NavLink to="/profile" style={{ color: "#212121" }}> */}
                                                     Profile
-                                                </NavLink>
-                                            </MenuItem>
+                                                    {/* </NavLink> */}
+                                                </MenuItem>
+                                            </NavLink>
                                             <MenuItem onClick={handleClose} sx={{ display: "flex", gap: "10px", padding: "10px 10px" }} >
                                                 <IoBookmarkOutline size={30} />
                                                 <NavLink to="#" style={{ color: "#212121" }}>

@@ -14,6 +14,7 @@ import UpdateCourse from './Pages/Admin/UpdateCourse'
 import MyCourses from "./Pages/Admin/MyCourse";
 import Student from "./Pages/Admin/Student";
 import TermAndCondition from "./Pages/TermAndCondition";
+import Profile from "./Pages/Profile";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
             <Route path="/course-list" element={<CourseList />} />
             <Route path="/course-details/:id" element={<CourseDetails />} />
             <Route path='payment' element={<Payment />} />
+            <Route path='profile' element={<Profile />} />
             //Admin Panel
             <Route path="update-course/:id" element={<UpdateCourse />} />
             <Route path="admin" element={<AdminPanel />} >

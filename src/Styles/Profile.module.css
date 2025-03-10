@@ -1,0 +1,95 @@
+.profileContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.profileCard {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin-top: 50px;
+    overflow: hidden;
+}
+
+.profileCard.expand {
+    width: 500px;
+}
+
+.profileImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.profileInfo h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.profileInfo p {
+    font-size: 14px;
+    color: #555;
+}
+
+.role {
+    font-size: 12px;
+    font-style: italic;
+    color: #888;
+}
+
+.profileActions button,
+.profileEditForm button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.profileActions button:nth-child(2),
+.profileEditForm button:nth-child(2) {
+    background-color: #f44336;
+}
+
+.profileActions button:hover,
+.profileEditForm button:hover {
+    opacity: 0.9;
+}
+
+.profileEditForm {
+    margin-top: 20px;
+}
+
+.formGroup {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.formGroup input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.ProfileBtn {
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.ProfileBtn:disabled {
+    background-color: #ddd;
+}
