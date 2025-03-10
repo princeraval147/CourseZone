@@ -1,18 +1,10 @@
 import { useEffect, useState } from "react";
-// import useAuth from "./hooks/useAuth"; // Ensure this is correctly linked to your useAuth hook
 import useAuth from '../Components/hooks/useAuth'
-import Styles from '../Styles/Profile.module.css'
+import styles from "../styles/Profile.module.css";
+import { Avatar } from "@mui/material";
 
 const Profile = () => {
-    const isAuthenticated = useAuth(); // Get authentication status
-    console.log(isAuthenticated);
-    // // Ensure the component does not render until authentication is determined
-    // if (isAuthenticated === null) return null; // Do not render anything
-
-    // // If user is not authenticated, redirect to login (handled in useAuth)
-    // if (!isAuthenticated) return null; 
-
-    // States for profile data and editing
+    const isAuthenticated = useAuth();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -24,7 +16,6 @@ const Profile = () => {
         newPassword: "",
     });
 
-    // Fetch profile data when the component mounts
     useEffect(() => {
         const fetchProfile = async () => {
             try {
@@ -52,7 +43,6 @@ const Profile = () => {
         fetchProfile();
     }, []);
 
-    // Handle profile update logic
     const handleUpdateProfile = async () => {
         const formData = new FormData();
         formData.append("username", profileData.username);
@@ -77,10 +67,9 @@ const Profile = () => {
         }
     };
 
-    // Handle logout logic
     const handleLogout = async () => {
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/logout`, {
+            await fetch(`${import.meta.env.VITE_API_URL}/auth/logout`, {
                 method: "POST",
                 credentials: "include",
             });
@@ -93,7 +82,6 @@ const Profile = () => {
         }
     };
 
-    // Handle input changes for profile editing
     const handleInputChange = (e) => {
         const { name, value, files } = e.target;
         setProfileData((prevState) => ({
@@ -102,74 +90,95 @@ const Profile = () => {
         }));
     };
 
-    // Render loading or error messages
     if (loading) return <p>Loading profile...</p>;
     if (error) return <p>Error: {error}</p>;
     if (!user) return <p>No profile data found.</p>;
 
-    // Profile edit form and actions
     return (
-        <div className={Styles.profileContainer}>
-            <div className={`profileCard ${isEditing ? "expand" : ""}`}>
-                <img
-                    src={user.photoUrl || "https://via.placeholder.com/100"}
-                    alt="Profile"
-                    className={Styles.profileImage}
-                />
-                <div className={Styles.profileInfo}>
-                    <h2>{user.username}</h2>
-                    <p>{user.email}</p>
-                    <p className="role">{user.role}</p>
+        <>
 
-                    {isEditing ? (
-                        <div className={Styles.profileEditForm}>
-                            <div className="form-group">
-                                <label>Username</label>
-                                <input
-                                    type="text"
-                                    name="username"
-                                    value={profileData.username}
-                                    onChange={handleInputChange}
-                                />
+            <div className={styles.profileContainer}>
+                <div className={`${styles.profileCard} ${isEditing ? styles.expand : ""}`}>
+                    {/* <img
+                        src={user.photoUrl || <Avatar sx={{ width: 30, height: 30 }}></Avatar>}
+                        alt="Profile Image"
+                        className={styles.profileImage}
+                    /> */}
+                    <div className={styles.profileInfo}>
+                        {user.photoUrl ? (
+                            <img
+                                src={user.photoUrl}
+                                alt="Profile Image"
+                                className={styles.profileImage}
+                            />
+                        ) : (
+                            <>
+                                <div style={{ display: "flex", gap: "10px" }}>
+
+                                    <Avatar sx={{ width: 30, height: 30 }} >
+
+                                    </Avatar>
+                                    <h2>{user.username}</h2>
+                                </div>
+                            </>
+
+                        )}
+                        {/* <h2>{user.username}</h2> */}
+                        <p>{user.email}</p>
+                        <p className={styles.role}>{user.role}</p>
+
+                        {isEditing ? (
+                            <div className={styles.profileEditForm}>
+                                <div className={styles.formGroup}>
+                                    <label>Username</label>
+                                    <input
+                                        type="text"
+                                        name="username"
+                                        value={profileData.username}
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                                <div className={styles.formGroup}>
+                                    <label>Profile Photo</label>
+                                    <input
+                                        type="file"
+                                        name="profilePhoto"
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                                <div className={styles.formGroup}>
+                                    <label>Old Password</label>
+                                    <input
+                                        type="password"
+                                        name="oldPassword"
+                                        value={profileData.oldPassword}
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                                <div className={styles.formGroup}>
+                                    <label>New Password</label>
+                                    <input
+                                        type="password"
+                                        name="newPassword"
+                                        value={profileData.newPassword}
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                                <div className={styles.profileActions}>
+                                    <button onClick={handleUpdateProfile}>Save Changes</button>
+                                    <button onClick={() => setIsEditing(false)}>Cancel</button>
+                                </div>
                             </div>
-                            <div className={formGroup}>
-                                <label>Profile Photo</label>
-                                <input
-                                    type="file"
-                                    name="profilePhoto"
-                                    onChange={handleInputChange}
-                                />
+                        ) : (
+                            <div className={styles.profileActions}>
+                                <button onClick={() => setIsEditing(true)}>Update Profile</button>
+                                {/* <button onClick={handleLogout}>Logout</button> */}
                             </div>
-                            <div className={formGroup}>
-                                <label>Old Password</label>
-                                <input
-                                    type="password"
-                                    name="oldPassword"
-                                    value={profileData.oldPassword}
-                                    onChange={handleInputChange}
-                                />
-                            </div>
-                            <div className={formGroup}>
-                                <label>New Password</label>
-                                <input
-                                    type="password"
-                                    name="newPassword"
-                                    value={profileData.newPassword}
-                                    onChange={handleInputChange}
-                                />
-                            </div>
-                            <button onClick={handleUpdateProfile}>Save Changes</button>
-                            <button onClick={() => setIsEditing(false)}>Cancel</button>
-                        </div>
-                    ) : (
-                        <div className={Styles.profileActions}>
-                            <button className={Styles.ProfileBtn} onClick={() => setIsEditing(true)}>Update Profile</button>
-                            <button className={Styles.ProfileBtn} onClick={handleLogout}>Logout</button>
-                        </div>
-                    )}
+                        )}
+                    </div>
                 </div>
-            </div>
-        </div>
+            </div >
+        </>
     );
 };
 

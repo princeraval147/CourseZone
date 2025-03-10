@@ -16,7 +16,7 @@
     overflow: hidden;
 }
 
-.profileCard.expand {
+.expand {
     width: 500px;
 }
 
@@ -44,6 +44,11 @@
     color: #888;
 }
 
+.profileActions {
+    display: flex;
+    gap: 24px;
+}
+
 .profileActions button,
 .profileEditForm button {
     background-color: #4CAF50;
@@ -55,6 +60,7 @@
     cursor: pointer;
     margin: 10px 0;
 }
+
 
 .profileActions button:nth-child(2),
 .profileEditForm button:nth-child(2) {
@@ -92,4 +98,28 @@
 
 .ProfileBtn:disabled {
     background-color: #ddd;
+}
+
+@media (max-width: 768px) {
+    .profileCard {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .expand {
+        width: 100%;
+    }
+
+    .profileImage {
+        width: 80px;
+        height: 80px;
+    }
+
+    .formGroup input {
+        font-size: 12px;
+    }
+
+    button {
+        font-size: 14px;
+    }
 }
