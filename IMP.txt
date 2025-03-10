@@ -1,0 +1,13 @@
+✅ Profile
+✅ Login / Logout
+✅ Contact
+✅ Payment Gateway
+✅ Show Course Details
+✅ Admin Panel
+    - ✅ Course Insert, Update, Delete
+    - ✅ Lecture Insert, Update, Delete
+    - ✅ Promote instructur
+    - ✅ instructur Can Show Earning
+    - Student Enrolled
+Save courses
+Student Can see instructur Profile
