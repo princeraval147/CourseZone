@@ -15,7 +15,11 @@ import MyCourses from "./Pages/Admin/MyCourse";
 import Student from "./Pages/Admin/Student";
 import TermAndCondition from "./Pages/TermAndCondition";
 import Profile from "./Pages/Profile";
-import SavedCourse from "./Pages/SavedCourse";
+import SavedCourses from "./Pages/SavedCourses";
+import MyEncrolledCourse from "./Pages/MyEncrolledCourse";
+import RequestInstructor from "./Pages/RequestInstructor";
+import InstructorProfile from "./Pages/InstructorProfile";
+import Classroom from "./Pages/Classroom";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -28,7 +32,13 @@ const router = createBrowserRouter(
             <Route path="course-details/:id" element={<CourseDetails />} />
             <Route path='payment' element={<Payment />} />
             <Route path='profile' element={<Profile />} />
-            <Route path='saved-course' element={<SavedCourse />} />
+            <Route path='request-instructor' element={<RequestInstructor />} />
+            <Route path="instructor-profile/:id" element={<InstructorProfile />} />
+            <Route path='saved-courses' element={<SavedCourses />} />
+            <Route path='my-course' element={<MyEncrolledCourse />} />
+            {/* <Route path='classroom' element={<Classroom />} /> */}
+            <Route path="/classroom/:courseId" element={<Classroom />} />
+
             //Admin Panel
             <Route path="update-course/:id" element={<UpdateCourse />} />
             <Route path="admin" element={<AdminPanel />} >
