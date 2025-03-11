@@ -156,6 +156,27 @@
     text-decoration: underline;
 }
 
+.loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: white;
+    font-size: 18px;
+}
+
+.loadingText {
+    color: black;
+}
+
 @media (max-width: 768px) {
     .courseDetailsContainerUnique {
         flex-direction: column;

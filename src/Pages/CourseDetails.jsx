@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import styles from "../styles/CourseDetails.module.css";
 import axios from "axios";
+import { CircularProgress } from "@mui/material";
 
 const CourseDetails = () => {
 
     const { id } = useParams();
     const [course, setCourse] = useState(null);
     const [openSections, setOpenSections] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const fetchCourse = async () => {
@@ -21,7 +23,24 @@ const CourseDetails = () => {
                 console.error("Error fetching course details:", error);
             }
         };
+
+        const checkEnrollment = async () => {
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/courses/is-enrolled/${id}`, {
+                    method: "GET",
+                    credentials: "include",
+                });
+                const data = await response.json();
+                if (data.success) {
+                    setIsEnrolled(data.isEnrolled);
+                }
+            } catch (error) {
+                console.error("Error checking enrollment:", error);
+            }
+        };
+
         fetchCourse();
+        checkEnrollment();
     }, [id]);
 
     const toggleSection = (section) => {
@@ -48,6 +67,7 @@ const CourseDetails = () => {
     }
 
     const handleRazorpayScreen = async (orderData) => {
+        setIsLoading(true);
         const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js")
         if (!res) {
             alert("Some Error at razorpay Screen Loading")
@@ -78,9 +98,11 @@ const CourseDetails = () => {
             alert("Payment failed. Please try again.");
         });
         paymentObject.open();
+        setIsLoading(false);
     }
 
     const createRazorpayOrder = async (payableAmount) => {
+        setIsLoading(true);
         let data = JSON.stringify({
             amount: payableAmount * 100,
             currency: "INR"
@@ -106,12 +128,19 @@ const CourseDetails = () => {
             .catch((error) => {
                 console.log("Error at", error)
             })
+        setIsLoading(false);
     }
 
     const coursePrice = course.price;
 
     return (
         <div className={styles.courseDetailsContainerUnique}>
+            {isLoading && (
+                <div className={styles.loadingOverlay}>
+                    <CircularProgress size={60} color="primary" />
+                    <p className={styles.loadingText}>Processing Payment...</p>
+                </div>
+            )}
             {/* Left Side - Course Details */}
             <div className={styles.courseDetailsUnique}>
                 <header className={styles.courseHeaderUnique}>
@@ -150,11 +179,18 @@ const CourseDetails = () => {
                 </div>
                 <div className={styles.priceUnique}>
                     <span className={styles.currentPriceUnique}>₹{course.price}</span>
-                    <span className={styles.oldPriceUnique}>₹{course.oldPrice}</span>
-                    <span className={styles.discountUnique}>
+                    {/* <span className={styles.oldPriceUnique}>₹{course.oldPrice}</span> */}
+                    {/* <span className={styles.discountUnique}>
                         {Math.round(((course.oldPrice - course.price) / course.oldPrice) * 100)}% off
-                    </span>
+                    </span> */}
                 </div>
+                {/* {isLoading ? (
+                    <CircularProgress color="primary" />
+                ) : (
+                    <button className={styles.enrollBtnUnique} onClick={() => createRazorpayOrder(course.price)}>
+                        Enroll Now
+                    </button>
+                )} */}
                 <button
                     className={styles.enrollBtnUnique}
                     onClick={() => createRazorpayOrder(coursePrice)}
