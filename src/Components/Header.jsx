@@ -21,6 +21,7 @@ import styles from "../styles/Header.module.css";
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userRole, setUserRole] = useState(null);
+    const [user, setUser] = useState(null);
     const navigate = useNavigate();
 
     // For Profile Drop Down
@@ -71,6 +72,28 @@ const Header = () => {
             console.error("Logout failed:", error);
         }
     };
+
+    // For Profile Pic
+    useEffect(() => {
+        const fetchProfile = async () => {
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/profile`, {
+                    credentials: "include",
+                });
+
+                if (!response.ok) throw new Error("Failed to fetch profile");
+                const data = await response.json();
+                setUser(data || {});
+                setFormData((prev) => ({ ...prev, username: data.username }));
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchProfile();
+    }, []);
+
     return (
         <>
             <div className={styles.header}>
@@ -130,10 +153,15 @@ const Header = () => {
                                                     aria-haspopup="true"
                                                     aria-expanded={open ? "true" : undefined}
                                                 >
-                                                    <Avatar sx={{ width: 30, height: 30 }}>
-                                                        {/* {isAdmin ? "A" : "U"} */}
-                                                        {/* {role} */}
-                                                    </Avatar>
+                                                    {
+                                                        !user ? <Avatar></Avatar>
+                                                            :
+                                                            <Avatar
+                                                                sx={{ width: 30, height: 30 }}
+                                                                src={user.photoUrl}
+                                                            >
+                                                            </Avatar>
+                                                    }
                                                     <span className="HelloUser">Hello, {userRole}</span>
                                                 </IconButton>
                                             </Tooltip>
@@ -182,7 +210,7 @@ const Header = () => {
                                                 </MenuItem>
                                             </NavLink>
 
-                                            <NavLink to="/saved-course" style={{ color: "#212121" }}>
+                                            <NavLink to="/saved-courses" style={{ color: "#212121" }}>
                                                 <MenuItem onClick={handleClose} sx={{ display: "flex", gap: "10px", padding: "10px 10px" }} >
                                                     <IoBookmarkOutline size={30} />
                                                     Saved

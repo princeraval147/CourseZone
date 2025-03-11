@@ -1,7 +1,36 @@
 import { useEffect, useState } from "react";
-import useAuth from '../Components/hooks/useAuth'
+import { z } from "zod";
+import useAuth from "../Components/hooks/useAuth";
 import styles from "../styles/Profile.module.css";
 import { Avatar } from "@mui/material";
+
+const profileSchema = z.object({
+    username: z.string().min(3, "Username must be at least 3 characters"),
+    oldPassword: z
+        .string()
+        .min(8, "Password must be at least 8 characters")
+        .regex(/[A-Z]/, "Must include an uppercase letter")
+        .regex(/[a-z]/, "Must include a lowercase letter")
+        .regex(/[0-9]/, "Must include a digit")
+        .regex(/[\W_]/, "Must include a special character")
+        .optional()
+        .or(z.literal("")),
+    newPassword: z
+        .string()
+        .min(8, "Password must be at least 8 characters")
+        .regex(/[A-Z]/, "Must include an uppercase letter")
+        .regex(/[a-z]/, "Must include a lowercase letter")
+        .regex(/[0-9]/, "Must include a digit")
+        .regex(/[\W_]/, "Must include a special character")
+        .optional()
+        .or(z.literal("")),
+}).refine((data) => {
+    if (data.newPassword && !data.oldPassword) {
+        return false;
+    }
+    return true;
+}, { message: "Old password is required when changing password", path: ["oldPassword"] });
+
 
 const Profile = () => {
     const isAuthenticated = useAuth();
@@ -9,12 +38,15 @@ const Profile = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
-    const [profileData, setProfileData] = useState({
+
+    const [formData, setFormData] = useState({
         username: "",
-        profilePhoto: null,
         oldPassword: "",
         newPassword: "",
+        profilePhoto: null,
     });
+
+    const [errors, setErrors] = useState({});
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -27,12 +59,7 @@ const Profile = () => {
 
                 const data = await response.json();
                 setUser(data);
-                setProfileData({
-                    username: data.username,
-                    profilePhoto: null,
-                    oldPassword: "",
-                    newPassword: "",
-                });
+                setFormData((prev) => ({ ...prev, username: data.username }));
             } catch (error) {
                 setError(error.message);
             } finally {
@@ -43,17 +70,43 @@ const Profile = () => {
         fetchProfile();
     }, []);
 
-    const handleUpdateProfile = async () => {
-        const formData = new FormData();
-        formData.append("username", profileData.username);
-        formData.append("oldPassword", profileData.oldPassword);
-        formData.append("newPassword", profileData.newPassword);
-        if (profileData.profilePhoto) formData.append("profilePhoto", profileData.profilePhoto);
+    const validateForm = () => {
+        try {
+            profileSchema.parse(formData);
+            setErrors({});
+            return true;
+        } catch (validationError) {
+            const formattedErrors = {};
+            validationError.errors.forEach((err) => {
+                formattedErrors[err.path[0]] = err.message;
+            });
+            setErrors(formattedErrors);
+            return false;
+        }
+    };
+
+    const handleChange = (e) => {
+        const { name, value, files } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: files ? files[0] : value,
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!validateForm()) return;
+
+        const form = new FormData();
+        form.append("username", formData.username);
+        form.append("oldPassword", formData.oldPassword);
+        form.append("newPassword", formData.newPassword);
+        if (formData.profilePhoto) form.append("profilePhoto", formData.profilePhoto);
 
         try {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/update-profile`, {
                 method: "PUT",
-                body: formData,
+                body: form,
                 credentials: "include",
             });
 
@@ -69,7 +122,7 @@ const Profile = () => {
 
     const handleLogout = async () => {
         try {
-            await fetch(`${import.meta.env.VITE_API_URL}/auth/logout`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/logout`, {
                 method: "POST",
                 credentials: "include",
             });
@@ -82,103 +135,84 @@ const Profile = () => {
         }
     };
 
-    const handleInputChange = (e) => {
-        const { name, value, files } = e.target;
-        setProfileData((prevState) => ({
-            ...prevState,
-            [name]: name === "profilePhoto" ? files[0] : value,
-        }));
-    };
-
     if (loading) return <p>Loading profile...</p>;
     if (error) return <p>Error: {error}</p>;
     if (!user) return <p>No profile data found.</p>;
 
     return (
-        <>
-
-            <div className={styles.profileContainer}>
-                <div className={`${styles.profileCard} ${isEditing ? styles.expand : ""}`}>
-                    {/* <img
-                        src={user.photoUrl || <Avatar sx={{ width: 30, height: 30 }}></Avatar>}
+        <div className={styles.profileContainer}>
+            <div className={`${styles.profileCard} ${isEditing ? styles.expand : ""}`}>
+                {/* {user.photoUrl ? (
+                    <img
+                        src={user.photoUrl}
                         alt="Profile Image"
                         className={styles.profileImage}
-                    /> */}
-                    <div className={styles.profileInfo}>
-                        {user.photoUrl ? (
-                            <img
-                                src={user.photoUrl}
-                                alt="Profile Image"
-                                className={styles.profileImage}
-                            />
-                        ) : (
-                            <>
-                                <div style={{ display: "flex", gap: "10px" }}>
+                    />
+                ) : (
+                    <>
+                        <div style={{ display: "flex", gap: "10px" }}>
+                            <Avatar sx={{ width: 30, height: 30 }} >
+                            </Avatar>
+                            <h2>{user.username}</h2>
+                        </div>
+                    </>
 
-                                    <Avatar sx={{ width: 30, height: 30 }} >
+                )} */}
+                <img
+                    src={user.photoUrl || <Avatar></Avatar>}
+                    alt="Profile"
+                    className={styles.profileImage}
+                />
+                <div className={styles.profileInfo}>
+                    <h2>{user.username}</h2>
+                    <p>{user.email}</p>
+                    <p className={styles.role}>{user.role}</p>
 
-                                    </Avatar>
-                                    <h2>{user.username}</h2>
-                                </div>
-                            </>
-
-                        )}
-                        {/* <h2>{user.username}</h2> */}
-                        <p>{user.email}</p>
-                        <p className={styles.role}>{user.role}</p>
-
-                        {isEditing ? (
-                            <div className={styles.profileEditForm}>
-                                <div className={styles.formGroup}>
-                                    <label>Username</label>
-                                    <input
-                                        type="text"
-                                        name="username"
-                                        value={profileData.username}
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-                                <div className={styles.formGroup}>
-                                    <label>Profile Photo</label>
-                                    <input
-                                        type="file"
-                                        name="profilePhoto"
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-                                <div className={styles.formGroup}>
-                                    <label>Old Password</label>
-                                    <input
-                                        type="password"
-                                        name="oldPassword"
-                                        value={profileData.oldPassword}
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-                                <div className={styles.formGroup}>
-                                    <label>New Password</label>
-                                    <input
-                                        type="password"
-                                        name="newPassword"
-                                        value={profileData.newPassword}
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-                                <div className={styles.profileActions}>
-                                    <button onClick={handleUpdateProfile}>Save Changes</button>
-                                    <button onClick={() => setIsEditing(false)}>Cancel</button>
-                                </div>
+                    {isEditing ? (
+                        <form className={styles.profileEditForm} onSubmit={handleSubmit}>
+                            <div className={styles.formGroup}>
+                                <label>Username</label>
+                                <input type="text" name="username" value={formData.username} onChange={handleChange} />
+                                {errors.username && <p className={styles.error}>{errors.username}</p>}
                             </div>
-                        ) : (
-                            <div className={styles.profileActions}>
-                                <button onClick={() => setIsEditing(true)}>Update Profile</button>
-                                {/* <button onClick={handleLogout}>Logout</button> */}
+
+                            <div className={styles.formGroup}>
+                                <label>Profile Photo</label>
+                                <input type="file" name="profilePhoto" onChange={handleChange} />
                             </div>
-                        )}
-                    </div>
+
+                            <div className={styles.formGroup}>
+                                <label>Old Password</label>
+                                <input type="password" name="oldPassword" value={formData.oldPassword} onChange={handleChange} />
+                                {errors.oldPassword && <p className={styles.error}>{errors.oldPassword}</p>}
+                            </div>
+
+                            <div className={styles.formGroup}>
+                                <label>New Password</label>
+                                <input type="password" name="newPassword" value={formData.newPassword} onChange={handleChange} />
+                                {errors.newPassword && <p className={styles.error}>{errors.newPassword}</p>}
+                            </div>
+
+                            <button className={styles.primaryButton} type="submit">
+                                Save Changes
+                            </button>
+                            <button className={styles.secondaryButton} type="button" onClick={() => setIsEditing(false)}>
+                                Cancel
+                            </button>
+                        </form>
+                    ) : (
+                        <div className={styles.profileActions}>
+                            <button className={styles.primaryButton} onClick={() => setIsEditing(true)}>
+                                Update Profile
+                            </button>
+                            <button className={styles.dangerButton} onClick={handleLogout}>
+                                Logout
+                            </button>
+                        </div>
+                    )}
                 </div>
-            </div >
-        </>
+            </div>
+        </div >
     );
 };
 
