@@ -10,9 +10,17 @@
     - ✅ instructur Can Show Earning
     - Student Enrolled
 ✅ Proper Validation
-Save courses
+✅ Save courses
 ✅ Instructur Profile
-Contact us  for courses
-Discount Manage
-Resume show for instructo
-✅ Date For Course
+✅ Discount Manage
+✅ Resume show for instructo
+Contact us for courses
+Course Upload Date
+Manage Duration
+Test For Student
+
+_______________________
+
+CourseCard -> CreatedAt
+
+Admin can't see admin panel
