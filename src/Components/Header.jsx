@@ -84,11 +84,12 @@ const Header = () => {
                 if (!response.ok) throw new Error("Failed to fetch profile");
                 const data = await response.json();
                 setUser(data || {});
-                setFormData((prev) => ({ ...prev, username: data.username }));
+                // setFormData((prev) => ({ ...prev, username: data.username }));
             } catch (error) {
-                setError(error.message);
+                // setError(error.message);
+                console.log(error.message)
             } finally {
-                setLoading(false);
+                setIsLoggedIn(false);
             }
         };
         fetchProfile();
