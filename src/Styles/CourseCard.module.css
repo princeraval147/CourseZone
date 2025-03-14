@@ -8,13 +8,15 @@
     width: 18rem;
     height: 22rem;
     border: 1px solid #ddd;
+    position: relative;
+    /* Ensures proper positioning of save button */
 }
 
 .courseCard:hover {
     transform: translateY(-10px);
 }
 
-.imagecontainer {
+.imageContainer {
     width: 100%;
     overflow: hidden;
 }
@@ -27,6 +29,8 @@
 
 .courseContent {
     padding: 1.5rem;
+    position: relative;
+    /* Allows the save button to position relative to this container */
 }
 
 .courseTitle {
@@ -66,6 +70,35 @@
     font-weight: bold;
 }
 
-/* .Buy {
-    background: red;
-} */
+/* Save Button inside course content on the right side */
+.saveButton {
+    position: absolute;
+    top: 20%;
+    right: 1px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    transform: translateY(-50%);
+}
+
+.savedIcon {
+    color: #ff4081;
+}
+
+.courseHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.saveIcon {
+    cursor: pointer;
+    font-size: 1rem;
+    color: gray;
+    transition: color 0.3s ease-in-out;
+}
+
+.saveIcon:hover {
+    color: #ff9800;
+}

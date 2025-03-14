@@ -1,0 +1,94 @@
+.instructorProfileContainer {
+  margin: auto;
+  padding: 20px;
+}
+
+.instructorInfo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.instructorInfo h1 {
+  color: #333;
+}
+
+.instructorInfo p {
+  color: #666;
+}
+
+.coursesSection {
+  margin-top: 20px;
+}
+
+.courseList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.courseCard {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.courseCard img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.courseCard h3 {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.courseCard p {
+  font-size: 14px;
+  color: #555;
+}
+
+.instructorProfileContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+
+
+instructorInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #4caf50;
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+p {
+  font-size: 16px;
+  color: #666;
+}
+
+
+
