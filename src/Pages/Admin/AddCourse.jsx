@@ -4,20 +4,21 @@ import Swal from "sweetalert2"; // Import SweetAlert2
 import styles from "../../styles/AddCourse.module.css";
 
 const AddCourse = () => {
+
     const [courseData, setCourseData] = useState({
         title: "",
         description: "",
         price: "",
         oldPrice: "",
+        discount: "",
         duration: "",
         language: "",
         courseBenefits: "",
         courseImage: null,
         courseSections: [],
     });
-    // const [error, setError] = useState();
-    const [courseExists, setCourseExists] = useState(false);
 
+    const [courseExists, setCourseExists] = useState(false);
     const navigate = useNavigate(); // Initialize useNavigate hook
 
     const handleChange = (e) => {
@@ -61,7 +62,8 @@ const AddCourse = () => {
         const formData = new FormData();
         formData.append("title", courseData.title);
         formData.append("description", courseData.description);
-        formData.append("price", courseData.price);
+        formData.append("discount", courseData.discount);
+
         formData.append("oldPrice", courseData.oldPrice);
         formData.append("duration", courseData.duration);
         formData.append("language", courseData.language);
@@ -84,13 +86,13 @@ const AddCourse = () => {
             const result = JSON.parse(text);
 
             if (response.ok) {
-                // Show success message using SweetAlert
+
                 Swal.fire({
                     icon: 'success',
                     title: 'Course Added!',
                     text: 'The course has been successfully added.',
                 }).then(() => {
-                    // Navigate to the course list page
+
                     navigate("/course-list");
                 });
             } else {
@@ -111,7 +113,7 @@ const AddCourse = () => {
         }
     };
 
-    const currentDate = new Date().toISOString().split('T')[0];
+    // const currentDate = new Date().toISOString().split('T')[0];
 
     const checkModelAvailability = async (courseTitle) => {
         try {
@@ -168,21 +170,28 @@ const AddCourse = () => {
                                 />
                             </div>
 
-                            {/* <div className={styles.priceWrapper}> */}
                             <div className={styles.inputGroup}>
-                                <label>Course Price</label>
+                                <label>Course Discount (%)</label>
                                 <input
                                     type="number"
-                                    name="price"
-                                    value={courseData.price}
+                                    name="discount"
+                                    value={courseData.discount}
                                     onChange={handleChange}
-                                    placeholder="Enter price"
-                                    min="1"
-                                    max="1000"
-                                    required
+                                    placeholder="Enter discount"
+                                    min={0}
+                                    max={80}
                                 />
                             </div>
-                            {/* </div> */}
+                            <div className={styles.inputGroup}>
+                                <label>Price</label>
+                                <input
+                                    type="number"
+                                    name="oldPrice"
+                                    value={courseData.oldPrice}
+                                    onChange={handleChange}
+                                    placeholder="Enter old price"
+                                />
+                            </div>
 
                             <div className={styles.inputGroup}>
                                 <label>Language</label>
@@ -209,7 +218,7 @@ const AddCourse = () => {
 
 
                         <div className={styles.secondPart}>
-                            <div className={styles.inputGroup}>
+                            {/* <div className={styles.inputGroup}>
                                 <label>Date</label>
                                 <input
                                     type="date"
@@ -217,7 +226,7 @@ const AddCourse = () => {
                                     disabled
                                     value={currentDate}
                                 />
-                            </div>
+                            </div> */}
 
                             <div className={styles.inputGroup}>
                                 <label>Course Benefits (comma separated)</label>

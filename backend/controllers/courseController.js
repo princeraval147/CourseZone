@@ -1,33 +1,36 @@
 const Course = require("../models/Course.js");
 const Lecture = require("../models/Lecture.js");
+const User = require("../models/User.js");
 const path = require("path");
 const fs = require("fs");
 
 const addCourse = async (req, res) => {
   try {
-    const { title, description, price, oldPrice, duration, courseSections, courseBenefits, language } = req.body;
+    let { title, description, price, oldPrice, discount, duration, courseSections, courseBenefits, language } = req.body;
 
-    // Parse courseSections if sent as a JSON string
     const parsedSections = JSON.parse(courseSections);
 
-    // Get uploaded image path
+    const benefitsArray = courseBenefits.split(",").map(benefit => benefit.trim());
+
     const courseImage = req.file ? req.file.filename : null;
 
-    // Create new course instance
+    oldPrice = oldPrice || price; // Ensure oldPrice is available
+    price = discount > 0 ? Math.round(oldPrice * (1 - discount / 100)) : oldPrice;
+
     const newCourse = new Course({
       title,
       description,
       price,
       oldPrice,
+      discount,
       duration,
       courseSections: parsedSections,
       courseImage,
-      courseBenefits,
+      courseBenefits: benefitsArray,
       language,
       instructor: req.user._id,
     });
 
-    // Save to database
     await newCourse.save();
 
     res.status(201).json({ message: "Course added successfully", course: newCourse });
@@ -37,6 +40,14 @@ const addCourse = async (req, res) => {
   }
 };
 
+const getAllMyCourses = async (req, res) => {
+  try {
+    const courses = await Course.find({ instructor: req.user._id }).populate("instructor", "username email");
+    res.status(200).json({ success: true, courses });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Server Error", error: error.message });
+  }
+};
 
 const getAllCourses = async (req, res) => {
   try {
@@ -112,28 +123,79 @@ const deleteCourse = async (req, res) => {
   try {
     // Find the course by ID
     const course = await Course.findById(req.params.id);
+
     if (!course) {
       return res.status(404).json({ success: false, message: "Course not found" });
     }
 
-    // Delete the image file (if stored locally)
-    if (course.image) {
-      const imagePath = path.join("public/image/course-thumbnail", course.image);
+    // Delete course image if exists
+    if (course.courseImage) {
+      const imagePath = path.join(__dirname, "../public/image/course-thumbnail", course.courseImage);  // Corrected image field name
+
+      // Check if the file exists before trying to delete it
       if (fs.existsSync(imagePath)) {
-        fs.unlinkSync(imagePath);
+        fs.unlinkSync(imagePath);  // Delete the image file
+        console.log(`Image deleted: ${imagePath}`);
+      } else {
+        console.log(`Image file not found: ${imagePath}`);
       }
+    } else {
+      console.log("No course image to delete.");
     }
 
-    // Delete the course from the database
+    // Find all lectures associated with the course
+    const lectures = await Lecture.find({ courseId: req.params.id });
+    for (let lecture of lectures) {
+      // Only try to delete video if it exists
+      if (lecture.video) {
+        const videoPath = path.join(__dirname, "../public/video/lectures", lecture.video);
+        if (fs.existsSync(videoPath)) {
+          fs.unlinkSync(videoPath);  // Delete the video file
+          console.log(`Video deleted: ${videoPath}`);
+        } else {
+          console.log(`Video file not found: ${videoPath}`);
+        }
+      } else {
+        console.log("No video file to delete for lecture:", lecture._id);
+      }
+
+      // Delete the lecture record from the database
+      await Lecture.findByIdAndDelete(lecture._id);
+    }
+
+    // Delete the course record from the database
     await Course.findByIdAndDelete(req.params.id);
 
-    res.status(200).json({ success: true, message: "Course and image deleted successfully" });
+    res.status(200).json({ success: true, message: "Course and associated lectures deleted successfully" });
   } catch (error) {
     console.error("Error deleting course:", error);
     res.status(500).json({ success: false, message: "Server Error", error: error.message });
   }
 };
 
+const isEncrolled = async (req, res) => {
+  try {
+    const user = await User.findById(req.user);
+    if (!user) return res.status(404).json({ success: false, message: "User not found" });
+
+    const isEnrolled = user.enrolledCourses.includes(req.params.courseId);
+    res.json({ success: true, isEnrolled });
+  } catch (error) {
+    console.error("Error checking enrollment:", error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+};
+
+const lecturesvideo = async (req, res) => {
+  try {
+    const { courseId } = req.params;
+    const course = await Course.findById(courseId).populate("lectures");
+    res.json({ lectures: course.lectures });
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching lectures" });
+  }
+}
 
 
-module.exports = { addCourse, getAllCourses, getCourseById, updateCourse, deleteCourse, updateCourse };
+
+module.exports = { addCourse, getAllCourses, getCourseById, updateCourse, deleteCourse, updateCourse, lecturesvideo, isEncrolled, getAllMyCourses };
