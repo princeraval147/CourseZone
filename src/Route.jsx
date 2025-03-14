@@ -13,6 +13,8 @@ import AddCourse from "./Pages/Admin/AddCourse";
 import UpdateCourse from './Pages/Admin/UpdateCourse'
 import MyCourses from "./Pages/Admin/MyCourse";
 import Student from "./Pages/Admin/Student";
+import AddLecture from "./Pages/Admin/AddLecture";
+import AdminManageLecture from "./Pages/Admin/AdminManageLecture";
 import TermAndCondition from "./Pages/TermAndCondition";
 import Profile from "./Pages/Profile";
 import SavedCourses from "./Pages/SavedCourses";
@@ -45,6 +47,8 @@ const router = createBrowserRouter(
                 <Route path='dashboard' element={<Dashboard />} />
                 <Route path="add-course" element={<AddCourse />} />
                 <Route path="my-course" element={<MyCourses />} />
+                <Route path="add-lecture" element={<AddLecture />} />
+                <Route path="manage-lecture" element={<AdminManageLecture />} />
                 <Route path="student" element={<Student />} />
             </Route>
 
