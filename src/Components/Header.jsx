@@ -84,6 +84,7 @@ const Header = () => {
                 if (!response.ok) throw new Error("Failed to fetch profile");
                 const data = await response.json();
                 setUser(data || {});
+                setIsLoggedIn(true)
                 // setFormData((prev) => ({ ...prev, username: data.username }));
             } catch (error) {
                 // setError(error.message);
@@ -94,6 +95,9 @@ const Header = () => {
         };
         fetchProfile();
     }, []);
+    // console.log("username = ", user.username)    
+
+    // const userName = user.username;
 
     return (
         <>
@@ -113,14 +117,19 @@ const Header = () => {
                             Home
                         </NavLink>
                     </li>
-                    <li>
+                    {/* <li>
                         <NavLink to='/#About'>
                             About
                         </NavLink>
-                    </li>
+                    </li> */}
                     <li>
                         <NavLink to='/contact'>
                             Contact Us
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/course-list'>
+                            All Courses
                         </NavLink>
                     </li>
                     <li>
@@ -157,13 +166,16 @@ const Header = () => {
                                                     {
                                                         !user ? <Avatar></Avatar>
                                                             :
-                                                            <Avatar
-                                                                sx={{ width: 30, height: 30 }}
-                                                                src={user.photoUrl}
-                                                            >
-                                                            </Avatar>
+                                                            <>
+
+                                                                <Avatar
+                                                                    sx={{ width: 30, height: 30 }}
+                                                                    src={user.photoUrl}
+                                                                >
+                                                                </Avatar>
+                                                                <span className="HelloUser">Hello, {user.username}</span>
+                                                            </>
                                                     }
-                                                    <span className="HelloUser">Hello, {userRole}</span>
                                                 </IconButton>
                                             </Tooltip>
                                         </Box>

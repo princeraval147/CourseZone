@@ -1,13 +1,14 @@
 .header {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    /* border: 2px solid red; */
     align-items: center;
     padding: 1rem;
 }
 
 .headerLinks {
     display: flex;
-    gap: 25px;
+    gap: 30px;
 }
 
 .headerLinks li a {
