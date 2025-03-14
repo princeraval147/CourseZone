@@ -35,7 +35,7 @@ const router = createBrowserRouter(
             <Route path='request-instructor' element={<RequestInstructor />} />
             <Route path="instructor-profile/:id" element={<InstructorProfile />} />
             <Route path='saved-courses' element={<SavedCourses />} />
-            <Route path='my-course' element={<MyEncrolledCourse />} />
+            <Route path='my-courses' element={<MyEncrolledCourse />} />
             {/* <Route path='classroom' element={<Classroom />} /> */}
             <Route path="/classroom/:courseId" element={<Classroom />} />
 
