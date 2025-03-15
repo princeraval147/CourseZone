@@ -1,9 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../styles/Sidebar.module.css";
-import { FaTachometerAlt, FaBook, FaList, FaUserGraduate } from "react-icons/fa";
+import {
+    FaTachometerAlt,
+    FaBook,
+    FaList,
+    FaUserGraduate,
+    FaVideo,
+    FaChalkboardTeacher,
+    FaUserCog,
+} from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
 const Sidebar = ({ setSelectedTab, selectedTab }) => {
+
+    const [userRole, setUserRole] = useState(null); // State to store the user role
+
+    // Fetch user role on component mount
+    useEffect(() => {
+        const fetchUserRole = async () => {
+            try {
+                const res = await fetch("http://localhost:5000/api/auth/me", {
+                    credentials: "include", // Include cookies or authentication headers if necessary
+                });
+
+                if (res.ok) {
+                    const roleData = await res.json();
+                    setUserRole(roleData);
+                } else {
+                    console.error("Failed to fetch user role.");
+                }
+            } catch (error) {
+                console.error("Error fetching user role:", error);
+            }
+        };
+
+        fetchUserRole();
+    }, []);
+
     return (
         <div className={styles.sidebar}>
             <div className={styles.logo}>Admin Panel</div>
@@ -45,8 +78,29 @@ const Sidebar = ({ setSelectedTab, selectedTab }) => {
                         Student Enrolled
                     </NavLink>
                 </li>
+                <li>
+                    <NavLink to='add-lecture'>
+                        <FaVideo className={styles.icon} />
+                        Add Lecture
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to='manage-lecture' >
+                        <FaChalkboardTeacher className={styles.icon} />
+                        Manage Lectures
+                    </NavLink>
+                </li>
+
+                {userRole === "admin" && (
+                    <li>
+                        <NavLink to='manage-instructor'>
+                            <FaUserCog className={styles.icon} />
+                            Manage Instructors
+                        </NavLink>
+                    </li>
+                )}
             </ul>
-        </div>
+        </div >
     );
 };
 
