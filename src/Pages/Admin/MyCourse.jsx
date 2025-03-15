@@ -8,26 +8,26 @@ const MyCourses = () => {
     const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
+
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                const response = await fetch(`${import.meta.env.VITE_API_URL}/courses`);
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/courses/my`, {
+                    credentials: "include",
+                });
                 const data = await response.json();
 
-                console.log("API Response Data:", data); // Debugging line to check the structure
-
-                // Check if the API returns an array or nested data
                 if (Array.isArray(data)) {
                     setCourses(data);
                 } else if (data.courses && Array.isArray(data.courses)) {
-                    setCourses(data.courses); // If the courses are nested in a 'courses' key
+                    setCourses(data.courses);
                 } else {
                     console.error("Unexpected response data:", data);
-                    setCourses([]); // Optionally, set empty courses to show no courses message
+                    setCourses([]);
                 }
             } catch (error) {
                 console.error("Error fetching courses:", error);
-                setCourses([]); // Optionally, set empty courses to show no courses message
+                setCourses([]);
             } finally {
                 setLoading(false);
             }
@@ -59,7 +59,7 @@ const MyCourses = () => {
 
                     if (data.success) {
                         Swal.fire("Deleted!", data.message, "success");
-                        setCourses(courses.filter(course => course._id !== courseId)); // Remove the deleted course from state
+                        setCourses(courses.filter(course => course._id !== courseId));
                     } else {
                         Swal.fire("Error", data.message, "error");
                     }
@@ -69,9 +69,7 @@ const MyCourses = () => {
             }
         });
     };
-    console.log("Course = ", courses.price)
 
-    // Function to handle course update (Placeholder - actual update functionality will come later)
     const handleUpdate = (courseId) => {
         navigate(`/update-course/${courseId}`);
     };
@@ -91,53 +89,59 @@ const MyCourses = () => {
                                 <th>Earnings</th>
                                 <th>Students</th>
                                 <th>Course Status</th>
-                                <th>Actions</th> {/* Added column for actions */}
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             {courses.length > 0 ? (
-                                courses.map((course) => (
-                                    <tr key={course._id}>
-                                        <td className={styles.courseInfo}>
-                                            {/* Ensure course.image exists before rendering */}
-                                            <img
-                                                src={`http://localhost:5000/image/course-thumbnail/${course.courseImage}` || "/default-course.png"} // Fallback image if no image provided
-                                                alt={course.title}
-                                                className={styles.courseImage}
-                                            />
-                                            {course.title}
-                                        </td>
-                                        <td>
-                                            $100
-                                        </td> {/* Hardcoded earnings */}
-                                        <td>25</td> {/* Hardcoded student count */}
-                                        <td>
-                                            <label className={styles.toggleSwitch}>
-                                                <input
-                                                    type="checkbox"
-                                                    checked={course.status === "Live"}
-                                                    readOnly
+                                courses.map((course) => {
+                                    // Calculate earnings based on enrolled students and course price
+                                    const earnings = course.price * (course.enrolledStudents ? course.enrolledStudents.length : 0);
+                                    return (
+                                        <tr key={course._id}>
+                                            <td className={styles.courseInfo}>
+                                                {/* Ensure course.image exists before rendering */}
+                                                <img
+                                                    src={`http://localhost:5000/image/course-thumbnail/${course.courseImage}`}
+                                                    alt={course.title}
+                                                    className={styles.courseImage}
                                                 />
-                                                <span className={styles.slider}></span>
-                                            </label>
-                                            {course.status}
-                                        </td>
-                                        <td>
-                                            <button
-                                                className={styles.updateButton}
-                                                onClick={() => handleUpdate(course._id)}
-                                            >
-                                                Update
-                                            </button>
-                                            <button
-                                                className={styles.deleteButton}
-                                                onClick={() => handleDelete(course._id)}
-                                            >
-                                                Delete
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))
+                                                {course.title}
+                                            </td>
+                                            <td>
+                                                ₹{earnings.toFixed(2)}
+                                            </td> {/* Dynamically calculate earnings */}
+                                            <td>
+                                                {course.enrolledStudents ? course.enrolledStudents.length : 0}
+                                            </td> {/* Dynamically calculate number of students */}
+                                            <td>
+                                                <label className={styles.toggleSwitch}>
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={course.status === "Live"}
+                                                        readOnly
+                                                    />
+                                                    <span className={styles.slider}></span>
+                                                </label>
+                                                {course.status}
+                                            </td>
+                                            <td>
+                                                <button
+                                                    className={styles.updateButton}
+                                                    onClick={() => handleUpdate(course._id)}
+                                                >
+                                                    Update
+                                                </button>
+                                                <button
+                                                    className={styles.deleteButton}
+                                                    onClick={() => handleDelete(course._id)}
+                                                >
+                                                    Delete
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    );
+                                })
                             ) : (
                                 <tr>
                                     <td colSpan="5">No courses found.</td>
