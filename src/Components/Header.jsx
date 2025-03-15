@@ -95,9 +95,6 @@ const Header = () => {
         };
         fetchProfile();
     }, []);
-    // console.log("username = ", user.username)    
-
-    // const userName = user.username;
 
     return (
         <>
