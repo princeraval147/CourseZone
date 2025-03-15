@@ -11,7 +11,11 @@ const {
     authenticate,
     userrole,
     isLoggedIn,
-    checkCourse
+    checkCourse,
+    toggleSavedCourse,
+    myCourses,
+    getSavedCourses,
+    instructorrequest
 } = require("../controllers/authController");
 const authenticateUser = require("../middleware/authMiddleware");
 const upload = require("../utils/multer");
@@ -30,5 +34,9 @@ router.get("/authenticate", authenticateUser, authenticate);
 router.put("/update-profile", authenticateUser, upload.single("profilePhoto"), updateProfile);
 router.get("/me", authenticateUser, userrole);
 router.get("/isLoggedIn", authenticateUser, isLoggedIn);
+router.get("/my-courses", authenticateUser, myCourses);
+router.post("/toggle-save", authenticateUser, toggleSavedCourse);
+router.get("/saved-courses", authenticateUser, getSavedCourses);
+router.post("/request", authenticateUser, instructorrequest);
 
 module.exports = router;
