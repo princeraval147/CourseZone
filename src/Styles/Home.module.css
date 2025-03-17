@@ -150,6 +150,10 @@
     color: white;
     padding: 50px 20px;
     margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .finalCta h2 {
@@ -158,10 +162,10 @@
 
 .getStarted {
     background: white;
-    color: #0066ff;
+    color: black;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    margin-top: 20px;
+    margin-top: 10px;
     cursor: pointer;
 }

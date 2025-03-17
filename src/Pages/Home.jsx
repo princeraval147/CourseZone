@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import styles from '../Styles/Home.module.css'
 import CourseCard from './CourseCard'
 
@@ -97,9 +97,11 @@ const Home = () => {
 
                 {/* Final CTA */}
                 <section className={styles.finalCta}>
-                    <h2>Learn anything, anytime, anywhere</h2>
+                    <h2>Want to become a Instructor</h2>
                     <p>Join thousands of learners and start your journey today.</p>
-                    <button className={styles.getStarted}>Get Started</button>
+                    <NavLink to='/request-instructor' className={styles.getStarted}>
+                        Get Started
+                    </NavLink>
                 </section>
             </div>
         </>
