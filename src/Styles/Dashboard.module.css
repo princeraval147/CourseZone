@@ -1,6 +1,6 @@
 .dashboardContainer {
     display: flex;
-    height: 100vh;
+    /* height: 100vh; */
     font-family: Arial, sans-serif;
     width: 100%;
 }
@@ -51,4 +51,10 @@
 .statCard p {
     font-size: 24px;
     font-weight: bold;
+}
+
+.chartContainer {
+    margin: auto;
+    margin-top: 50px;
+    width: 50%;
 }
