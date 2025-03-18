@@ -15,9 +15,9 @@ const useAdminAuth = () => {
         if (!response.ok) throw new Error("Unauthorized");
 
         const role = await response.json();
-        // console.log("User Role:", role);
+        console.log("User Role:", role);
 
-        if (role !== "instructor") {
+        if (role !== "instructor" && role !== "admin") {
           navigate(-1); // 🔄 Redirect to the previous page
           return;
         }
