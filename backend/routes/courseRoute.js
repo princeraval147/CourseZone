@@ -13,8 +13,8 @@ const authenticateAdmin = require("../middleware/adminMiddleware");
 const upload = require("../middleware/upload");
 const checkEnrollment = require("../middleware/coureMiddleware");
 const authenticateUser = require("../middleware/authMiddleware");
-const { isErrored } = require("nodemailer/lib/xoauth2");
-const { authenticateToken, isAdmin } = require("../middleware/isAdminMiddleware");
+// const { isErrored } = require("nodemailer/lib/xoauth2");
+// const { authenticateToken, isAdmin } = require("../middleware/isAdminMiddleware");
 
 const router = express.Router();
 

@@ -88,43 +88,39 @@ const MyCourses = () => {
                                 <th>All Courses</th>
                                 <th>Earnings</th>
                                 <th>Students</th>
-                                <th>Course Status</th>
+                                {/* <th>Course Status</th> */}
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             {courses.length > 0 ? (
                                 courses.map((course) => {
-                                    // Calculate earnings based on enrolled students and course price
+
                                     const earnings = course.price * (course.enrolledStudents ? course.enrolledStudents.length : 0);
                                     return (
                                         <tr key={course._id}>
                                             <td className={styles.courseInfo}>
-                                                {/* Ensure course.image exists before rendering */}
+
                                                 <img
-                                                    src={`http://localhost:5000/image/course-thumbnail/${course.courseImage}`}
+                                                    src={course.courseImage}
                                                     alt={course.title}
                                                     className={styles.courseImage}
                                                 />
                                                 {course.title}
                                             </td>
-                                            <td>
-                                                ₹{earnings.toFixed(2)}
-                                            </td> {/* Dynamically calculate earnings */}
-                                            <td>
-                                                {course.enrolledStudents ? course.enrolledStudents.length : 0}
-                                            </td> {/* Dynamically calculate number of students */}
-                                            <td>
-                                                <label className={styles.toggleSwitch}>
-                                                    <input
-                                                        type="checkbox"
-                                                        checked={course.status === "Live"}
-                                                        readOnly
-                                                    />
-                                                    <span className={styles.slider}></span>
-                                                </label>
-                                                {course.status}
-                                            </td>
+                                            <td>₹{earnings.toFixed(2)}</td>
+                                            <td>{course.enrolledStudents ? course.enrolledStudents.length : 0}</td>
+                                            {/* <td>
+                        <label className={styles.toggleSwitch}>
+                          <input
+                            type="checkbox"
+                            checked={course.status === "Live"}
+                            readOnly
+                          />
+                          <span className={styles.slider}></span>
+                        </label>
+                        {course.status}
+                      </td> */}
                                             <td>
                                                 <button
                                                     className={styles.updateButton}
