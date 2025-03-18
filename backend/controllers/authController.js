@@ -296,9 +296,7 @@ exports.toggleSavedCourse = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-
     const courseIndex = user.savedCourses.indexOf(courseId);
-
     if (courseIndex > -1) {
       // If course is already saved, remove it
       user.savedCourses.splice(courseIndex, 1);
