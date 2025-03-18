@@ -12,7 +12,7 @@ import {
     Tooltip,
 } from "@mui/material";
 import { IoMdSettings } from "react-icons/io";
-import { MdLogout } from "react-icons/md";
+import { MdLogout, MdClass, MdPersonAdd } from "react-icons/md";
 import { IoPersonAdd } from "react-icons/io5";
 import { IoBookmarkOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
@@ -214,29 +214,31 @@ const Header = () => {
                                                     </MenuItem>
                                                 </NavLink>
 
-                                                <NavLink to="/saved-courses" style={{ color: "#212121" }}>
-                                                    <MenuItem onClick={handleClose} sx={{ display: "flex", gap: "10px", padding: "10px 10px" }} >
-                                                        <IoBookmarkOutline size={30} />
+                                                <MenuItem onClick={handleClose}>
+                                                    <ListItemIcon>
+                                                        <IoBookmarkOutline size={27} />
+                                                    </ListItemIcon>
+                                                    <NavLink to="/saved-courses" style={{ color: "#212121" }}>
                                                         Saved
-                                                    </MenuItem>
-                                                </NavLink>
+                                                    </NavLink>
+                                                </MenuItem>
 
                                                 <Divider />
 
                                                 <MenuItem onClick={handleClose}>
                                                     <ListItemIcon>
-                                                        <IoPersonAdd />
+                                                        <MdClass size={27} />
                                                     </ListItemIcon>
-                                                    <NavLink to="/signUp" style={{ color: "#212121" }}>
-                                                        Add another account
+                                                    <NavLink to="/my-courses" style={{ color: "#212121" }}>
+                                                        My Classroom
                                                     </NavLink>
                                                 </MenuItem>
                                                 <MenuItem onClick={handleClose}>
                                                     <ListItemIcon>
-                                                        <IoMdSettings size={24} />
+                                                        <MdPersonAdd size={27} />
                                                     </ListItemIcon>
-                                                    <NavLink to="#" style={{ color: "#212121" }}>
-                                                        Settings
+                                                    <NavLink to="/request-instructor" style={{ color: "#212121" }}>
+                                                        Request Instructor
                                                     </NavLink>
                                                 </MenuItem>
                                                 <MenuItem onClick={handlerLogout}>
