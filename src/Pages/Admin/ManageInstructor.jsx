@@ -31,10 +31,10 @@ const ManageInstructors = () => {
         }
     };
 
-    const handleApprove = async (requestId) => {  // Accept requestId as a parameter
+    const handleApprove = async (requestId) => {
         try {
             const response = await fetch(
-                `${import.meta.env.VITE_API_URL}/instructor/approve/${requestId}`, // Use requestId
+                `${import.meta.env.VITE_API_URL}/instructor/approve/${requestId}`,
                 {
                     method: "PUT",
                     credentials: "include",
@@ -55,7 +55,7 @@ const ManageInstructors = () => {
 
 
     const handleReject = async (requestId) => {
-        // Change user._id to requestId
+
         try {
             const response = await fetch(
                 `${import.meta.env.VITE_API_URL}/instructor/reject/${requestId}`,
@@ -90,6 +90,7 @@ const ManageInstructors = () => {
                         <tr>
                             <th>Username</th>
                             <th>Email</th>
+                            <th>Requested Date</th>
                             <th>CV</th>
                             <th>Message</th>
                             <th>Status</th>
@@ -101,6 +102,7 @@ const ManageInstructors = () => {
                             <tr key={user._id}>
                                 <td>{user.user.username}</td>
                                 <td>{user.user.email}</td>
+                                <td>{new Date(user.createdAt).toLocaleDateString("en-GB")}</td>
                                 <td>
                                     <a
                                         href={`https://docs.google.com/gview?url=${encodeURIComponent(
@@ -117,13 +119,13 @@ const ManageInstructors = () => {
                                 <td>{user.status}</td>
                                 <td>
                                     <button
-                                        onClick={() => handleApprove(user.user._id)} // Pass correct requestId
+                                        onClick={() => handleApprove(user.user._id)}
                                         className={styles.approveButton}
                                     >
                                         Approve
                                     </button>
                                     <button
-                                        onClick={() => handleReject(user.user._id)} // Pass correct requestId
+                                        onClick={() => handleReject(user.user._id)}
                                         className={styles.rejectButton}
                                     >
                                         Reject

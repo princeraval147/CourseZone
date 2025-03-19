@@ -8,6 +8,9 @@ import {
     FaVideo,
     FaChalkboardTeacher,
     FaUserCog,
+    FaUsers,
+    FaClipboardList,
+    FaLaptopCode
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
@@ -92,13 +95,41 @@ const Sidebar = ({ setSelectedTab, selectedTab }) => {
                 </li>
 
                 {userRole === "admin" && (
-                    <li>
-                        <NavLink to='manage-instructor'>
-                            <FaUserCog className={styles.icon} />
-                            Manage Instructors
-                        </NavLink>
-                    </li>
+                    <>
+                        <h1>Only For Admin</h1>
+                        <li>
+                            <NavLink to='manage-instructor'>
+                                <FaUsers className={styles.icon} />
+                                Approve Instructors
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to=''>
+                                <FaClipboardList className={styles.icon} />
+                                Show All Course
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to=''>
+                                <FaUsers className={styles.icon} />
+                                All Course Enrolled Student
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to=''>
+                                <FaLaptopCode className={styles.icon} />
+                                Manage Instructors
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to=''>
+                                <FaClipboardList className={styles.icon} />
+                                Show All Course Review
+                            </NavLink>
+                        </li>
+                    </>
                 )}
+
             </ul>
         </div >
     );
