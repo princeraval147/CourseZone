@@ -22,6 +22,7 @@ import MyEncrolledCourse from "./Pages/MyEncrolledCourse";
 import RequestInstructor from "./Pages/RequestInstructor";
 import InstructorProfile from "./Pages/InstructorProfile";
 import Classroom from "./Pages/Classroom";
+import ManageInstructors from "./Pages/Admin/ManageInstructor";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -49,6 +50,7 @@ const router = createBrowserRouter(
                 <Route path="my-course" element={<MyCourses />} />
                 <Route path="add-lecture" element={<AddLecture />} />
                 <Route path="manage-lecture" element={<AdminManageLecture />} />
+                <Route path="manage-instructor" element={<ManageInstructors />} />
                 <Route path="student" element={<Student />} />
             </Route>
 
