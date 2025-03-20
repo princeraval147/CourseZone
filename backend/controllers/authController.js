@@ -346,3 +346,37 @@ exports.instructorrequest = async (req, res) => {
     res.status(500).json({ message: "Server error", error });
   }
 };
+
+exports.getallinstrucors = async (req, res) => {
+  try {
+    const instructors = await User.find({ role: "instructor" }).select("-password");
+    res.status(200).json(instructors);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch instructors", error: error.message });
+  }
+};
+
+exports.pramoteadmin = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const updatedUser = await User.findByIdAndUpdate(id, { role: "admin" }, { new: true });
+    if (!updatedUser) return res.status(404).json({ error: "Instructor not found" });
+    res.json(updatedUser);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to promote instructor" });
+  }
+};
+
+
+exports.demotestudent = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const updatedUser = await User.findByIdAndUpdate(id, { role: "student" }, { new: true });
+    if (!updatedUser) return res.status(404).json({ error: "Instructor not found" });
+    res.json(updatedUser);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to demote instructor" });
+  }
+};
+
+
