@@ -47,7 +47,7 @@ const MyEncrolledCourse = () => {
                     {courses.map((course) => (
                         <div key={course._id} className={styles.courseCard}>
                             <img
-                                src={`http://localhost:5000/image/course-thumbnail/${course.courseImage}`}
+                                src={course.courseImage}
                                 alt={course.title}
                                 className={styles.courseImage}
                             />
