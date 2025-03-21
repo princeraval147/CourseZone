@@ -70,10 +70,17 @@
     font-weight: bold;
 }
 
+.postedDate {
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 0.5rem;
+}
+
+
 /* Save Button inside course content on the right side */
 .saveButton {
     position: absolute;
-    top: 20%;
+    top: 10%;
     right: 1px;
     background: none;
     border: none;
@@ -84,6 +91,7 @@
 
 .savedIcon {
     color: #ff4081;
+    font-size: 1.5rem;
 }
 
 .courseHeader {
