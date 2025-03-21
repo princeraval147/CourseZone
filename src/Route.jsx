@@ -22,6 +22,7 @@ import MyEncrolledCourse from "./Pages/MyEncrolledCourse";
 import RequestInstructor from "./Pages/RequestInstructor";
 import InstructorProfile from "./Pages/InstructorProfile";
 import Classroom from "./Pages/Classroom";
+import ChatRoom from "./Pages/ChatRoom";
 import ManageInstructors from "./Pages/Admin/ManageInstructor";
 
 const router = createBrowserRouter(
@@ -41,7 +42,7 @@ const router = createBrowserRouter(
             <Route path='my-courses' element={<MyEncrolledCourse />} />
             {/* <Route path='classroom' element={<Classroom />} /> */}
             <Route path="/classroom/:courseId" element={<Classroom />} />
-
+            <Route path="/chat-room/:id" element={<ChatRoom />} />
             //Admin Panel
             <Route path="update-course/:id" element={<UpdateCourse />} />
             <Route path="admin" element={<AdminPanel />} >

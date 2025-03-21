@@ -3,39 +3,65 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const useEnrollment = () => {
   const [isEnrolled, setIsEnrolled] = useState(null);
+  const [isInstructor, setIsInstructor] = useState(false);
   const navigate = useNavigate();
-  
-  const { courseId } = useParams(); 
+  const { courseId, id } = useParams();
 
-  const id = courseId;
-  
+  const courseIdToUse = courseId || id;
+
   useEffect(() => {
-    const checkEnrollment = async () => {
+    const checkEnrollmentAndInstructor = async () => {
+      if (!courseIdToUse) {
+        setIsEnrolled(false);
+        navigate(-1);
+        return;
+      }
+
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/courses/is-enrolled/${id}`, {
-          method: "GET",
-          credentials: "include",
-        });
 
-        const data = await response.json();
+        const enrollmentResponse = await fetch(`${import.meta.env.VITE_API_URL}/courses/is-enrolled/${courseIdToUse}`,
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
 
-        if (data.success && data.isEnrolled) {
+        const enrollmentData = await enrollmentResponse.json();
+
+
+        if (enrollmentData.success && enrollmentData.isEnrolled) {
           setIsEnrolled(true);
         } else {
-          setIsEnrolled(false);
-          navigate(-1); // Redirect back to the previous page
+
+          const instructorResponse = await fetch(`${import.meta.env.VITE_API_URL}/courses/confirminstructor/${courseIdToUse}`,
+            {
+              method: "GET",
+              credentials: "include",
+            }
+          );
+
+          const instructorData = await instructorResponse.json();
+
+
+          if (instructorData.success && instructorData.message === "You are the instructor of this course") {
+            setIsInstructor(true);
+            setIsEnrolled(true);
+          } else {
+            setIsEnrolled(false);
+            navigate(-1);
+          }
         }
       } catch (error) {
-        console.error("Error checking enrollment:", error);
+        console.error("Error checking enrollment or instructor status:", error);
         setIsEnrolled(false);
-        navigate(-1); // Redirect back if there's an error
+        navigate(-1);
       }
     };
 
-    checkEnrollment();
-  }, [id, navigate]);
+    checkEnrollmentAndInstructor();
+  }, [courseIdToUse, navigate]);
 
-  return isEnrolled;
+  return { isEnrolled, isInstructor };
 };
 
 export default useEnrollment;
