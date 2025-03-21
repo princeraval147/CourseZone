@@ -215,14 +215,10 @@ const updateCourse = async (req, res) => {
 const confirminstructor = async (req, res) => {
   try {
     const user = req.user;
-
-
     if (!user) {
       return res.status(404).json({ success: false, message: "User not found" });
     }
-
     const courseid = req.params.id;
-
 
     const course = await Course.findById(courseid).populate("instructor", "_id");
 
@@ -243,6 +239,7 @@ const confirminstructor = async (req, res) => {
 
     // Ensure both IDs are strings before comparing
 
+    // if (instructorId === user) {
     if (instructorId === user) {
       res.status(200).json({ success: true, message: "You are the instructor of this course" });
     } else {
@@ -401,4 +398,18 @@ const lecturesvideo = async (req, res) => {
 
 
 
-module.exports = { addCourse, getAllCourses, getCourseById, updateCourse, deleteCourse, updateCourse, lecturesvideo, isEncrolled, getAllMyCourses, postReview, getReviews, deletereview, confirminstructor };
+module.exports = {
+  addCourse,
+  getAllCourses,
+  getCourseById,
+  updateCourse,
+  deleteCourse,
+  updateCourse,
+  lecturesvideo,
+  isEncrolled,
+  getAllMyCourses,
+  postReview,
+  getReviews,
+  deletereview,
+  confirminstructor
+};

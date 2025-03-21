@@ -1,9 +1,21 @@
+.maincontainer {
+    padding: 20px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.reviewText {
+    background-color: #dadada;
+    border-radius: 10px;
+    height: 10rem;
+}
+
 .courseDetailsContainerUnique {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 20px;
-    background-color: #f9f9f9;
     gap: 20px;
 }
 
@@ -146,14 +158,132 @@
     color: #444;
 }
 
-.termCondition {
-    color: #333;
+.instructorLink {
+    color: #007bff;
     cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
 }
 
-.termCondition a {
-    color: black;
-    text-decoration: underline;
+.instructorLink:hover {
+    color: #0056b3;
+}
+
+
+.classroomBtnUnique {
+    background: #28a745;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.classroomBtnUnique:hover {
+    background: #1e7e34;
+}
+
+.chatRoomBtnUnique {
+    background-color: #007bff;
+    width: 100%;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Hover effect */
+.chatRoomBtnUnique:hover {
+    background-color: #0056b3;
+}
+
+/* Active (click) effect */
+.chatRoomBtnUnique:active {
+    background-color: #004494;
+    transform: translateY(0);
+}
+
+.reviewsContainer {
+    margin-top: 10px;
+}
+
+.reviewList {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.reviewBox {
+    width: 29%;
+    /* Increased width for better readability */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.reviewBox:hover {
+    transform: translateY(-5px);
+}
+
+.reviewBox strong {
+    font-size: 22px;
+    /* Increased font size for the username */
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #333;
+}
+
+.profileSection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Adds space between the icon and the username */
+}
+
+.profileIcon {
+    font-size: 24px;
+    /* Profile icon size */
+    color: #0051A8;
+    /* Icon color (match with your theme) */
+}
+
+.reviewBox p {
+    font-size: 16px;
+    /* Increased font size for review text */
+    color: #555;
+    margin-top: 10px;
+}
+
+.loadMoreButton {
+    background-color: #0051A8;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    /* Larger font size for the button */
+    margin-top: 20px;
+}
+
+.loadMoreButton:hover {
+    background-color: black;
+    color: white;
 }
 
 .loadingOverlay {
@@ -177,6 +307,7 @@
     color: black;
 }
 
+
 @media (max-width: 768px) {
     .courseDetailsContainerUnique {
         flex-direction: column;
@@ -185,5 +316,10 @@
 
     .courseCardUnique {
         width: 100%;
+    }
+
+    .chatRoomBtnUnique {
+        padding: 8px 16px;
+        font-size: 14px;
     }
 }

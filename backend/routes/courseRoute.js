@@ -7,7 +7,11 @@ const {
     deleteCourse,
     lecturesvideo,
     isEncrolled,
-    getAllMyCourses
+    getAllMyCourses,
+    deletereview,
+    confirminstructor,
+    postReview,
+    getReviews
 } = require("../controllers/courseController");
 const authenticateAdmin = require("../middleware/adminMiddleware");
 const upload = require("../middleware/upload");
@@ -27,6 +31,11 @@ router.delete("/:id", authenticateAdmin, deleteCourse);   // Delete a course
 router.get("/:courseId/lecturesdetails", authenticateUser, checkEnrollment, lecturesvideo);
 router.get("/is-enrolled/:courseId", authenticateUser, isEncrolled);
 router.get("/:courseId/lectures", authenticateAdmin, lecturesvideo);
+router.get("/confirminstructor/:id", authenticateUser, confirminstructor);
+router.post("/:courseId/reviews", authenticateUser, postReview);
+router.get("/:courseId/reviews", getReviews);
+router.delete('/reviews/:reviewId', authenticateAdmin, deletereview);
+
 
 
 module.exports = router;

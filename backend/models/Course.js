@@ -74,6 +74,24 @@ const courseSchema = new mongoose.Schema({
       ref: "Lecture",
     },
   ],
+  // Reviews added here
+  reviews: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+      },
+      reviewText: {
+        type: String,
+        required: true,
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
 });
 
 module.exports = mongoose.model("Course", courseSchema);
