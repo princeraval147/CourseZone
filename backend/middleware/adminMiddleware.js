@@ -14,7 +14,7 @@ const authenticateAdmin = async (req, res, next) => {
     if (!user) {
       return res.status(404).json({ message: "User not found." });
     }
-    if (user.role !== "instructor") {
+    if (user.role !== "instructor" && user.role !== "admin") {
       return res.status(403).json({ message: "Access denied. Only instructors can perform this action." });
     }
 
