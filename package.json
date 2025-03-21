@@ -19,6 +19,7 @@
     "@toolpad/core": "^0.12.1",
     "axios": "^1.8.1",
     "lucide-react": "^0.483.0",
+    "motion": "^12.5.0",
     "nodemailer": "^6.10.0",
     "otp-generator": "^4.0.1",
     "prop-types": "^15.8.1",
