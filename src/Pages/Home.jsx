@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom';
 import styles from '../Styles/Home.module.css'
 import CourseCard from './CourseCard'
+import { motion } from "framer-motion";
 
 const Home = () => {
     const [courses, setCourses] = useState([]); // Store fetched courses
@@ -18,7 +19,7 @@ const Home = () => {
                     // Sort courses by newest (assuming 'createdAt' field exists)
                     const sortedCourses = data.courses
                         .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-                        .slice(0, 4); // Get the latest 4 courses
+                    // .slice(0, 4); // Get the latest 4 courses
 
                     setCourses(sortedCourses);
                 }
@@ -33,6 +34,10 @@ const Home = () => {
     const handleShowAllCourses = () => {
         navigate("/course-list");
     };
+
+
+
+    const repeatedCourses = [...courses, ...courses];
 
     return (
         <>
@@ -51,44 +56,42 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className={styles.About} >
-                <p> We are one of the leading prep providers for finance-related courses and we could not make it this far without you! Since our inception, our mission is to help people grow and gain a good trajectory in the finance industry. The journey so far has been thrilling as we have seen people come to us and leave transformed with knowledge and the tools needed for a finance career.</p>
-            </div>
-
             <div className={styles.home}>
-                {/* Hero Section */}
-                <section className={styles.hero}>
-                    <h1>
-                        Shape your future with courses designed to <br />
-                        unlock your potential and{" "}
-                        <span className={styles.highlight}>fit your aspirations.</span>
-                    </h1>
-                    <p>
-                        Learn from industry-leading experts and gain the skills you need to
-                        succeed in a dynamic world.
-                    </p>
-
-                    <div className={styles.searchBar}>
-                        <input type="text" placeholder="Search for courses" />
-                        <button>Search</button>
-                    </div>
-                </section>
-
                 {/* Courses Section */}
                 <section className={styles.courses}>
                     <h2>Learn from the best</h2>
                     <p>Discover our top-rated courses across various categories.</p>
                     <div className={styles.courseGrid}>
-                        {courses.map((course) => (
+                        {/* {courses.map((course) => (
                             <CourseCard
                                 key={course._id}
                                 image={course.courseImage}
                                 title={course.title}
-                                instructor={course.instructor?.username || "Unknown"} // Handle missing instructor
+                                instructor={course.instructor?.username || "Unknown"}
                                 price={`${course.price}`}
                                 oldPrice={`${course.oldPrice}`}
+                                created={course.createdAt}
                             />
-                        ))}
+                        ))} */}
+                        <div className={styles.carouselContainer}>
+                            <motion.div
+                                className={styles.carousel}
+                                animate={{ x: ["0%", "-50%"] }} // Moves halfway so the second set overlaps the first
+                                transition={{ ease: "linear", duration: 15, repeat: Infinity }} // Smooth infinite scroll
+                            >
+                                {repeatedCourses.map((course, index) => (
+                                    <CourseCard
+                                        key={index}
+                                        image={course.courseImage}
+                                        title={course.title}
+                                        instructor={course.instructor?.username || "Unknown"}
+                                        price={`${course.price}`}
+                                        oldPrice={`${course.oldPrice}`}
+                                        created={course.createdAt}
+                                    />
+                                ))}
+                            </motion.div>
+                        </div>
                     </div>
                     <button onClick={handleShowAllCourses} className={styles.showMore}>
                         Show all courses
@@ -103,7 +106,12 @@ const Home = () => {
                         Get Started
                     </NavLink>
                 </section>
-            </div>
+
+
+
+
+
+            </div >
         </>
     )
 }

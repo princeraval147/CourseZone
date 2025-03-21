@@ -109,10 +109,6 @@
 }
 
 .courseGrid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
     margin-top: 20px;
 }
 
@@ -168,4 +164,22 @@
     border-radius: 5px;
     margin-top: 10px;
     cursor: pointer;
+}
+
+
+
+
+.carouselContainer {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.carousel {
+    display: flex;
+    gap: 20px;
+    /* Space between cards */
+    min-width: max-content;
+    flex-wrap: nowrap;
 }
