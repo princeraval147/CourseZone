@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/savedCourses.module.css";
 import useAuth from "../Components/hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 
 const SavedCourses = () => {
     useAuth();
-    const [courses, setCourses] = useState([]);
+    const [courses, setCourses] = useState([]); 4
+
+    const Navigate = useNavigate();
 
     useEffect(() => {
         const fetchSavedCourses = async () => {
@@ -33,9 +36,13 @@ const SavedCourses = () => {
             ) : (
                 <div className={styles.courseGrid}>
                     {courses.map((course) => (
-                        <div key={course._id} className={styles.courseCard}>
+                        <div
+                            key={course._id}
+                            className={styles.courseCard}
+                            onClick={() => Navigate(`/course-details/${course._id}`)}
+                        >
                             <img
-                                src={`http://localhost:5000/image/course-thumbnail/${course.courseImage}` || "/default-course.png"}
+                                src={course.courseImage || "/default-course.png"}
                                 alt={course.title}
                                 className={styles.courseImage}
                             />
