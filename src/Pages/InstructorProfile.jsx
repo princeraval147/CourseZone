@@ -29,6 +29,8 @@ const InstructorProfile = () => {
                 console.error("Error fetching instructor data:", error);
             }
         };
+
+
         fetchInstructorData();
     }, [id]);
 
@@ -48,7 +50,7 @@ const InstructorProfile = () => {
                     <div className={styles.courseList}>
                         {courses.map((course) => (
                             <div key={course._id} className={styles.courseCard}>
-                                <img src={`http://localhost:5000/image/course-thumbnail/${course.courseImage}`} alt={course.title} />
+                                <img src={course.courseImage} alt={course.title} />
                                 <h3>{course.title}</h3>
                                 <p>{course.description.substring(0, 100)}...</p>
                             </div>
