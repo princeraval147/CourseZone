@@ -214,33 +214,36 @@ const Header = () => {
                                                     </MenuItem>
                                                 </NavLink>
 
-                                                <MenuItem onClick={handleClose}>
-                                                    <ListItemIcon>
-                                                        <IoBookmarkOutline size={27} />
-                                                    </ListItemIcon>
-                                                    <NavLink to="/saved-courses" style={{ color: "#212121" }}>
+                                                <NavLink to="/saved-courses" style={{ color: "#212121" }}>
+                                                    <MenuItem onClick={handleClose}>
+                                                        <ListItemIcon>
+                                                            <IoBookmarkOutline size={27} />
+                                                        </ListItemIcon>
                                                         Saved
-                                                    </NavLink>
-                                                </MenuItem>
+                                                    </MenuItem>
+                                                </NavLink>
 
                                                 <Divider />
 
-                                                <MenuItem onClick={handleClose}>
-                                                    <ListItemIcon>
-                                                        <MdClass size={27} />
-                                                    </ListItemIcon>
-                                                    <NavLink to="/my-courses" style={{ color: "#212121" }}>
+                                                <NavLink to="/my-courses" style={{ color: "#212121" }}>
+                                                    <MenuItem onClick={handleClose}>
+                                                        <ListItemIcon>
+                                                            <MdClass size={27} />
+                                                        </ListItemIcon>
                                                         My Classroom
-                                                    </NavLink>
-                                                </MenuItem>
-                                                <MenuItem onClick={handleClose}>
-                                                    <ListItemIcon>
-                                                        <MdPersonAdd size={27} />
-                                                    </ListItemIcon>
+                                                    </MenuItem>
+                                                </NavLink>
+                                                {
+                                                    userRole === "student" &&
                                                     <NavLink to="/request-instructor" style={{ color: "#212121" }}>
-                                                        Request Instructor
+                                                        <MenuItem onClick={handleClose}>
+                                                            <ListItemIcon>
+                                                                <MdPersonAdd size={27} />
+                                                            </ListItemIcon>
+                                                            Request Instructor
+                                                        </MenuItem>
                                                     </NavLink>
-                                                </MenuItem>
+                                                }
                                                 <MenuItem onClick={handlerLogout}>
                                                     <ListItemIcon>
                                                         <MdLogout size={24} />
