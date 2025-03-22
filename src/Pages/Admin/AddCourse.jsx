@@ -203,7 +203,10 @@ const AddCourse = () => {
                                     placeholder="Enter language (e.g., English)"
                                 />
                             </div>
+                        </div>
 
+
+                        <div className={styles.secondPart}>
                             <div className={styles.inputGroup}>
                                 <label>Duration</label>
                                 <input
@@ -212,12 +215,10 @@ const AddCourse = () => {
                                     value={courseData.duration}
                                     onChange={handleChange}
                                     placeholder="Enter duration (e.g., 3 months)"
+                                    required
                                 />
                             </div>
-                        </div>
 
-
-                        <div className={styles.secondPart}>
                             {/* <div className={styles.inputGroup}>
                                 <label>Date</label>
                                 <input
@@ -247,6 +248,7 @@ const AddCourse = () => {
                                         src={URL.createObjectURL(courseData.courseImage)}
                                         alt="Course Preview"
                                         className={styles.previewImage}
+                                        required
                                     />
                                 )}
                             </div>
