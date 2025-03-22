@@ -40,7 +40,12 @@ exports.verifyOTP = async (req, res) => {
   try {
     const user = await User.findOne({ email });
 
+    // console.log("🔹 Received OTP:", otp);
+    // console.log("🔹 Stored OTP:", user?.otp);
+    // console.log("🔹 Expires At:", user?.otpExpires);
+
     if (!user) return res.status(400).json({ message: "User not found." });
+    if (!otp) return res.status(400).json({ message: "Please enter the OTP." });
     if (user.otp !== otp) return res.status(400).json({ message: "Invalid OTP." });
     if (user.otpExpires < Date.now()) return res.status(400).json({ message: "OTP expired. Request a new OTP." });
 
@@ -51,9 +56,102 @@ exports.verifyOTP = async (req, res) => {
 
     res.json({ message: "OTP Verified! You can now log in." });
   } catch (error) {
+    console.error("Error in OTP verification:", error);
     res.status(500).json({ message: "Server error", error });
   }
 };
+
+
+// exports.register = async (req, res) => {
+//   const { username, email, password } = req.body;
+//   try {
+//     let user = await User.findOne({ email });
+
+//     if (user) {
+//       if (!user.isVerified) {
+//         return res.status(400).json({ message: "User already registered. Please verify OTP." });
+//       }
+//       return res.status(400).json({ message: "Email already exists." });
+//     }
+
+//     const hashedPassword = await bcrypt.hash(password, 10);
+//     const otp = Math.floor(100000 + Math.random() * 900000).toString(); // Ensure it's a string
+//     console.log(`Generated OTP for ${email}:`, otp);
+
+//     const otpExpires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes expiration
+
+//     user = new User({
+//       username,
+//       email,
+//       password: hashedPassword,
+//       otp,
+//       otpExpires,
+//     });
+
+//     await user.save();
+//     await sendEmail(email, otp, username);
+
+//     res.json({ message: "User registered! Please verify OTP." });
+//   } catch (error) {
+//     console.error("Error in registration:", error);
+//     res.status(500).json({ message: "Internal server error. Please try again later." });
+//   }
+// };
+
+// // Verify OTP
+// exports.verifyOTP = async (req, res) => {
+//   const { email, otp } = req.body;
+
+//   try {
+//     console.log("OTP Verification Request:", email, "Entered OTP:", otp);
+
+//     const user = await User.findOne({ email });
+//     if (!user) {
+//       console.log("User not found.");
+//       return res.status(400).json({ message: "User not found." });
+//     }
+
+//     console.log("Stored OTP:", user.otp, "Expires At:", user.otpExpires);
+
+//     // Check if OTP exists
+//     if (!user.otp) {
+//       console.log("No OTP found for this user.");
+//       return res.status(400).json({ message: "No OTP found. Please request a new OTP." });
+//     }
+
+//     // Check if OTP input is valid
+//     if (!otp) {
+//       console.log("No OTP provided.");
+//       return res.status(400).json({ message: "Please enter the OTP." });
+//     }
+
+//     // Convert OTP to string & compare safely
+//     if (String(user.otp).trim() !== String(otp).trim()) {
+//       console.log("Invalid OTP entered.");
+//       return res.status(400).json({ message: "Invalid OTP." });
+//     }
+
+//     // Compare expiry time correctly
+//     if (new Date(user.otpExpires).getTime() < Date.now()) {
+//       console.log("OTP expired.");
+//       return res.status(400).json({ message: "OTP expired. Request a new OTP." });
+//     }
+
+//     // Update user verification status
+//     user.isVerified = true;
+//     user.otp = null;
+//     user.otpExpires = null;
+//     await user.save();
+
+//     console.log("OTP Verified Successfully.");
+//     res.json({ message: "OTP Verified! You can now log in." });
+//   } catch (error) {
+//     console.error("Error in OTP Verification:", error);
+//     res.status(500).json({ message: "Internal server error. Please try again later." });
+//   }
+// };
+
+
 
 
 // Login User & Set JWT in HTTP-only Cookie
@@ -110,27 +208,44 @@ exports.forgotPassword = async (req, res) => {
 };
 
 // Reset Password: Verify OTP & Update Password
+// exports.resetPassword = async (req, res) => {
+//   const { email, otp, newPassword } = req.body;
+
+//   console.log("Received OTP:", otp, "Stored OTP:", otpStore[email]);
+
+//   if (!otpStore[email]) {
+//     return res.status(400).json({ message: "OTP expired or not found" });
+//   }
+
+//   if (parseInt(otp) !== otpStore[email]) {
+//     return res.status(400).json({ message: "Invalid OTP" });
+//   }
+
+//   const salt = await bcrypt.genSalt(10);
+//   const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+//   await User.updateOne({ email }, { password: hashedPassword });
+//   delete otpStore[email];
+
+//   res.json({ message: "Password reset successfully" });
+// };
+
 exports.resetPassword = async (req, res) => {
   const { email, otp, newPassword } = req.body;
-
   console.log("Received OTP:", otp, "Stored OTP:", otpStore[email]);
-
   if (!otpStore[email]) {
     return res.status(400).json({ message: "OTP expired or not found" });
   }
-
-  if (parseInt(otp) !== otpStore[email]) {
+  if (!otp || isNaN(otp) || parseInt(otp, 10) !== otpStore[email]) {
     return res.status(400).json({ message: "Invalid OTP" });
   }
-
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(newPassword, salt);
-
   await User.updateOne({ email }, { password: hashedPassword });
   delete otpStore[email];
-
   res.json({ message: "Password reset successfully" });
 };
+
 
 // Get User Profile
 exports.getProfile = async (req, res) => {

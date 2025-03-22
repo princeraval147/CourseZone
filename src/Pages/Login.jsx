@@ -13,7 +13,7 @@ const Login = () => {
         username: "",
         email: "",
         password: "",
-        otp: "",
+        otp: ["", "", "", "", "", ""],
     });
 
     const [loginData, setLoginData] = useState({
@@ -23,7 +23,7 @@ const Login = () => {
 
     const [resetData, setResetData] = useState({
         email: "",
-        otp: "",
+        otp: ["", "", "", "", "", ""],  // 🆕 Store OTP as an array
         newPassword: "",
     });
 
@@ -33,6 +33,65 @@ const Login = () => {
     const handleChange = (e, setState) => {
         setState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
+
+    // ------------------------------------------------------------------------------------------
+    // const handleOtpChange = (e, index) => {
+    //     let { value } = e.target;
+    //     if (/^\d?$/.test(value)) {  // Allow only numbers
+    //         let newOtp = [...resetData.otp];
+    //         newOtp[index] = value;
+    //         setResetData({ ...resetData, otp: newOtp });
+    //         // Move to next box
+    //         if (value && index < 5) {
+    //             document.getElementById(`otp-${index + 1}`).focus();
+    //         }
+    //     }
+    // };
+    const handleOtpChange = (e, index) => {
+        let { value } = e.target;
+        if (/^\d?$/.test(value)) {  // Allow only single-digit numbers
+            setResetData((prev) => {
+                let newOtp = [...prev.otp];
+                newOtp[index] = value;
+                return { ...prev, otp: newOtp };
+            });
+            // Move to the next box if typing
+            if (value && index < 5) {
+                setTimeout(() => document.getElementById(`otp-${index + 1}`).focus(), 50);
+            }
+        }
+    };
+    const handleOtpVerify = (e, index) => {
+        let { value } = e.target;
+        if (/^\d?$/.test(value)) {  // Allow only single-digit numbers
+            setSignupData((prev) => {
+                let newOtp = [...prev.otp];
+                newOtp[index] = value;
+                return { ...prev, otp: newOtp };
+            });
+            // Move to the next box if typing
+            if (value && index < 5) {
+                setTimeout(() => document.getElementById(`otp-${index + 1}`).focus(), 50);
+            }
+        }
+    };
+    const handleOtpKeyDown = (e, index) => {
+        if (e.key === "Backspace" && !resetData.otp[index]) {
+            if (index > 0) {
+                document.getElementById(`otp-${index - 1}`).focus();
+            }
+        }
+    };
+    // const handleOtpKeyDown = (e, index) => {
+    //     if (e.key === "Backspace" && !resetData.otp[index]) {
+    //         if (index > 0) {
+    //             document.getElementById(`otp-${index - 1}`).focus();
+    //         }
+    //     }
+    // };
+    // ------------------------------------------------------------------------------------------
+
+
 
     // Handle Signup Submission
     const handleSignupSubmit = async (e) => {
@@ -58,7 +117,8 @@ const Login = () => {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/verify-otp`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email: signupData.email, otp: signupData.otp }),
+                // body: JSON.stringify({ email: signupData.email, otp: signupData.otp }),
+                body: JSON.stringify({ email: signupData.email, otp: signupData.otp.join("") }),
             });
 
             const data = await response.json();
@@ -98,7 +158,8 @@ const Login = () => {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/forgot-password`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email: resetData.email }),
+            // body: JSON.stringify({ email: resetData.email }),
+            body: JSON.stringify({ email: resetData.email, otp: parseInt(resetData.otp.join(""), 10), newPassword: resetData.newPassword }),
         });
 
         const data = await response.json();
@@ -114,7 +175,9 @@ const Login = () => {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/reset-password`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(resetData),
+            // body: JSON.stringify(resetData),
+            body: JSON.stringify({ email: resetData.email, otp: parseInt(resetData.otp.join(""), 10), newPassword: resetData.newPassword }),
+
         });
 
         const data = await response.json();
@@ -194,7 +257,7 @@ const Login = () => {
                         <h2>Verify OTP</h2>
                         <p>Enter the 6-digit OTP sent to your email.</p>
 
-                        <input
+                        {/* <input
                             type="text"
                             name="otp"
                             placeholder="Enter 6-digit OTP"
@@ -202,7 +265,22 @@ const Login = () => {
                             onChange={(e) => handleChange(e, setSignupData)}
                             className="inputText"
                             required
-                        />
+                        /> */}
+                        <div className="otpContainer">
+                            {signupData.otp.map((digit, index) => (
+                                <input
+                                    key={index}
+                                    id={`otp-${index}`}
+                                    type="text"
+                                    maxLength="1"
+                                    value={digit}
+                                    onChange={(e) => handleOtpVerify(e, index)}
+                                    onKeyDown={(e) => handleOtpKeyDown(e, index)}
+                                    className="otpBox"
+                                    required
+                                />
+                            ))}
+                        </div>
 
                         <button type="submit">Verify OTP</button>
                     </form>
@@ -261,7 +339,7 @@ const Login = () => {
                     <form onSubmit={handleResetPassword} className={styles.form}>
                         <h2>Reset Password</h2>
 
-                        <input
+                        {/* <input
                             type="text"
                             name="otp"
                             placeholder="OTP"
@@ -269,7 +347,22 @@ const Login = () => {
                             onChange={(e) => handleChange(e, setResetData)}
                             className="inputText"
                             required
-                        />
+                        /> */}
+                        <div className="otpContainer">
+                            {resetData.otp.map((digit, index) => (
+                                <input
+                                    key={index}
+                                    id={`otp-${index}`}
+                                    type="text"
+                                    maxLength="1"
+                                    value={digit}
+                                    onChange={(e) => handleOtpChange(e, index)}
+                                    onKeyDown={(e) => handleOtpKeyDown(e, index)}
+                                    className="otpBox"
+                                    required
+                                />
+                            ))}
+                        </div>
                         <input
                             type="password"
                             name="newPassword"
