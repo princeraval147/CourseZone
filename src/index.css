@@ -66,6 +66,28 @@ a {
     font-weight: 500;
 }
 
+.otpContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.otpBox {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.otpBox:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
 /* --------------------------------   LOGIN MODAL   -------------------------------- */
 
 .loginFp {
