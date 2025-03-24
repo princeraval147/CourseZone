@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "../Styles/MyEncrolledCourse.module.css";  // Make sure you have this file for styles
 import useAuth from "../Components/hooks/useAuth";
 
@@ -8,6 +8,7 @@ const MyEncrolledCourse = () => {
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchEnrolledCourses = async () => {
@@ -45,7 +46,12 @@ const MyEncrolledCourse = () => {
                 <h2>My Enrolled Courses</h2>
                 <div className={styles.courseGrid}>
                     {courses.map((course) => (
-                        <div key={course._id} className={styles.courseCard}>
+                        <div
+                            key={course._id}
+                            className={styles.courseCard}
+                            onClick={() => navigate(`/course-details/${course._id}`)}
+                            style={{ cursor: "pointer" }}
+                        >
                             <img
                                 src={course.courseImage}
                                 alt={course.title}
