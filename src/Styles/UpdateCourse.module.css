@@ -1,0 +1,177 @@
+.updateCourseContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    padding: 10px;
+}
+
+.AddHeadign {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.courseForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.formParts {
+    display: flex;
+    gap: 50px;
+}
+
+.firstPart,
+.secondPart {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 20rem;
+}
+
+.errorMessage {
+    color: red;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputGroup label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.inputGroup input,
+.inputGroup textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.priceWrapper {
+    display: flex;
+    gap: 15px;
+}
+
+.inputGroup input[type="number"] {
+    width: 100%;
+}
+
+.submitBtn {
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submitBtn:hover {
+    background: #0056b3;
+}
+
+.previewImage {
+    width: 80px;
+    height: 80px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.sectionsContainer {
+    margin-top: 20px;
+}
+
+.sectionBox {
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.lessonBox {
+    background: #e8e8e8;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.addSectionBtn {
+    padding: 10px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.addSectionBtn:hover {
+    background: #218838;
+}
+
+.priceWrapper {
+    display: flex;
+    gap: 20px;
+}
+
+.previewImage {
+    max-width: 100px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.sectionsContainer {
+    margin-top: 20px;
+}
+
+.sectionBox {
+    background: #f9f9f9;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border-left: 4px solid #007bff;
+}
+
+.sectionBox input {
+    width: 30%;
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.lessonBox {
+    background: #e8f0fe;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border-left: 3px solid #0056b3;
+}
+
+
+.addSectionBtn,
+.submitBtn {
+    background: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.addSectionBtn:hover,
+.submitBtn:hover {
+    background: #0056b3;
+}

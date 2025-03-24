@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import styles from "../../Styles/AddCourse.module.css"; // Reusing AddCourse styles
+import styles from "../../Styles/UpdateCourse.module.css"; // Reusing AddCourse styles
 
 const UpdateCourse = () => {
     const { id } = useParams(); // Get course ID from URL
@@ -131,155 +131,163 @@ const UpdateCourse = () => {
     };
 
     return (
-        <div className={styles.addCourseContainer}>
+        <div className={styles.updateCourseContainer}>
             <h2>Update Course</h2>
             <form onSubmit={handleSubmit} className={styles.courseForm}>
-                <div className={styles.inputGroup}>
-                    <label>Course Title</label>
-                    <input
-                        type="text"
-                        name="title"
-                        value={courseData.title}
-                        onChange={handleChange}
-                        placeholder="Enter course title"
-                    />
-                </div>
-
-                <div className={styles.inputGroup}>
-                    <label>Course Description</label>
-                    <textarea
-                        name="description"
-                        value={courseData.description}
-                        onChange={handleChange}
-                        placeholder="Enter course description"
-                    />
-                </div>
-
-                <div className={styles.priceWrapper}>
-                    <div className={styles.inputGroup}>
-                        <label>Course Price</label>
-                        <input
-                            type="number"
-                            name="price"
-                            value={courseData.price}
-                            onChange={handleChange}
-                            placeholder="Enter price"
-                        />
-                    </div>
-                    <div className={styles.inputGroup}>
-                        <label>Old Price</label>
-                        <input
-                            type="number"
-                            name="oldPrice"
-                            value={courseData.oldPrice}
-                            onChange={handleChange}
-                            placeholder="Enter old price"
-                        />
-                    </div>
-                </div>
-
-                <div className={styles.inputGroup}>
-                    <label>Language</label>
-                    <input
-                        type="text"
-                        name="language"
-                        value={courseData.language}
-                        onChange={handleChange}
-                        placeholder="Enter language (e.g., English)"
-                    />
-                </div>
-
-                <div className={styles.inputGroup}>
-                    <label>Duration</label>
-                    <input
-                        type="text"
-                        name="duration"
-                        value={courseData.duration}
-                        onChange={handleChange}
-                        placeholder="Enter duration (e.g., 3 months)"
-                    />
-                </div>
-
-                <div className={styles.inputGroup}>
-                    <label>Course Benefits (comma separated)</label>
-                    <input
-                        type="text"
-                        name="courseBenefits"
-                        value={courseData.courseBenefits}
-                        onChange={handleChange}
-                        placeholder="e.g., No prior coding experience required, Certificate included"
-                    />
-                </div>
-
-                <div className={styles.inputGroup}>
-                    <label>Course Thumbnail</label>
-                    <input type="file" accept="image/*" onChange={handleImageUpload} />
-                    {courseData.courseImage && courseData.courseImage instanceof File && (
-                        <img
-                            src={URL.createObjectURL(courseData.courseImage)}
-                            alt="Course Preview"
-                            className={styles.previewImage}
-                        />
-                    )}
-                </div>
-
-                {/* Course Sections */}
-                <div className={styles.sectionsContainer}>
-                    <h3>Course Sections</h3>
-                    {courseData.courseSections.map((section, sectionIndex) => (
-                        <div key={sectionIndex} className={styles.sectionBox}>
+                <div className={styles.formParts}>
+                    <div className={styles.firstPart}>
+                        <div className={styles.inputGroup}>
+                            <label>Course Title</label>
                             <input
                                 type="text"
-                                value={section.sectionTitle}
-                                onChange={(e) =>
-                                    handleSectionChange(sectionIndex, e.target.value)
-                                }
-                                placeholder="Enter section title"
+                                name="title"
+                                value={courseData.title}
+                                onChange={handleChange}
+                                placeholder="Enter course title"
                             />
-                            <button type="button" onClick={() => addLesson(sectionIndex)}>
-                                + Add Lesson
-                            </button>
+                        </div>
 
-                            {section.lessons.map((lesson, lessonIndex) => (
-                                <div key={lessonIndex} className={styles.lessonBox}>
+                        <div className={styles.inputGroup}>
+                            <label>Course Description</label>
+                            <textarea
+                                name="description"
+                                value={courseData.description}
+                                onChange={handleChange}
+                                placeholder="Enter course description"
+                            />
+                        </div>
+
+                        <div className={styles.priceWrapper}>
+                            <div className={styles.inputGroup}>
+                                <label>Course Price</label>
+                                <input
+                                    type="number"
+                                    name="price"
+                                    value={courseData.price}
+                                    onChange={handleChange}
+                                    placeholder="Enter price"
+                                />
+                            </div>
+                            <div className={styles.inputGroup}>
+                                <label>Old Price</label>
+                                <input
+                                    type="number"
+                                    name="oldPrice"
+                                    value={courseData.oldPrice}
+                                    onChange={handleChange}
+                                    placeholder="Enter old price"
+                                />
+                            </div>
+                        </div>
+
+                        <div className={styles.inputGroup}>
+                            <label>Language</label>
+                            <input
+                                type="text"
+                                name="language"
+                                value={courseData.language}
+                                onChange={handleChange}
+                                placeholder="Enter language (e.g., English)"
+                            />
+                        </div>
+                    </div>
+
+                    <div className={styles.secondPart}>
+
+                        <div className={styles.inputGroup}>
+                            <label>Duration</label>
+                            <input
+                                type="text"
+                                name="duration"
+                                value={courseData.duration}
+                                onChange={handleChange}
+                                placeholder="Enter duration (e.g., 3 months)"
+                            />
+                        </div>
+
+                        <div className={styles.inputGroup}>
+                            <label>Course Benefits (comma separated)</label>
+                            <input
+                                type="text"
+                                name="courseBenefits"
+                                value={courseData.courseBenefits}
+                                onChange={handleChange}
+                                placeholder="e.g., No prior coding experience required, Certificate included"
+                            />
+                        </div>
+
+                        <div className={styles.inputGroup}>
+                            <label>Course Thumbnail</label>
+                            <input type="file" accept="image/*" onChange={handleImageUpload} />
+                            {courseData.courseImage && courseData.courseImage instanceof File && (
+                                <img
+                                    src={URL.createObjectURL(courseData.courseImage)}
+                                    alt="Course Preview"
+                                    className={styles.previewImage}
+                                />
+                            )}
+                        </div>
+
+                        {/* Course Sections */}
+                        <div className={styles.sectionsContainer}>
+                            <h3>Course Sections</h3>
+                            {courseData.courseSections.map((section, sectionIndex) => (
+                                <div key={sectionIndex} className={styles.sectionBox}>
                                     <input
                                         type="text"
-                                        value={lesson.title}
+                                        value={section.sectionTitle}
                                         onChange={(e) =>
-                                            handleLessonChange(
-                                                sectionIndex,
-                                                lessonIndex,
-                                                "title",
-                                                e.target.value
-                                            )
+                                            handleSectionChange(sectionIndex, e.target.value)
                                         }
-                                        placeholder="Lesson title"
+                                        placeholder="Enter section title"
                                     />
-                                    <input
-                                        type="text"
-                                        value={lesson.duration}
-                                        onChange={(e) =>
-                                            handleLessonChange(
-                                                sectionIndex,
-                                                lessonIndex,
-                                                "duration",
-                                                e.target.value
-                                            )
-                                        }
-                                        placeholder="Lesson duration (e.g., 2 hours)"
-                                    />
+                                    <button type="button" onClick={() => addLesson(sectionIndex)}>
+                                        + Add Lesson
+                                    </button>
+
+                                    {section.lessons.map((lesson, lessonIndex) => (
+                                        <div key={lessonIndex} className={styles.lessonBox}>
+                                            <input
+                                                type="text"
+                                                value={lesson.title}
+                                                onChange={(e) =>
+                                                    handleLessonChange(
+                                                        sectionIndex,
+                                                        lessonIndex,
+                                                        "title",
+                                                        e.target.value
+                                                    )
+                                                }
+                                                placeholder="Lesson title"
+                                            />
+                                            <input
+                                                type="text"
+                                                value={lesson.duration}
+                                                onChange={(e) =>
+                                                    handleLessonChange(
+                                                        sectionIndex,
+                                                        lessonIndex,
+                                                        "duration",
+                                                        e.target.value
+                                                    )
+                                                }
+                                                placeholder="Lesson duration (e.g., 2 hours)"
+                                            />
+                                        </div>
+                                    ))}
                                 </div>
                             ))}
-                        </div>
-                    ))}
 
-                    <button
-                        type="button"
-                        onClick={addSection}
-                        className={styles.addSectionBtn}
-                    >
-                        + Add Section
-                    </button>
+                            <button
+                                type="button"
+                                onClick={addSection}
+                                className={styles.addSectionBtn}
+                            >
+                                + Add Section
+                            </button>
+                        </div>
+
+                    </div>
                 </div>
 
                 <button type="submit" className={styles.submitBtn}>
