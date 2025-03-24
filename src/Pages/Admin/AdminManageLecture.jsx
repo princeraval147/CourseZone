@@ -14,7 +14,7 @@ const AdminManageLectures = () => {
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                const response = await fetch(`${import.meta.env.VITE_API_URL}/courses`, {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/courses/my`, {
                     credentials: "include",
                 });
                 const data = await response.json();

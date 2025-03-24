@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
-import Swal from "sweetalert2"; // Import SweetAlert2
+import Swal from "sweetalert2";
 import styles from "../../styles/AddLecture.module.css";
+import { ClipLoader } from "react-spinners";
 
 const AddLecture = () => {
     const [courses, setCourses] = useState([]);
     const [selectedCourse, setSelectedCourse] = useState("");
     const [lectureTitle, setLectureTitle] = useState("");
     const [lectureVideo, setLectureVideo] = useState(null);
+    const [isUploading, setIsUploading] = useState(false);
 
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                const response = await fetch(`${import.meta.env.VITE_API_URL}/courses`);
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/courses/my`, { credentials: "include" });
                 const data = await response.json();
 
                 if (Array.isArray(data)) {
@@ -33,11 +35,12 @@ const AddLecture = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         if (!selectedCourse || !lectureTitle || !lectureVideo) {
             Swal.fire({
                 icon: "warning",
                 title: "Missing Fields",
-                text: "Please fill in all fields!",
+                text: "Please fill in all fields, including the video!",
             });
             return;
         }
@@ -47,6 +50,9 @@ const AddLecture = () => {
         formData.append("lectureTitle", lectureTitle);
         formData.append("lectureVideo", lectureVideo);
 
+        // Start loading spinner
+        setIsUploading(true);
+
         try {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/lectures/add`, {
                 method: "POST",
@@ -55,6 +61,10 @@ const AddLecture = () => {
             });
 
             const result = await response.json();
+
+            // Stop loading spinner
+            setIsUploading(false);
+
             if (response.ok) {
                 Swal.fire({
                     icon: "success",
@@ -72,6 +82,8 @@ const AddLecture = () => {
             }
         } catch (error) {
             console.error("Error uploading lecture:", error);
+
+            setIsUploading(false);
             Swal.fire({
                 icon: "error",
                 title: "Error",
@@ -125,9 +137,17 @@ const AddLecture = () => {
                     />
                 </div>
 
-                <button className={styles.button} type="submit">
-                    Upload Lecture
-                </button>
+                {/* Show the spinner when uploading */}
+                {isUploading ? (
+                    <div className={styles.spinnerContainer}>
+                        <ClipLoader size={50} color={"#36d7b7"} loading={isUploading} />
+                        <p>Uploading video...</p>
+                    </div>
+                ) : (
+                    <button className={styles.button} type="submit">
+                        Upload Lecture
+                    </button>
+                )}
             </form>
         </div>
     );
