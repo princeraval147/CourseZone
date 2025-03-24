@@ -94,13 +94,20 @@
 
 .chatContainer {
   margin: auto;
+  /* padding: 10px; */
   width: 300px;
   border: 1px solid #ccc;
   border-radius: 10px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  gap: 25px;
   font-family: Arial, sans-serif;
+}
+
+.messageContent {
+  /* background: rgba(255, 0, 0, 0.308); */
+  padding: 0px 10px;
 }
 
 .chatHeader {

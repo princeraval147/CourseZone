@@ -109,30 +109,30 @@ const Chatbot = () => {
     return (
         <div className={styles.chatContainer}>
             <div className={styles.chatHeader}>Chat Room</div>
-            <div className={styles.chatMessages}>
-                {/* {messages.map((msg, index) => (
+            {/* <div className={styles.chatMessages}>
+                {messages.map((msg, index) => (
                     <div key={index} className={`message ${msg.user === "You" ? "user" : "bot"}`}>
                         <strong>{msg.user}: </strong> {msg.text}
                     </div>
-                ))} */}
+                ))}
                 {replyingTo && (
                     <div className={styles.replyingTo}>
                         Replying to <strong>{replyingTo.sender.username}</strong>: {replyingTo.message}
                         <button className={styles.cancelReply} onClick={() => setReplyingTo(null)}>Cancel</button>
                     </div>
                 )}
-            </div>
+            </div> */}
             {
                 messages.map((msg, index) => (
                     <div key={index} className={styles.messageWrapper}>
-                        {msg.replyTo && (
+                        {/* {msg.replyTo && (
                             <div className={styles.replyBox}>
                                 <strong>Replying to {msg.replyTo.sender.username}:</strong> {msg.replyTo.message}
                             </div>
-                        )}
+                        )} */}
                         <div className={styles.messageContent}>
                             <strong>{msg.sender.username}:</strong> {msg.message}
-                            <button className={styles.replyButton} onClick={() => handleReply(msg)}>Reply</button>
+                            {/* <button className={styles.replyButton} onClick={() => handleReply(msg)}>Reply</button> */}
                         </div>
                     </div>
                 ))
