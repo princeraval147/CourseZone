@@ -115,10 +115,31 @@ Contributions are welcome! Please follow these steps:
 
 1. Fork the repository.
 2. Create a new branch for your feature or bugfix:
-   ```bash
+   ```
    git checkout -b feature/your-feature-name
    ```
+3. Commit your changes:
 
 ```
+git commit -m "Add: description of your changes"
+```
 
+4. Push to your fork:
+
+```
+git push origin feature/your-feature-name
+```
+
+Create a Pull Request describing your changes.
+
+## Licence
+
+This project is licensed under the MIT License.
+
+## Contact
+
+For any questions or support, please contact coursezonebusiness@gmail.com.
+
+```
+Feel free to adjust any section to better match your project's details. This README provides a strong starting point that covers the project overview, features, technologies, setup, and contribution guidelines.
 ```
