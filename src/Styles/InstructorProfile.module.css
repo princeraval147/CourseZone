@@ -61,15 +61,31 @@
 
 
 
-instructorInfo {
+.instructorInfo {
+  /* border: 2px solid red; */
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  gap: 3rem;
   align-items: center;
   background: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+}
+
+.aboutInstructor {
+  /* border: 2px solid green; */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.totalCourse {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  color: #333;
 }
 
 .avatar {
