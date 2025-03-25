@@ -156,8 +156,11 @@ const AddCourse = () => {
                                     placeholder="Enter course title"
                                     onBlur={(e) => checkModelAvailability(e.target.value)}
                                     className={courseExists ? styles.errorInput : ""}
+                                    required
                                 />
-                                {courseExists && <span className={styles.errorMessage}>Course already exists.</span>}
+                                {courseExists && <span className={styles.errorMessage}>
+                                    Course already exists.
+                                </span>}
                             </div>
 
                             <div className={styles.inputGroup}>
@@ -167,6 +170,7 @@ const AddCourse = () => {
                                     value={courseData.description}
                                     onChange={handleChange}
                                     placeholder="Enter course description"
+                                    required
                                 />
                             </div>
 
@@ -190,6 +194,7 @@ const AddCourse = () => {
                                     value={courseData.oldPrice}
                                     onChange={handleChange}
                                     placeholder="Enter old price"
+                                    required
                                 />
                             </div>
 
@@ -201,6 +206,7 @@ const AddCourse = () => {
                                     value={courseData.language}
                                     onChange={handleChange}
                                     placeholder="Enter language (e.g., English)"
+                                    required
                                 />
                             </div>
                         </div>
