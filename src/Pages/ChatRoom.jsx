@@ -6,7 +6,7 @@ import styles from "../Styles/ChatRoom.module.css";
 const socket = io("http://localhost:5000", { autoConnect: false });
 // import '../Styles/ChatRoom.css'
 
-const Chatbot = () => {
+const ChatRoom = () => {
 
     // const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
@@ -154,4 +154,4 @@ const Chatbot = () => {
     );
 };
 
-export default Chatbot;
+export default ChatRoom;
