@@ -54,7 +54,9 @@ CourseZone is a full-featured online course platform built with the MERN stack. 
    npm install
    ```
 
-   Create a .env file in the backend root and add your environment variables :
+   Create a .env file in the backend root and add your environment variables
+   or
+   You can see .env.example in Project Structure :
 
 ```MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
