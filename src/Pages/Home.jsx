@@ -77,7 +77,7 @@ const Home = () => {
                             <motion.div
                                 className={styles.carousel}
                                 animate={{ x: ["0%", "-50%"] }} // Moves halfway so the second set overlaps the first
-                                transition={{ ease: "linear", duration: 15, repeat: Infinity }} // Smooth infinite scroll
+                                transition={{ ease: "linear", duration: 20, repeat: Infinity }} // Smooth infinite scroll
                             >
                                 {repeatedCourses.map((course, index) => (
                                     <CourseCard
