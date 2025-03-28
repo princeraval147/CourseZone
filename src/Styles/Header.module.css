@@ -4,6 +4,7 @@
     /* border: 2px solid red; */
     align-items: center;
     padding: 1rem;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .headerLinks {
@@ -22,4 +23,10 @@
     border-bottom: 1px solid black;
     transition: 1s;
     font-weight: 500;
+}
+
+/*-----------------------------  Dark Mode  ------------------------------- */
+
+.dark {
+    background-color: #222;
 }
