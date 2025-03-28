@@ -1,6 +1,6 @@
 # CourseZone
 
-CourseZone is a full-featured online course platform built with the MERN stack. It allows instructors to create, manage, and sell or boy courses while enabling students to browse, enroll, and learn through interactive content, reviews, and real-time chat. The platform includes payment integration, a dashboard for analytics, and robust user authentication.
+CourseZone is a full-featured online course platform built with the MERN stack. It allows instructors to create, manage, and sell courses while enabling students to browse, enroll, and learn through interactive content, reviews, and real-time chat. The platform includes payment integration, a dashboard for analytics, and robust user authentication.
 
 ## Table of Contents
 
