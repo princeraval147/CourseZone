@@ -137,7 +137,9 @@ const CourseDetails = () => {
     };
 
 
-    if (!course) return <p>Loading...</p>;
+    if (!course) return <div className={styles.loadingOverlay}>
+        <CircularProgress size={60} color="primary" />
+    </div>
 
 
     const loadScript = (src) => {
