@@ -1,5 +1,50 @@
 /* --------------------------------    Global    -------------------------------- */
 
+/* Light Mode (Default) */
+/* body.light {
+    background-color: #ffffff;
+    color: #000000;
+    transition: all 0.3s ease-in-out;
+} */
+
+/* Dark Mode */
+/* body.dark {
+    background-color: #121212;
+    color: #ffffff;
+    transition: all 0.3s ease-in-out;
+} */
+
+/* Header Styles */
+/* .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+} */
+
+/* body.dark .header {
+    background-color: #222;
+} */
+
+/* Theme Toggle Button */
+/* .theme-toggle-btn {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    background-color: #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+body.dark .theme-toggle-btn {
+    background-color: #444;
+    color: white;
+}
+
+ */
+
+
 * {
     margin: 0px;
     padding: 0px;
@@ -87,26 +132,3 @@ a {
     outline: none;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
-
-/* --------------------------------   LOGIN MODAL   -------------------------------- */
-
-.loginFp {
-    width: 95%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* --------------------------------   FOOTER   -------------------------------- */
-
-
-
-/* --------------------------------   HEADER   -------------------------------- */
-
-
-
-/* --------------------------------   HEADER   -------------------------------- */
-
-
-
-/* --------------------------------   HEADER   -------------------------------- */
