@@ -38,10 +38,22 @@
     color: #555;
 }
 
+.userInfo {
+    margin: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .role {
     font-size: 12px;
     font-style: italic;
     color: #888;
+}
+
+.label {
+    color: black;
+    font-weight: bold;
 }
 
 .profileActions {

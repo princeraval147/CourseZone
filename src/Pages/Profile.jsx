@@ -3,6 +3,7 @@ import { z } from "zod";
 import useAuth from "../Components/hooks/useAuth";
 import styles from "../styles/Profile.module.css";
 import { Avatar } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 const profileSchema = z.object({
     username: z.string().min(3, "Username must be at least 3 characters"),
@@ -38,6 +39,7 @@ const Profile = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
+
 
     const [formData, setFormData] = useState({
         username: "",
@@ -139,6 +141,8 @@ const Profile = () => {
     if (error) return <p>Error: {error}</p>;
     if (!user) return <p>No profile data found.</p>;
 
+    const totalCourses = user.savedCourses.length;
+
     return (
         <div className={styles.profileContainer}>
             <div className={`${styles.profileCard} ${isEditing ? styles.expand : ""}`}>
@@ -164,9 +168,15 @@ const Profile = () => {
                     className={styles.profileImage}
                 />
                 <div className={styles.profileInfo}>
-                    <h2>{user.username}</h2>
-                    <p>{user.email}</p>
-                    <p className={styles.role}>{user.role}</p>
+                    <div className={styles.userInfo}>
+                        <h2>{user.username}</h2>
+                        <p>{user.email}</p>
+                        <p className={styles.role}>
+                            <span className={styles.label}>Role : </span>
+                            {user.role}
+                        </p>
+                        <NavLink to='/saved-courses' className='link'>Total Saved Coursee : {totalCourses}</NavLink>
+                    </div>
 
                     {isEditing ? (
                         <form className={styles.profileEditForm} onSubmit={handleSubmit}>
