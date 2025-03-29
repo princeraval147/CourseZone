@@ -110,17 +110,6 @@ const MyCourses = () => {
                                             </td>
                                             <td>₹{earnings.toFixed(2)}</td>
                                             <td>{course.enrolledStudents ? course.enrolledStudents.length : 0}</td>
-                                            {/* <td>
-                        <label className={styles.toggleSwitch}>
-                          <input
-                            type="checkbox"
-                            checked={course.status === "Live"}
-                            readOnly
-                          />
-                          <span className={styles.slider}></span>
-                        </label>
-                        {course.status}
-                      </td> */}
                                             <td>
                                                 <button
                                                     className={styles.updateButton}
