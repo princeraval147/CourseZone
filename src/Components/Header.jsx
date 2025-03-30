@@ -11,8 +11,6 @@ import {
     IconButton,
     Tooltip
 } from "@mui/material";
-import LightModeIcon from '@mui/icons-material/LightMode';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { IoMdSettings } from "react-icons/io";
 import { MdLogout, MdClass, MdPersonAdd } from "react-icons/md";
 import { IoPersonAdd } from "react-icons/io5";
@@ -20,12 +18,8 @@ import { IoBookmarkOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/Header.module.css";
 
-import { ThemeContext } from "../Components/ThemeContext";
-import { BsSun, BsMoon } from "react-icons/bs"; // Import Sun and Moon icons
-
 const Header = () => {
 
-    const { theme, toggleTheme } = useContext(ThemeContext);
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userRole, setUserRole] = useState(null);
@@ -106,7 +100,7 @@ const Header = () => {
 
     return (
         <>
-            <div className={`${styles.header} ${theme === "dark" ? styles.dark : ""}`}>
+            <div className={styles.header} >
                 {/* <h3>Course Zone</h3> */}
                 <NavLink to='/'>
                     <img
@@ -241,19 +235,6 @@ const Header = () => {
                                                         My Classroom
                                                     </MenuItem>
                                                 </NavLink>
-
-                                                {/* Dark mode - Light mode */}
-                                                <span onClick={toggleTheme}>
-                                                    <MenuItem onClick={handleClose}>
-                                                        <ListItemIcon >
-                                                            {/* <DarkModeIcon size={27} /> */}
-                                                            {/* <LightModeIcon size={27} /> */}
-                                                            {theme === "light" ? <DarkModeIcon /> : <LightModeIcon />}
-                                                        </ListItemIcon>
-                                                        {theme === "light" ? " Dark Mode" : " Light Mode"}
-                                                    </MenuItem>
-                                                </span>
-
                                                 {
                                                     userRole === "student" &&
                                                     <NavLink to="/request-instructor" style={{ color: "#212121" }}>
