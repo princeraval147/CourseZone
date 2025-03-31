@@ -6,7 +6,6 @@ import Error from "./Pages/Error";
 import Contact from "./Pages/Contact";
 import CourseList from './Pages/CourseList'
 import CourseDetails from './Pages/CourseDetails'
-import Payment from "./Pages/Payment";
 import AdminPanel from './Pages/Admin/AdminPanel'
 import Dashboard from "./Pages/Admin/Dashboard";
 import AddCourse from "./Pages/Admin/AddCourse";
@@ -34,7 +33,6 @@ const router = createBrowserRouter(
             <Route path='term-condition' element={<TermAndCondition />} />
             <Route path="course-list" element={<CourseList />} />
             <Route path="course-details/:id" element={<CourseDetails />} />
-            <Route path='payment' element={<Payment />} />
             <Route path='profile' element={<Profile />} />
             <Route path='request-instructor' element={<RequestInstructor />} />
             <Route path="instructor-profile/:id" element={<InstructorProfile />} />
