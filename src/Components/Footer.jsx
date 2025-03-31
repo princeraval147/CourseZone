@@ -8,9 +8,7 @@ const Footer = () => {
         <>
             <footer className={styles.footer}>
                 <div className={styles.footerContainer}>
-                    {/* Logo & Description */}
                     <div className={styles.footerSection}>
-                        {/* <h2 className={styles.footer-title}>Course Zone</h2> */}
                         <NavLink to='/'>
                             <img
                                 src="/Img/CourseZone.png"
@@ -30,12 +28,6 @@ const Footer = () => {
                                 <li>
                                     <NavLink to="/" className={styles.footerLink}>Home</NavLink>
                                 </li>
-                                <li>
-                                    <NavLink to="/#About" className={styles.footerLink}>About</NavLink>
-                                </li>
-                                {/* <li>
-                                    <NavLink to="#" className={styles.footerLink}>Services</NavLink>
-                                </li> */}
                                 <li>
                                     <NavLink to="/contact" className={styles.footerLink}>Contact</NavLink>
                                 </li>
