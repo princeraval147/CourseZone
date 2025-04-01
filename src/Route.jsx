@@ -23,6 +23,7 @@ import InstructorProfile from "./Pages/InstructorProfile";
 import Classroom from "./Pages/Classroom";
 import ChatRoom from "./Pages/ChatRoom";
 import ManageInstructors from "./Pages/Admin/ManageInstructor";
+import ShowAllInstructorCourse from "./Pages/Admin/ShowAllInstructorCourse";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -51,6 +52,9 @@ const router = createBrowserRouter(
                 <Route path="manage-lecture" element={<AdminManageLecture />} />
                 <Route path="manage-instructor" element={<ManageInstructors />} />
                 <Route path="student" element={<Student />} />
+                {/* For Admin */}
+                <Route path="show-all-course" element={<ShowAllInstructorCourse />} />
+
             </Route>
 
             <Route path='*' element={<Error />} />
