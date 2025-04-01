@@ -104,7 +104,7 @@ const Sidebar = ({ setSelectedTab, selectedTab }) => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to=''>
+                            <NavLink to='show-all-course'>
                                 <FaClipboardList className={styles.icon} />
                                 Show All Course
                             </NavLink>
