@@ -116,7 +116,7 @@ const Sidebar = ({ setSelectedTab, selectedTab }) => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to=''>
+                            <NavLink to='show-all-review'>
                                 <FaLaptopCode className={styles.icon} />
                                 Manage Instructors
                             </NavLink>
