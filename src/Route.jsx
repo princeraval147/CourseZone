@@ -24,6 +24,8 @@ import Classroom from "./Pages/Classroom";
 import ChatRoom from "./Pages/ChatRoom";
 import ManageInstructors from "./Pages/Admin/ManageInstructor";
 import ShowAllInstructorCourse from "./Pages/Admin/ShowAllInstructorCourse";
+import ShowAllStudentEnrollment from "./Pages/Admin/ShowAllStudentEnrollment";
+import ShowAllCourseReview from "./Pages/Admin/ShowAllCourseReview";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -54,7 +56,8 @@ const router = createBrowserRouter(
                 <Route path="student" element={<Student />} />
                 {/* For Admin */}
                 <Route path="show-all-course" element={<ShowAllInstructorCourse />} />
-
+                <Route path="show-all-student" element={<ShowAllStudentEnrollment />} />
+                <Route path="show-all-review" element={<ShowAllCourseReview />} />
             </Route>
 
             <Route path='*' element={<Error />} />
