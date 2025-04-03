@@ -58,6 +58,7 @@ const router = createBrowserRouter(
                 <Route path="show-all-course" element={<ShowAllInstructorCourse />} />
                 <Route path="show-all-student" element={<ShowAllStudentEnrollment />} />
                 <Route path="show-all-review" element={<ShowAllCourseReview />} />
+                <Route path="show-all-instructors" element={<ShowAllInstructorCourse />} />
             </Route>
 
             <Route path='*' element={<Error />} />
