@@ -116,13 +116,13 @@ const Sidebar = ({ setSelectedTab, selectedTab }) => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to='show-all-review'>
+                            <NavLink to=''>
                                 <FaLaptopCode className={styles.icon} />
                                 Manage Instructors
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to=''>
+                            <NavLink to='show-all-review'>
                                 <FaClipboardList className={styles.icon} />
                                 Show All Course Review
                             </NavLink>
