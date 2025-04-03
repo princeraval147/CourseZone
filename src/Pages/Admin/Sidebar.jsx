@@ -110,13 +110,13 @@ const Sidebar = ({ setSelectedTab, selectedTab }) => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to=''>
+                            <NavLink to='show-all-student'>
                                 <FaUsers className={styles.icon} />
                                 All Course Enrolled Student
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to=''>
+                            <NavLink to='show-all-instructors'>
                                 <FaLaptopCode className={styles.icon} />
                                 Manage Instructors
                             </NavLink>
