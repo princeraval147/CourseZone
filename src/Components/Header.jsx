@@ -111,11 +111,11 @@ const Header = () => {
                     />
                 </NavLink>
                 <ul className={styles.headerLinks}>
-                    {/* <li>
+                    <li>
                         <NavLink to='/'>
                             Home
                         </NavLink>
-                    </li> */}
+                    </li>
                     <li>
                         <NavLink to='/contact'>
                             Contact Us
