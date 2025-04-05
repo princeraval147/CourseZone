@@ -14,7 +14,7 @@ import {
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
-const Sidebar = ({ setSelectedTab, selectedTab }) => {
+const Sidebar = () => {
 
     const [userRole, setUserRole] = useState(null); // State to store the user role
 
@@ -46,37 +46,25 @@ const Sidebar = ({ setSelectedTab, selectedTab }) => {
 
             <ul className={styles.navList}>
                 <li>
-                    <NavLink
-                        to='dashboard'
-                        className={selectedTab === "dashboard" ? styles.active : ""}
-                    >
+                    <NavLink to='dashboard' >
                         <FaTachometerAlt className={styles.icon} />
                         Dashboard
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink
-                        to='add-course'
-                        className={selectedTab === "addcourse" ? styles.active : ""}
-                    >
+                    <NavLink to='add-course' >
                         <FaBook className={styles.icon} />
                         Add Course
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink
-                        to='my-course'
-                        className={selectedTab === "mycourses" ? styles.active : ""}
-                    >
+                    <NavLink to='my-course' >
                         <FaList className={styles.icon} />
                         My Courses
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink
-                        to='student'
-                        className={selectedTab === "studentenrolled" ? styles.active : ""}
-                    >
+                    <NavLink to='student' >
                         <FaUserGraduate className={styles.icon} />
                         Student Enrolled
                     </NavLink>
