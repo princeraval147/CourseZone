@@ -148,10 +148,42 @@ const getEnrolledStudents = async (req, res) => {
   }
 };
 
+const enrolledstudent = async (req, res) => {
+  const { courseId } = req.query;
+
+  try {
+    if (!courseId) {
+      return res.status(400).json({ message: "Course ID is required" });
+    }
+
+
+    const payments = await Payment.find({ course: courseId })
+      .populate("user", "username email")
+      .select("user razorpayOrderId createdAt");
+
+    if (!payments.length) {
+      return res.status(404).json({ message: "No students enrolled in this course" });
+    }
+
+
+    const enrolledStudents = payments.map((payment) => ({
+      name: payment.user.username,
+      email: payment.user.email,
+      razorpayOrderId: payment.razorpayOrderId,
+      createdAt: payment.createdAt,
+    }));
+
+    res.status(200).json(enrolledStudents);
+  } catch (err) {
+    console.error("Error fetching enrolled students:", err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
 module.exports = { getEnrolledStudents };
 
 
 
 
 
-module.exports = { createOrder, verifyPayment, paymentsuccess, getEnrolledStudents, getAllEnrolledStudents };
+module.exports = { createOrder, verifyPayment, paymentsuccess, getEnrolledStudents, getAllEnrolledStudents, enrolledstudent };
