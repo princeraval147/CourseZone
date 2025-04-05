@@ -1,7 +1,9 @@
+/* Sidebar.module.css */
+
 .sidebar {
-    width: 200px;
+    width: 250px;
     height: auto;
-    /* background: #e7f4ff; */
+    background: #e7f4ff;
     border-right: 1px solid #ddd;
     padding: 20px;
     display: flex;
