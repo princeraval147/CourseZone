@@ -14,10 +14,12 @@
 ✅ Instructur Profile
 ✅ Discount Manage
 ✅ Resume show for instructo
-Contact us for courses
-Course Upload Date
-Manage Duration
-Test For Student
+✅ Course Upload Date
+
+
+Problem in :- 
+All course Enrolled Students
+Saved Courses
 
 _______________________
 
