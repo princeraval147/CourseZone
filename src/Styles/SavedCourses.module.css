@@ -36,9 +36,14 @@
     transform: scale(1.05);
 }
 
-.courseImage {
+/* .courseImage {
     width: 100%;
     height: 150px;
+    object-fit: cover;
+} */
+.courseImage {
+    width: 100%;
+    aspect-ratio: 16/9;
     object-fit: cover;
 }
 
