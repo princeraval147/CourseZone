@@ -162,11 +162,25 @@ const Profile = () => {
                     </>
 
                 )} */}
-                <img
+                {user?.photoUrl ? (
+                    <img
+                        src={user.photoUrl}
+                        alt="Profile"
+                        className={styles.profileImage}
+                    />
+                ) : (
+                    <>
+                        <div className={styles.avatarContainer}>
+                            <Avatar />
+                        </div>
+                    </>
+                )}
+
+                {/* <img
                     src={user.photoUrl || <Avatar></Avatar>}
                     alt="Profile"
                     className={styles.profileImage}
-                />
+                /> */}
                 <div className={styles.profileInfo}>
                     <div className={styles.userInfo}>
                         <h2>{user.username}</h2>
@@ -203,12 +217,14 @@ const Profile = () => {
                                 {errors.newPassword && <p className={styles.error}>{errors.newPassword}</p>}
                             </div>
 
-                            <button className={styles.primaryButton} type="submit">
-                                Save Changes
-                            </button>
-                            <button className={styles.secondaryButton} type="button" onClick={() => setIsEditing(false)}>
-                                Cancel
-                            </button>
+                            <div className={styles.updateBtns}>
+                                <button className={styles.primaryButton} type="submit">
+                                    Save Changes
+                                </button>
+                                <button className={styles.secondaryButton} type="button" onClick={() => setIsEditing(false)}>
+                                    Cancel
+                                </button>
+                            </div>
                         </form>
                     ) : (
                         <div className={styles.profileActions}>
