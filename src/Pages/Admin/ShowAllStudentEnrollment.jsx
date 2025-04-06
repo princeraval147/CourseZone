@@ -8,7 +8,6 @@ const ShowAllStudentEnrollment = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -26,11 +25,10 @@ const ShowAllStudentEnrollment = () => {
     fetchCourses();
   }, []);
 
-
-
   const fetchStudents = async (courseId) => {
     setLoading(true);
-    setStudents([]);
+    setStudents([]); // Clear the previous students data
+    setError(null); // Clear previous error if any
     try {
       const response = await fetch(`http://localhost:5000/api/payment/enrolled-students?courseId=${courseId}`, {
         credentials: "include",
@@ -39,7 +37,7 @@ const ShowAllStudentEnrollment = () => {
         throw new Error("Failed to fetch students");
       }
       const data = await response.json();
-      setStudents(data);
+      setStudents(data); // Set the fetched students
     } catch (err) {
       setError(err.message);
     } finally {
@@ -92,7 +90,7 @@ const ShowAllStudentEnrollment = () => {
           </thead>
           <tbody>
             {students.map((student, index) => (
-              <tr key={index}>
+              <tr key={student.razorpayOrderId}>
                 <td>{index + 1}</td>
                 <td>{student.name}</td>
                 <td>{student.email}</td>
@@ -103,7 +101,6 @@ const ShowAllStudentEnrollment = () => {
           </tbody>
         </table>
       ) : (
-
         !loading && selectedCourse && <p>No students enrolled yet.</p>
       )}
     </div>
