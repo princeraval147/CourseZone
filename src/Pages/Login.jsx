@@ -309,7 +309,15 @@ const Login = () => {
                             className="inputText"
                             required
                         />
-
+                        <p
+                            className="link"
+                            style={{ cursor: "pointer" }}
+                            onClick={() => {
+                                setActiveTab("signup");
+                                setResetStep(0);
+                            }}
+                        >
+                            Don't have Account</p>
                         <button type="submit">Login</button>
                         <button type="button" className={styles.forgotPassword} onClick={() => setResetStep(1)}>
                             Forgot Password?
