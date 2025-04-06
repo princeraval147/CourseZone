@@ -21,7 +21,7 @@
     gap: 25px;
 }
 
-.formParts {
+/* .formParts {
     display: flex;
     gap: 50px;
 }
@@ -32,7 +32,7 @@
     flex-direction: column;
     gap: 15px;
     width: 20rem;
-}
+} */
 
 .errorMessage {
     color: red;
