@@ -1,24 +1,59 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import io from "socket.io-client";
-import useEnrollment from '../Components/hooks/useEnrollment';
-import styles from "../Styles/ChatRoom.module.css";
-const socket = io("http://localhost:5000", { autoConnect: false });
-// import '../Styles/ChatRoom.css'
+import styles from "../styles/ChatRoom.module.css";
+import useEnrollment from "../Components/hooks/useEnrollment";
 
 const ChatRoom = () => {
-
-    // const [messages, setMessages] = useState([]);
-    const [input, setInput] = useState("");
-
-    const encrolled = useEnrollment();
+    const navigate = useNavigate();
+    const enrolled = useEnrollment();
     const { id: courseId } = useParams();
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState("");
-    const [replyingTo, setReplyingTo] = useState(null);
+    const [isAuthorized, setIsAuthorized] = useState(false);
     const messagesEndRef = useRef(null);
+    const socketRef = useRef(null);
 
+    // Check Authorization
     useEffect(() => {
+        const checkAuthorization = async () => {
+            try {
+                const response = await fetch(
+                    `http://localhost:5000/api/courses/confirminstructor/${courseId}`,
+                    {
+                        method: "GET",
+                        headers: { "Content-Type": "application/json" },
+                        credentials: "include",
+                    }
+                );
+
+                const result = await response.json();
+                if (result.success || enrolled) {
+                    setIsAuthorized(true);
+                } else {
+                    navigate("/unauthorized");
+                }
+            } catch (error) {
+                console.error("Authorization error:", error);
+                navigate("/unauthorized");
+            }
+        };
+
+        if (courseId) {
+            checkAuthorization();
+        }
+    }, [courseId, enrolled, navigate]);
+
+    // Initialize socket and fetch messages
+    useEffect(() => {
+        if (!isAuthorized || !courseId) return;
+
+        socketRef.current = io("http://localhost:5000", {
+            transports: ["websocket", "polling"],
+            withCredentials: true,
+        });
+
+        const socket = socketRef.current;
         socket.connect();
         socket.emit("joinRoom", courseId);
 
@@ -33,8 +68,6 @@ const ChatRoom = () => {
                     }
                 );
 
-                if (!response.ok) throw new Error("Failed to fetch messages");
-
                 const data = await response.json();
                 setMessages(data);
             } catch (error) {
@@ -44,113 +77,104 @@ const ChatRoom = () => {
 
         fetchMessages();
 
-        socket.on("receiveMessage", (message) => {
-            setMessages((prevMessages) => [...prevMessages, message]);
-        });
+        // Setup listener for incoming messages
+        const handleReceiveMessage = (message) => {
+            setMessages((prevMessages) => {
+                // Prevent duplicate messages
+                if (!prevMessages.some((msg) => msg._id === message._id)) {
+                    return [...prevMessages, message];
+                }
+                return prevMessages;
+            });
+        };
+
+        socket.on("receiveMessage", handleReceiveMessage);
 
         return () => {
             socket.emit("leaveRoom", courseId);
+            socket.off("receiveMessage", handleReceiveMessage); // Clean up listener
             socket.disconnect();
         };
-    }, [courseId]);
+    }, [isAuthorized, courseId]);
 
+    // Auto-scroll effect
     useEffect(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        if (messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+        }
     }, [messages]);
 
+    // Send message handler
     const sendMessage = async () => {
         if (!newMessage.trim()) return;
 
-        const messageData = {
-            sender: { username: "You" }, // Temporary placeholder
-            message: newMessage,
-            replyTo: replyingTo ? { ...replyingTo } : null,
-        };
-
-        // Optimistic UI update
-        setMessages((prevMessages) => [...prevMessages, messageData]);
-
         try {
-            const response = await fetch(
+            const res = await fetch(
                 `http://localhost:5000/api/chat/send/${courseId}`,
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     credentials: "include",
-                    body: JSON.stringify({
-                        message: newMessage,
-                        replyTo: replyingTo?._id || null,
-                    }),
+                    body: JSON.stringify({ message: newMessage }),
                 }
             );
 
-            if (!response.ok) throw new Error("Failed to send message");
+            if (!res.ok) throw new Error("Failed to send message");
 
+            const savedMessage = await res.json();
+
+            if (!savedMessage || !savedMessage._id) {
+                throw new Error("Invalid message data received from the server");
+            }
+
+            // Emit message only once to the server
+            socketRef.current.emit("sendMessage", {
+                courseId,
+                message: savedMessage.message,
+                user: {
+                    _id: savedMessage.sender._id,
+                    username: savedMessage.sender.username,
+                },
+            });
+
+            // Clear input after sending
             setNewMessage("");
-            setReplyingTo(null);
-        } catch (error) {
-            console.error("Error sending message:", error);
+        } catch (err) {
+            console.error("Error sending message:", err);
         }
     };
 
-    const handleReply = (msg) => {
-        setReplyingTo(msg);
-    };
-
-    // const handleSend = () => {
-    //     if (input.trim() === "") return;
-    //     setMessages([...messages, { text: input, user: "You" }]);
-    //     setInput("");
-    //     setTimeout(() => {
-    //         setMessages((prev) => [...prev, { text: "I'm a bot! How can I help?", user: "Bot" }]);
-    //     }, 1000);
-    // };
+    if (!isAuthorized) return <div>Unauthorized access. Redirecting...</div>;
 
     return (
         <div className={styles.chatContainer}>
-            <div className={styles.chatHeader}>Chat Room</div>
-            {/* <div className={styles.chatMessages}>
-                {messages.map((msg, index) => (
-                    <div key={index} className={`message ${msg.user === "You" ? "user" : "bot"}`}>
-                        <strong>{msg.user}: </strong> {msg.text}
-                    </div>
-                ))}
-                {replyingTo && (
-                    <div className={styles.replyingTo}>
-                        Replying to <strong>{replyingTo.sender.username}</strong>: {replyingTo.message}
-                        <button className={styles.cancelReply} onClick={() => setReplyingTo(null)}>Cancel</button>
-                    </div>
-                )}
-            </div> */}
-            {
-                messages.map((msg, index) => (
-                    <div key={index} className={styles.messageWrapper}>
-                        {/* {msg.replyTo && (
-                            <div className={styles.replyBox}>
-                                <strong>Replying to {msg.replyTo.sender.username}:</strong> {msg.replyTo.message}
-                            </div>
-                        )} */}
+            <h2 className={styles.chatHeader}>Course Chat Room</h2>
+
+            <div className={styles.chatBox}>
+                {messages.map((msg) => (
+                    <div key={msg._id} className={styles.messageWrapper}>
                         <div className={styles.messageContent}>
-                            <strong>{msg.sender.username}:</strong> {msg.message}
-                            {/* <button className={styles.replyButton} onClick={() => handleReply(msg)}>Reply</button> */}
+                            <strong>{msg.sender?.username || "Unknown"}:</strong>{" "}
+                            {msg.message}
                         </div>
                     </div>
-                ))
-            }
-            <div ref={messagesEndRef}></div>
-
+                ))}
+                <div ref={messagesEndRef} />
+            </div>
 
             <div className={styles.chatInput}>
                 <input
                     type="text"
+                    className={styles.inputField}
                     placeholder="Type a message..."
                     value={newMessage}
                     onChange={(e) => setNewMessage(e.target.value)}
-                    onKeyPress={(e) => e.key === "Enter" && sendMessage()}
                 />
-                <button onClick={sendMessage}>Send</button>
+                <button className={styles.sendButton} onClick={sendMessage}>
+                    Send
+                </button>
             </div>
-        </div >
+        </div>
     );
 };
 
