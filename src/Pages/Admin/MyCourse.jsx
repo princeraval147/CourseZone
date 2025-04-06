@@ -110,7 +110,7 @@ const MyCourses = () => {
                                             </td>
                                             <td>₹{earnings.toFixed(2)}</td>
                                             <td>{course.enrolledStudents ? course.enrolledStudents.length : 0}</td>
-                                            <td>
+                                            <td className={styles.Btns}>
                                                 <button
                                                     className={styles.updateButton}
                                                     onClick={() => handleUpdate(course._id)}
@@ -135,8 +135,9 @@ const MyCourses = () => {
                         </tbody>
                     </table>
                 </div>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 };
 

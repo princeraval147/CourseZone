@@ -23,6 +23,11 @@ td {
     border-bottom: 1px solid #ddd;
 }
 
+.Btns {
+    display: flex;
+    flex-direction: row;
+}
+
 .courseInfo {
     display: flex;
     align-items: center;
