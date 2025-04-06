@@ -42,7 +42,7 @@ router.get("/isLoggedIn", authenticateUser, isLoggedIn);
 router.get("/my-courses", authenticateUser, myCourses);
 router.post("/toggle-save", authenticateUser, toggleSavedCourse);
 router.get("/saved-courses", authenticateUser, getSavedCourses);
-router.post("/request", authenticateUser, instructorrequest);
+router.post("/instructor/request", authenticateUser, instructorrequest);
 router.post("/checkCourse", checkCourse);
 router.get("/instructors", authenticateToken, isAdmin, getallinstrucors);
 router.put("/instructors/:id/promote", authenticateToken, isAdmin, pramoteadmin)

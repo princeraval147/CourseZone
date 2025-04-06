@@ -38,7 +38,7 @@ const RequestInstructor = () => {
         formData.append("message", message);
 
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/instructor/request`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/instructor/request`, {
                 method: "POST",
                 body: formData,
                 credentials: "include",
