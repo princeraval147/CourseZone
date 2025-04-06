@@ -1,14 +1,22 @@
 /* Sidebar.module.css */
 
+
 .sidebar {
     width: 250px;
+    min-width: 250px;
+    max-width: 250px;
     height: auto;
     background: #e7f4ff;
     border-right: 1px solid #ddd;
     padding: 20px;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
+    position: sticky;
+    /* Optional: keeps it fixed on scroll */
+    top: 0;
 }
+
 
 .logo {
     font-size: 1.5rem;

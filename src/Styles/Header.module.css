@@ -3,7 +3,7 @@
     justify-content: space-around;
     /* border: 2px solid red; */
     align-items: center;
-    padding: 1rem;
+    padding: 0.5rem;
     transition: background-color 0.3s ease-in-out;
 }
 
