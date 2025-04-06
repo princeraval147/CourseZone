@@ -162,7 +162,7 @@ const ChatRoom = () => {
                 <div ref={messagesEndRef} />
             </div>
 
-            <div className={styles.chatInput}>
+            <div className={styles.inputBox}>
                 <input
                     type="text"
                     className={styles.inputField}

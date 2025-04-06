@@ -30,3 +30,13 @@
 .contactForm {
     width: 400px;
 }
+
+.submitBtn {
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}

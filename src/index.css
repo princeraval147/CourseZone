@@ -75,9 +75,11 @@ a {
 
 .inputText:focus {
     outline: none;
-    border: 2px solid #f75d34;
+    /* border: 2px solid #f75d34; */
+    border: 2px solid #5a8dee;
 }
 
+/* 
 .Btn {
     background: #f75d34;
     border: 1px solid orangered;
@@ -97,7 +99,7 @@ a {
     color: #000000a9;
     transition: 0.5s;
     border-radius: 8px;
-}
+} */
 
 .link {
     color: #303141;
