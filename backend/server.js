@@ -80,7 +80,7 @@ io.on("connection", (socket) => {
                 message,
             });
 
-            await chatMessage.save();
+            // await chatMessage.save();
 
             io.to(courseId).emit("receiveMessage", {
                 _id: chatMessage._id,

@@ -42,7 +42,7 @@ const Sidebar = () => {
 
     return (
         <div className={styles.sidebar}>
-            <div className={styles.logo}>Admin Panel</div>
+            <div className={styles.logo}>Instructor Panel</div>
 
             <ul className={styles.navList}>
                 <li>
@@ -81,10 +81,16 @@ const Sidebar = () => {
                         Manage Lectures
                     </NavLink>
                 </li>
+                <li>
+                    <NavLink to='manage-review' >
+                        <FaClipboardList className={styles.icon} />
+                        Manage Review
+                    </NavLink>
+                </li>
 
                 {userRole === "admin" && (
                     <>
-                        <h1>Only For Admin</h1>
+                        <h1>Admin Panel</h1>
                         <li>
                             <NavLink to='manage-instructor'>
                                 <FaUsers className={styles.icon} />

@@ -1,7 +1,10 @@
 .form {
+    height: 50vh;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
     max-width: 400px;
     margin: auto;
     padding: 20px;

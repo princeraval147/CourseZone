@@ -1,0 +1,109 @@
+.allInstructorsContainer {
+    padding: 20px;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    width: 100%;
+}
+
+.instructorsHeader {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.instructorsTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.instructorsTableHeader,
+.instructorsTableRow {
+    transition: background-color 0.3s ease;
+}
+
+.instructorsTableHeader {
+    background-color: #4CAF50;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+}
+
+.instructorsTableRow:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.instructorsTableRow:hover {
+    background-color: #f1f1f1;
+}
+
+.instructorsTableCell {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.actionButtonsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    min-width: 120px;
+}
+
+.promoteButton {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.promoteButton:hover {
+    background-color: #45a049;
+}
+
+.demoteButton {
+    background-color: #f44336;
+    color: white;
+}
+
+.demoteButton:hover {
+    background-color: #e53935;
+}
+
+.viewProfileButton {
+    background-color: #2196F3;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.viewProfileButton:hover {
+    background-color: #1976D2;
+}
+
+.loadingMessage,
+.errorMessage {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    color: #555;
+}
+
+.errorMessage {
+    color: red;
+}

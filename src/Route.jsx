@@ -27,6 +27,7 @@ import ShowAllInstructorCourse from "./Pages/Admin/ShowAllInstructorCourse";
 import ShowAllStudentEnrollment from "./Pages/Admin/ShowAllStudentEnrollment";
 import ShowAllCourseReview from "./Pages/Admin/ShowAllCourseReview";
 import AllInstructors from "./Pages/Admin/Allinstructor";
+import ManageCourseReview from "./Pages/Admin/ManageCourseReview";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -54,6 +55,7 @@ const router = createBrowserRouter(
                 <Route path="add-lecture" element={<AddLecture />} />
                 <Route path="manage-lecture" element={<AdminManageLecture />} />
                 <Route path="manage-instructor" element={<ManageInstructors />} />
+                <Route path="manage-review" element={<ManageCourseReview />} />
                 <Route path="student" element={<Student />} />
                 {/* For Admin */}
                 <Route path="show-all-course" element={<ShowAllInstructorCourse />} />
