@@ -1,0 +1,974 @@
+[{
+  "_id": {
+    "$oid": "67d291d48e06f1eccb8c94e3"
+  },
+  "title": "Python Programming for Beginners",
+  "description": "Learn Python from the very basics to more advanced concepts like object-oriented programming and working with databases.",
+  "instructor": {
+    "$oid": "67d285ce2fc34872d4acc0e7"
+  },
+  "enrolledStudents": [
+    {
+      "$oid": "67d78b57521820255c8ed761"
+    },
+    {
+      "$oid": "67d7b39878e19597fef94ad2"
+    },
+    {
+      "$oid": "67f21ebe70453ae6328c588e"
+    },
+    {
+      "$oid": "67f2ac0d4aa56940b4f1172d"
+    },
+    {
+      "$oid": "67f354b9dbe3fb86a070c0bb"
+    }
+  ],
+  "price": 1400,
+  "oldPrice": 2000,
+  "discount": 30,
+  "duration": "15 hours",
+  "courseSections": [
+    {
+      "sectionTitle": "Introduction to Python",
+      "lessons": [
+        {
+          "title": "Setting Up Python",
+          "duration": "30 minutes",
+          "_id": {
+            "$oid": "67d291d48e06f1eccb8c94e5"
+          }
+        },
+        {
+          "title": "Basic Syntax and Variables",
+          "duration": "45 minutes",
+          "_id": {
+            "$oid": "67d291d48e06f1eccb8c94e6"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d291d48e06f1eccb8c94e4"
+      }
+    },
+    {
+      "sectionTitle": "Control Flow and Functions",
+      "lessons": [
+        {
+          "title": "Conditionals: if, else, elif",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d291d48e06f1eccb8c94e8"
+          }
+        },
+        {
+          "title": "Loops and Iterations",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d291d48e06f1eccb8c94e9"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d291d48e06f1eccb8c94e7"
+      }
+    },
+    {
+      "sectionTitle": "Data Structures",
+      "lessons": [
+        {
+          "title": "Lists, Tuples, and Dictionaries",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d291d48e06f1eccb8c94eb"
+          }
+        },
+        {
+          "title": "Sets and Strings",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d291d48e06f1eccb8c94ec"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d291d48e06f1eccb8c94ea"
+      }
+    },
+    {
+      "sectionTitle": "Object-Oriented Programming",
+      "lessons": [
+        {
+          "title": "Classes and Objects",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d291d48e06f1eccb8c94ee"
+          }
+        },
+        {
+          "title": "Inheritance and Polymorphism",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d291d48e06f1eccb8c94ef"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d291d48e06f1eccb8c94ed"
+      }
+    },
+    {
+      "sectionTitle": "Working with Databases",
+      "lessons": [
+        {
+          "title": "Introduction to SQLite",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d291d48e06f1eccb8c94f1"
+          }
+        },
+        {
+          "title": "CRUD Operations in Python",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d291d48e06f1eccb8c94f2"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d291d48e06f1eccb8c94f0"
+      }
+    }
+  ],
+  "courseImage": "https://res.cloudinary.com/dgvv9nusn/image/upload/v1741856296/qu8uzk1eysnjxwlkzups.jpg",
+  "courseBenefits": [
+    "Master Python programming from scratch",
+    "Learn object-oriented programming",
+    "Build database-driven applications"
+  ],
+  "language": "Hindi",
+  "lectures": [],
+  "createdAt": {
+    "$date": "2025-03-13T08:05:40.658Z"
+  },
+  "reviews": [
+    {
+      "user": {
+        "$oid": "67d7b39878e19597fef94ad2"
+      },
+      "reviewText": "hello",
+      "_id": {
+        "$oid": "67d7cad3c6eb778796786a00"
+      },
+      "createdAt": {
+        "$date": "2025-03-17T07:10:11.815Z"
+      }
+    },
+    {
+      "user": {
+        "$oid": "67f21ebe70453ae6328c588e"
+      },
+      "reviewText": "Very nice learining and Helpfull",
+      "_id": {
+        "$oid": "67f222e970453ae6328c62c5"
+      },
+      "createdAt": {
+        "$date": "2025-04-06T06:44:57.051Z"
+      }
+    }
+  ],
+  "__v": 6
+},
+{
+  "_id": {
+    "$oid": "67d2966c06e07d5b9d73e9fc"
+  },
+  "title": "Data Science and Machine Learning",
+  "description": "Learn data science and machine learning concepts and techniques using Python, including data preprocessing, algorithms, and model deployment.",
+  "instructor": {
+    "$oid": "67d285ce2fc34872d4acc0e7"
+  },
+  "enrolledStudents": [
+    {
+      "$oid": "67d2abc7030fc3805da02604"
+    },
+    {
+      "$oid": "67d7b39878e19597fef94ad2"
+    },
+    {
+      "$oid": "67d284c32fc34872d4acc0cc"
+    },
+    {
+      "$oid": "67d8efae894cf50a21fcfa50"
+    },
+    {
+      "$oid": "67d78b57521820255c8ed761"
+    },
+    {
+      "$oid": "67f387c99f32e737a81eac33"
+    }
+  ],
+  "price": 1050,
+  "oldPrice": 1500,
+  "discount": 30,
+  "duration": "30 hours",
+  "courseSections": [
+    {
+      "sectionTitle": "Introduction to Data Science",
+      "lessons": [
+        {
+          "title": "What is Data Science?",
+          "duration": "45 minutes",
+          "_id": {
+            "$oid": "67d2966c06e07d5b9d73e9fe"
+          }
+        },
+        {
+          "title": "Data Science Workflow",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d2966c06e07d5b9d73e9ff"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d2966c06e07d5b9d73e9fd"
+      }
+    },
+    {
+      "sectionTitle": "Data Preprocessing",
+      "lessons": [
+        {
+          "title": "Cleaning and Normalizing Data",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d2966c06e07d5b9d73ea01"
+          }
+        },
+        {
+          "title": "Handling Missing Data",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d2966c06e07d5b9d73ea02"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d2966c06e07d5b9d73ea00"
+      }
+    },
+    {
+      "sectionTitle": "Exploratory Data Analysis",
+      "lessons": [
+        {
+          "title": "Data Visualization with Matplotlib",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d2966c06e07d5b9d73ea04"
+          }
+        },
+        {
+          "title": "Statistical Analysis",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d2966c06e07d5b9d73ea05"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d2966c06e07d5b9d73ea03"
+      }
+    },
+    {
+      "sectionTitle": "Machine Learning Algorithms",
+      "lessons": [
+        {
+          "title": "Supervised Learning: Regression and Classification",
+          "duration": "1.5 hours",
+          "_id": {
+            "$oid": "67d2966c06e07d5b9d73ea07"
+          }
+        },
+        {
+          "title": "Unsupervised Learning: Clustering and PCA",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d2966c06e07d5b9d73ea08"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d2966c06e07d5b9d73ea06"
+      }
+    },
+    {
+      "sectionTitle": "Model Evaluation and Deployment",
+      "lessons": [
+        {
+          "title": "Cross-Validation and Hyperparameter Tuning",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d2966c06e07d5b9d73ea0a"
+          }
+        },
+        {
+          "title": "Deploying ML Models with Flask",
+          "duration": "1.5 hours",
+          "_id": {
+            "$oid": "67d2966c06e07d5b9d73ea0b"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d2966c06e07d5b9d73ea09"
+      }
+    }
+  ],
+  "courseImage": "https://res.cloudinary.com/dgvv9nusn/image/upload/v1741854315/courseThumbnail/ofeug6eihwpvd0xiwa3z.jpg",
+  "courseBenefits": [
+    "Understand data science concepts and techniques",
+    "Learn machine learning algorithms and how to implement them",
+    "Deploy machine learning models in real-world applications"
+  ],
+  "language": "Hindi",
+  "lectures": [
+    {
+      "$oid": "67d2aac2030fc3805da025ed"
+    },
+    {
+      "$oid": "67d3d863bdab85c4e6c3b6e1"
+    },
+    {
+      "$oid": "67d3d908bdab85c4e6c3b8bb"
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-03-13T08:25:16.263Z"
+  },
+  "reviews": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d2987c06e07d5b9d73eae3"
+  },
+  "title": "Web Development with Django",
+  "description": "Master web development using Django, one of the most powerful and scalable Python frameworks, including building dynamic websites and web applications.",
+  "instructor": {
+    "$oid": "67d285ce2fc34872d4acc0e7"
+  },
+  "enrolledStudents": [
+    {
+      "$oid": "67d7b39878e19597fef94ad2"
+    },
+    {
+      "$oid": "67f21ebe70453ae6328c588e"
+    }
+  ],
+  "price": 600,
+  "oldPrice": 1200,
+  "discount": 50,
+  "duration": "20 hours",
+  "courseSections": [
+    {
+      "sectionTitle": "Getting Started with Django",
+      "lessons": [
+        {
+          "title": "Installing Django and Setting Up a Project",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d2987c06e07d5b9d73eae5"
+          }
+        },
+        {
+          "title": "Understanding Django's MVC Architecture",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d2987c06e07d5b9d73eae6"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d2987c06e07d5b9d73eae4"
+      }
+    },
+    {
+      "sectionTitle": "Building Web Pages with Django",
+      "lessons": [
+        {
+          "title": "Django Templates and Views",
+          "duration": "1.5 hours",
+          "_id": {
+            "$oid": "67d2987c06e07d5b9d73eae8"
+          }
+        },
+        {
+          "title": "Forms and User Input",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d2987c06e07d5b9d73eae9"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d2987c06e07d5b9d73eae7"
+      }
+    },
+    {
+      "sectionTitle": "Django Models and Databases",
+      "lessons": [
+        {
+          "title": "Understanding Django Models",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d2987c06e07d5b9d73eaeb"
+          }
+        },
+        {
+          "title": "Connecting to Databases",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d2987c06e07d5b9d73eaec"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d2987c06e07d5b9d73eaea"
+      }
+    },
+    {
+      "sectionTitle": "User Authentication in Django",
+      "lessons": [
+        {
+          "title": "Setting Up User Registration and Login",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d2987c06e07d5b9d73eaee"
+          }
+        },
+        {
+          "title": "Session Management and User Permissions",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d2987c06e07d5b9d73eaef"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d2987c06e07d5b9d73eaed"
+      }
+    },
+    {
+      "sectionTitle": "Deploying Django Applications",
+      "lessons": [
+        {
+          "title": "Deploying with Heroku",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d2987c06e07d5b9d73eaf1"
+          }
+        },
+        {
+          "title": "Using Docker for Django",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d2987c06e07d5b9d73eaf2"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d2987c06e07d5b9d73eaf0"
+      }
+    }
+  ],
+  "courseImage": "https://res.cloudinary.com/dgvv9nusn/image/upload/v1741856455/dirmehxzp9exx4tg9z6x.jpg",
+  "courseBenefits": [
+    "Learn to build dynamic web applications with Django",
+    "Understand Django's MVC architecture",
+    "Deploy Django projects to the web using platforms like Heroku"
+  ],
+  "language": "Hindi",
+  "lectures": [],
+  "createdAt": {
+    "$date": "2025-03-13T08:34:04.842Z"
+  },
+  "reviews": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d29b081987882ea36ff3e1"
+  },
+  "title": "Mobile App Development with React Native",
+  "description": "Learn how to build mobile applications for both iOS and Android using React Native, from basic setup to advanced features like navigation and APIs.",
+  "instructor": {
+    "$oid": "67d285ce2fc34872d4acc0e7"
+  },
+  "enrolledStudents": [
+    {
+      "$oid": "67d464160568ccb38f344133"
+    },
+    {
+      "$oid": "67f28bdb1f26fca83ee0f390"
+    },
+    {
+      "$oid": "67f354b9dbe3fb86a070c0bb"
+    }
+  ],
+  "price": 1520,
+  "oldPrice": 1900,
+  "discount": 20,
+  "duration": "25 hours",
+  "courseSections": [
+    {
+      "sectionTitle": "Getting Started with React Native",
+      "lessons": [
+        {
+          "title": "Setting Up the Development Environment",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d29b081987882ea36ff3e3"
+          }
+        },
+        {
+          "title": "Creating Your First React Native App",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d29b081987882ea36ff3e4"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d29b081987882ea36ff3e2"
+      }
+    },
+    {
+      "sectionTitle": "React Native Components and Layout",
+      "lessons": [
+        {
+          "title": "Working with Views, Text, and Images",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d29b081987882ea36ff3e6"
+          }
+        },
+        {
+          "title": "Flexbox Layout in React Native",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d29b081987882ea36ff3e7"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d29b081987882ea36ff3e5"
+      }
+    },
+    {
+      "sectionTitle": "Navigation in React Native",
+      "lessons": [
+        {
+          "title": "React Navigation Basics",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d29b081987882ea36ff3e9"
+          }
+        },
+        {
+          "title": "Stack and Tab Navigators",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d29b081987882ea36ff3ea"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d29b081987882ea36ff3e8"
+      }
+    },
+    {
+      "sectionTitle": "Connecting to APIs and Data Management",
+      "lessons": [
+        {
+          "title": "Fetching Data from an API",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d29b081987882ea36ff3ec"
+          }
+        },
+        {
+          "title": "Managing App State with Redux",
+          "duration": "1.5 hour",
+          "_id": {
+            "$oid": "67d29b081987882ea36ff3ed"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d29b081987882ea36ff3eb"
+      }
+    }
+  ],
+  "courseImage": "https://res.cloudinary.com/dgvv9nusn/image/upload/v1741855495/courseThumbnail/cgncio0gqqhlaew4pasu.jpg",
+  "courseBenefits": [
+    "Build mobile apps for both iOS and Android",
+    "Master React Native's core components and navigation",
+    "Connect to APIs and manage app state with Redux"
+  ],
+  "language": "English",
+  "lectures": [
+    {
+      "$oid": "67f29ab39b30ac79f110f547"
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-03-13T08:44:56.729Z"
+  },
+  "reviews": [
+    {
+      "user": {
+        "$oid": "67d464160568ccb38f344133"
+      },
+      "reviewText": "The Mobile App Development with React Native course is an excellent choice for anyone looking to build cross-platform mobile applications efficiently. It covers the fundamentals of React Native, including components, state management, navigation, and API integration.",
+      "_id": {
+        "$oid": "67dcfe14275b0dad8a17835b"
+      },
+      "createdAt": {
+        "$date": "2025-03-21T05:50:12.149Z"
+      }
+    },
+    {
+      "user": {
+        "$oid": "67f28bdb1f26fca83ee0f390"
+      },
+      "reviewText": "Really Nice And Helpful Course For All Student",
+      "_id": {
+        "$oid": "67f292339b30ac79f110cce9"
+      },
+      "createdAt": {
+        "$date": "2025-04-06T14:39:47.927Z"
+      }
+    }
+  ],
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "67d29cfe1987882ea36ff3f2"
+  },
+  "title": "Cloud Computing with AWS",
+  "description": "Learn how to work with cloud services and solutions using AWS, including EC2, S3, and other key AWS services to deploy and manage applications.",
+  "instructor": {
+    "$oid": "67d285ce2fc34872d4acc0e7"
+  },
+  "enrolledStudents": [
+    {
+      "$oid": "67d78b57521820255c8ed761"
+    },
+    {
+      "$oid": "67d7b39878e19597fef94ad2"
+    },
+    {
+      "$oid": "67f30421c336cd4ee0fedebd"
+    }
+  ],
+  "price": 500,
+  "oldPrice": 999,
+  "discount": 50,
+  "duration": "35 hours",
+  "courseSections": [
+    {
+      "sectionTitle": "Introduction to Cloud Computing and AWS",
+      "lessons": [
+        {
+          "title": "What is Cloud Computing?",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d29cfe1987882ea36ff3f4"
+          }
+        },
+        {
+          "title": "AWS Overview and Services",
+          "duration": "2 hour",
+          "_id": {
+            "$oid": "67d29cfe1987882ea36ff3f5"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d29cfe1987882ea36ff3f3"
+      }
+    },
+    {
+      "sectionTitle": "Setting Up AWS Services",
+      "lessons": [
+        {
+          "title": "Creating and Managing EC2 Instances",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d29cfe1987882ea36ff3f7"
+          }
+        },
+        {
+          "title": "Using AWS S3 for Storage",
+          "duration": "1.5 hour",
+          "_id": {
+            "$oid": "67d29cfe1987882ea36ff3f8"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d29cfe1987882ea36ff3f6"
+      }
+    },
+    {
+      "sectionTitle": "Networking and Security in AWS",
+      "lessons": [
+        {
+          "title": "Setting Up Virtual Private Cloud (VPC)",
+          "duration": "1.5 hours",
+          "_id": {
+            "$oid": "67d29cfe1987882ea36ff3fa"
+          }
+        },
+        {
+          "title": "Managing IAM Users and Roles",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d29cfe1987882ea36ff3fb"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d29cfe1987882ea36ff3f9"
+      }
+    },
+    {
+      "sectionTitle": "Scaling Applications with AWS",
+      "lessons": [
+        {
+          "title": "Elastic Load Balancing (ELB)",
+          "duration": "1 hour",
+          "_id": {
+            "$oid": "67d29cfe1987882ea36ff3fd"
+          }
+        },
+        {
+          "title": "Auto Scaling and High Availability",
+          "duration": "1.5 hour",
+          "_id": {
+            "$oid": "67d29cfe1987882ea36ff3fe"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d29cfe1987882ea36ff3fc"
+      }
+    },
+    {
+      "sectionTitle": "Deploying Applications to AWS",
+      "lessons": [
+        {
+          "title": "Deploying Web Apps to EC2",
+          "duration": "1.5 hour",
+          "_id": {
+            "$oid": "67d29cfe1987882ea36ff400"
+          }
+        },
+        {
+          "title": "Using AWS Lambda for Serverless Apps",
+          "duration": "2 hour",
+          "_id": {
+            "$oid": "67d29cfe1987882ea36ff401"
+          }
+        }
+      ],
+      "_id": {
+        "$oid": "67d29cfe1987882ea36ff3ff"
+      }
+    }
+  ],
+  "courseImage": "https://res.cloudinary.com/dgvv9nusn/image/upload/v1741855997/courseThumbnail/qkdxirsiigqvu5pimtlp.jpg",
+  "courseBenefits": [
+    "Learn to work with AWS cloud services like EC2",
+    "S3",
+    "Lambda",
+    "and more",
+    "Gain hands-on experience in deploying applications to the cloud",
+    "Master AWS security and networking best practices"
+  ],
+  "language": "English",
+  "lectures": [],
+  "createdAt": {
+    "$date": "2025-03-13T08:53:18.045Z"
+  },
+  "reviews": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d588604231c5fbdf4123b1"
+  },
+  "title": "ASP.NET",
+  "description": "Learn the basics in this free ASP.NET course. Discover the fundamental web development skills needed to craft secure, scalable application",
+  "instructor": {
+    "$oid": "67d464160568ccb38f344133"
+  },
+  "enrolledStudents": [
+    {
+      "$oid": "67d464160568ccb38f344133"
+    },
+    {
+      "$oid": "67d7b39878e19597fef94ad2"
+    },
+    {
+      "$oid": "67dc4b50c907fe4db5fb3ee6"
+    },
+    {
+      "$oid": "67d78b57521820255c8ed761"
+    },
+    {
+      "$oid": "67f21ebe70453ae6328c588e"
+    },
+    {
+      "$oid": "67f30421c336cd4ee0fedebd"
+    },
+    {
+      "$oid": "67f35b730693f18087606df7"
+    }
+  ],
+  "price": 247,
+  "oldPrice": 260,
+  "discount": 5,
+  "duration": "15 Days",
+  "courseSections": [
+    {
+      "sectionTitle": "What is ASP.NET",
+      "lessons": [],
+      "_id": {
+        "$oid": "67e244895741ff57123165ba"
+      }
+    }
+  ],
+  "courseImage": "https://res.cloudinary.com/dgvv9nusn/image/upload/v1742047508/reohkflkscwj7ek6yvh0.jpg",
+  "courseBenefits": [
+    "Web Development Basics",
+    "ASPNET Life Cycle",
+    "ASPNET MVC ModelViewController",
+    "ASPNET framework and its architecture"
+  ],
+  "language": "Hindi",
+  "lectures": [
+    {
+      "$oid": "67e0f1f26702f10ee075b3ef"
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-03-15T14:02:08.789Z"
+  },
+  "reviews": [
+    {
+      "user": {
+        "$oid": "67dc4b50c907fe4db5fb3ee6"
+      },
+      "reviewText": "Nice Course",
+      "_id": {
+        "$oid": "67f0bc8c0d657c6f7b5b9305"
+      },
+      "createdAt": {
+        "$date": "2025-04-05T05:15:56.428Z"
+      }
+    },
+    {
+      "user": {
+        "$oid": "67f21ebe70453ae6328c588e"
+      },
+      "reviewText": "Hello",
+      "_id": {
+        "$oid": "67f2274b70453ae6328c669e"
+      },
+      "createdAt": {
+        "$date": "2025-04-06T07:03:39.991Z"
+      }
+    }
+  ],
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "67ea0d34de18ee618c8ea308"
+  },
+  "title": "SHARE MARKET",
+  "description": "learn share market in 30 days",
+  "instructor": {
+    "$oid": "67d78b57521820255c8ed761"
+  },
+  "enrolledStudents": [
+    {
+      "$oid": "67d78b57521820255c8ed761"
+    },
+    {
+      "$oid": "67f354b9dbe3fb86a070c0bb"
+    }
+  ],
+  "price": 849,
+  "oldPrice": 999,
+  "discount": 15,
+  "duration": "1 Month",
+  "courseSections": [],
+  "courseImage": "https://res.cloudinary.com/dgvv9nusn/image/upload/v1743392049/courseThumbnail/p1up9iuukvcotvlcjpnd.jpg",
+  "courseBenefits": [
+    "learn share market in 30 days"
+  ],
+  "language": "English",
+  "lectures": [],
+  "createdAt": {
+    "$date": "2025-03-31T03:34:12.377Z"
+  },
+  "reviews": [
+    {
+      "user": {
+        "$oid": "67d78b57521820255c8ed761"
+      },
+      "reviewText": "it's good course",
+      "_id": {
+        "$oid": "67f1f10ae2a4af4804cbbc18"
+      },
+      "createdAt": {
+        "$date": "2025-04-06T03:12:10.478Z"
+      }
+    }
+  ],
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "67ea0e22de18ee618c8ea3ca"
+  },
+  "title": "Invest in stock",
+  "description": "How to invest in stock",
+  "instructor": {
+    "$oid": "67d78b57521820255c8ed761"
+  },
+  "enrolledStudents": [
+    {
+      "$oid": "67f354b9dbe3fb86a070c0bb"
+    }
+  ],
+  "price": 663,
+  "oldPrice": 799,
+  "discount": 17,
+  "duration": "1 Month",
+  "courseSections": [],
+  "courseImage": "https://res.cloudinary.com/dgvv9nusn/image/upload/v1743392286/courseThumbnail/d8xocu5wchlgu1tvq7un.jpg",
+  "courseBenefits": [
+    "How to invest in stock"
+  ],
+  "language": "Hindi",
+  "lectures": [],
+  "createdAt": {
+    "$date": "2025-03-31T03:38:10.228Z"
+  },
+  "reviews": [],
+  "__v": 2
+}]

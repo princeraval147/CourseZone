@@ -1,0 +1,98 @@
+[{
+  "_id": {
+    "$oid": "67d2aac2030fc3805da025ed"
+  },
+  "lectureTitle": "1 - Introduction",
+  "videoUrl": "https://res.cloudinary.com/dgvv9nusn/video/upload/v1741859520/coursevideo/ixvytanqaycrci1zwnq3.mp4",
+  "createdAt": {
+    "$date": "2025-03-13T09:52:02.063Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-13T09:52:02.063Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d3d863bdab85c4e6c3b6e1"
+  },
+  "lectureTitle": "2 - What is Data Science",
+  "videoUrl": "https://res.cloudinary.com/dgvv9nusn/video/upload/v1741943184/coursevideo/cmuzyn0lmdpl8xaabx0q.mp4",
+  "createdAt": {
+    "$date": "2025-03-14T07:18:59.872Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-14T09:06:26.212Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d3d908bdab85c4e6c3b8bb"
+  },
+  "lectureTitle": "3 - int",
+  "videoUrl": "https://res.cloudinary.com/dgvv9nusn/video/upload/v1741936903/coursevideo/spv6yirofvohvuugomj0.mp4",
+  "createdAt": {
+    "$date": "2025-03-14T07:21:44.367Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-14T08:52:47.809Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67e0f1f26702f10ee075b3ef"
+  },
+  "lectureTitle": "What is ASP.NET",
+  "videoUrl": "/video/coursevideo/1742795250807-videoplayback.mp4",
+  "createdAt": {
+    "$date": "2025-03-24T05:47:30.895Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-24T05:47:30.895Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67f29ab39b30ac79f110f547"
+  },
+  "lectureTitle": "1. Introduction to React Native",
+  "videoUrl": "/video/coursevideo/1743952711483-file_example_MP4_480_1_5MG.mp4",
+  "createdAt": {
+    "$date": "2025-04-06T15:16:03.156Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-06T15:18:32.031Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67f38a639f32e737a81ebd65"
+  },
+  "lectureTitle": "1 - Introduction",
+  "videoUrl": "/video/coursevideo/1744013923244-file_example_MP4_480_1_5MG.mp4",
+  "createdAt": {
+    "$date": "2025-04-07T08:18:43.313Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-07T08:18:43.313Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67f795c5009568996a6a144e"
+  },
+  "lectureTitle": "Intro",
+  "videoUrl": "/video/coursevideo/1744278981735-WhatsApp Video 2024-09-16 at 19.mp4",
+  "createdAt": {
+    "$date": "2025-04-10T09:56:21.890Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-10T09:56:21.890Z"
+  },
+  "__v": 0
+}]

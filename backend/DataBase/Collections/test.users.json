@@ -1,0 +1,585 @@
+[{
+  "_id": {
+    "$oid": "67d284c32fc34872d4acc0cc"
+  },
+  "username": "Admin",
+  "email": "admin@gmail.com",
+  "password": "$2b$10$48p9NvBa8qjfGGOXJsY.Q.PhSNgjtSx.CFYro1NWHSFk5OVb87bLO",
+  "isVerified": true,
+  "otp": null,
+  "otpExpires": null,
+  "role": "admin",
+  "isInstructorApproved": false,
+  "enrolledCourses": [
+    {
+      "$oid": "67d2966c06e07d5b9d73e9fc"
+    }
+  ],
+  "savedCourses": [],
+  "photoUrl": "",
+  "createdAt": {
+    "$date": "2025-03-13T07:09:55.692Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-06T10:43:06.269Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d285ce2fc34872d4acc0e7"
+  },
+  "username": "Jay Solanki",
+  "email": "jaysolanki21@gmail.com",
+  "password": "$2b$10$DtG826LaS8j67JVILze4aehMbfGsnqo/QphYuobk50mhWrAI4B/ve",
+  "isVerified": true,
+  "otp": null,
+  "otpExpires": null,
+  "role": "instructor",
+  "isInstructorApproved": false,
+  "enrolledCourses": [],
+  "savedCourses": [
+    {
+      "$oid": "67d291d48e06f1eccb8c94e3"
+    },
+    {
+      "$oid": "67d2966c06e07d5b9d73e9fc"
+    }
+  ],
+  "photoUrl": "https://res.cloudinary.com/dgvv9nusn/image/upload/v1742224468/oq72yjgimrghql9lnja4.avif",
+  "createdAt": {
+    "$date": "2025-03-13T07:14:22.376Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-02T07:06:12.076Z"
+  },
+  "__v": 6
+},
+{
+  "_id": {
+    "$oid": "67d2abc7030fc3805da02604"
+  },
+  "username": "user",
+  "email": "user@gmai.com",
+  "password": "$2b$10$94AjfjJ01ezGp3TnlQYzheQLNGZwzc5tCiV1tmUxULGhWBe2JjrG2",
+  "isVerified": true,
+  "otp": null,
+  "otpExpires": null,
+  "role": "student",
+  "isInstructorApproved": false,
+  "enrolledCourses": [
+    {
+      "$oid": "67d2966c06e07d5b9d73e9fc"
+    }
+  ],
+  "savedCourses": [],
+  "photoUrl": "",
+  "createdAt": {
+    "$date": "2025-03-13T09:56:23.906Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-13T09:57:43.887Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d464160568ccb38f344133"
+  },
+  "username": "Prince Raval",
+  "email": "princeraval147@gmail.com",
+  "password": "$2b$10$zuN79/Zh7cFEktJbACFaXO97HDZiI4CfRLNroxEG3cV/tn7dzwa3u",
+  "isVerified": true,
+  "otp": null,
+  "otpExpires": null,
+  "role": "admin",
+  "isInstructorApproved": false,
+  "enrolledCourses": [
+    {
+      "$oid": "67d588604231c5fbdf4123b1"
+    },
+    {
+      "$oid": "67d29b081987882ea36ff3e1"
+    }
+  ],
+  "savedCourses": [
+    {
+      "$oid": "67d29b081987882ea36ff3e1"
+    },
+    {
+      "$oid": "67d2966c06e07d5b9d73e9fc"
+    },
+    {
+      "$oid": "67d588604231c5fbdf4123b1"
+    }
+  ],
+  "photoUrl": "https://res.cloudinary.com/dgvv9nusn/image/upload/v1741974040/lww7lblvnykb352z0vcv.jpg",
+  "createdAt": {
+    "$date": "2025-03-14T17:15:02.253Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-04T04:53:38.802Z"
+  },
+  "__v": 5
+},
+{
+  "_id": {
+    "$oid": "67d70603760a05c05dc9dfb3"
+  },
+  "username": "Devang",
+  "email": "devang1@gmail.com",
+  "password": "$2b$10$azOD2L5HEdJCTsJzWzFPAeSMQInlYBp8HSNBZZde6RAmpJBzb4BV2",
+  "isVerified": false,
+  "otp": "266863",
+  "otpExpires": {
+    "$date": "2025-03-16T17:20:27.982Z"
+  },
+  "role": "student",
+  "isInstructorApproved": false,
+  "enrolledCourses": [],
+  "savedCourses": [],
+  "photoUrl": "",
+  "createdAt": {
+    "$date": "2025-03-16T17:10:27.988Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-18T03:10:56.698Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d78b57521820255c8ed761"
+  },
+  "username": "jaydip",
+  "email": "jaydip17@gmail.com",
+  "password": "$2b$10$HlbO1Bsm0vxEAvdj.Kny.u1UJq.7760xs.cjxHO5QKT5s2ekru.fm",
+  "isVerified": true,
+  "otp": null,
+  "otpExpires": null,
+  "role": "admin",
+  "isInstructorApproved": false,
+  "enrolledCourses": [
+    {
+      "$oid": "67d291d48e06f1eccb8c94e3"
+    },
+    {
+      "$oid": "67d29cfe1987882ea36ff3f2"
+    },
+    {
+      "$oid": "67d588604231c5fbdf4123b1"
+    },
+    {
+      "$oid": "67ea0d34de18ee618c8ea308"
+    },
+    {
+      "$oid": "67d2966c06e07d5b9d73e9fc"
+    }
+  ],
+  "savedCourses": [
+    {
+      "$oid": "67d291d48e06f1eccb8c94e3"
+    },
+    {
+      "$oid": "67ea0d34de18ee618c8ea308"
+    },
+    {
+      "$oid": "67ea0e22de18ee618c8ea3ca"
+    }
+  ],
+  "photoUrl": "https://res.cloudinary.com/dgvv9nusn/image/upload/v1742188564/thsnst90ew08n7rpx9jh.png",
+  "createdAt": {
+    "$date": "2025-03-17T02:39:19.756Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-07T04:15:54.959Z"
+  },
+  "__v": 11
+},
+{
+  "_id": {
+    "$oid": "67d7b39878e19597fef94ad2"
+  },
+  "username": "Devang",
+  "email": "ravaldevang34@gmail.com",
+  "password": "$2b$10$wMABC5rPFm40rxjyYHf0Leilduo7HaJupqk7Fe2DXbYF0rlQIYsLq",
+  "isVerified": true,
+  "otp": null,
+  "otpExpires": null,
+  "role": "admin",
+  "isInstructorApproved": false,
+  "enrolledCourses": [
+    {
+      "$oid": "67d291d48e06f1eccb8c94e3"
+    },
+    {
+      "$oid": "67d2966c06e07d5b9d73e9fc"
+    },
+    {
+      "$oid": "67d2987c06e07d5b9d73eae3"
+    },
+    {
+      "$oid": "67d29cfe1987882ea36ff3f2"
+    },
+    {
+      "$oid": "67d588604231c5fbdf4123b1"
+    }
+  ],
+  "savedCourses": [
+    {
+      "$oid": "67d2987c06e07d5b9d73eae3"
+    },
+    {
+      "$oid": "67d2966c06e07d5b9d73e9fc"
+    },
+    {
+      "$oid": "67d291d48e06f1eccb8c94e3"
+    },
+    {
+      "$oid": "67ea0e22de18ee618c8ea3ca"
+    },
+    {
+      "$oid": "67d29cfe1987882ea36ff3f2"
+    }
+  ],
+  "photoUrl": "https://res.cloudinary.com/dgvv9nusn/image/upload/v1742190370/dyyatpc5cdkg7lco0kbi.jpg",
+  "createdAt": {
+    "$date": "2025-03-17T05:31:04.681Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-10T09:49:58.345Z"
+  },
+  "__v": 15
+},
+{
+  "_id": {
+    "$oid": "67d8efae894cf50a21fcfa50"
+  },
+  "username": "Jay Solanki",
+  "email": "jaysolanki18493@gmail.com",
+  "password": "$2b$10$pGKizcLOuiM3cNWaA/.jEealI/K32HNBLbKHSANSYQZNvgBKAYFIq",
+  "isVerified": true,
+  "otp": null,
+  "otpExpires": null,
+  "role": "student",
+  "isInstructorApproved": false,
+  "enrolledCourses": [
+    {
+      "$oid": "67d2966c06e07d5b9d73e9fc"
+    }
+  ],
+  "savedCourses": [],
+  "photoUrl": "",
+  "createdAt": {
+    "$date": "2025-03-18T03:59:42.553Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-18T04:04:44.688Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67dc4b50c907fe4db5fb3ee6"
+  },
+  "username": "Std",
+  "email": "std@gmail.com",
+  "password": "$2b$10$mPvg6WduhSqwe/WyGdLI9.S1XvFIN0ndSU9awZuX8EuMQ5ARYrixO",
+  "isVerified": true,
+  "otp": null,
+  "otpExpires": null,
+  "role": "student",
+  "isInstructorApproved": false,
+  "enrolledCourses": [
+    {
+      "$oid": "67d588604231c5fbdf4123b1"
+    }
+  ],
+  "savedCourses": [
+    {
+      "$oid": "67d588604231c5fbdf4123b1"
+    }
+  ],
+  "photoUrl": "https://res.cloudinary.com/dgvv9nusn/image/upload/v1743830454/oal42rrnbhydz4c9g6q8.png",
+  "createdAt": {
+    "$date": "2025-03-20T17:07:28.585Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-10T09:52:18.639Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "67ebd4a07f006e2c79d9ff30"
+  },
+  "username": "hello",
+  "email": "ah@gmail.com",
+  "password": "$2b$10$63x9Fs94qaWAQ5NNmCsp.OpD4JLKOqtJEWUPrOSgCaWlhEcyaFsyK",
+  "isVerified": false,
+  "otp": "165429",
+  "otpExpires": {
+    "$date": "2025-04-01T12:07:20.963Z"
+  },
+  "role": "student",
+  "isInstructorApproved": false,
+  "enrolledCourses": [],
+  "savedCourses": [],
+  "photoUrl": "",
+  "createdAt": {
+    "$date": "2025-04-01T11:57:20.997Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-01T11:57:20.997Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ebd4a97f006e2c79d9ff34"
+  },
+  "username": "ab",
+  "email": "b@gmail.c",
+  "password": "$2b$10$xVFY9wXb6V//a6nsaA1HyOWA/l2vGE18S9pIGwg0NuRbtUSNBvZZq",
+  "isVerified": false,
+  "otp": "850692",
+  "otpExpires": {
+    "$date": "2025-04-01T12:07:29.491Z"
+  },
+  "role": "student",
+  "isInstructorApproved": false,
+  "enrolledCourses": [],
+  "savedCourses": [],
+  "photoUrl": "",
+  "createdAt": {
+    "$date": "2025-04-01T11:57:29.492Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-01T11:57:29.492Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67f21ebe70453ae6328c588e"
+  },
+  "username": "Devang",
+  "email": "kuldevient1812@gmail.com",
+  "password": "$2b$10$0mDh.BHhNQqJzj2jACWUE.rUWZbWyWHhj3YamGvt2dKuv0d5h5zKe",
+  "isVerified": true,
+  "otp": null,
+  "otpExpires": null,
+  "role": "instructor",
+  "isInstructorApproved": false,
+  "enrolledCourses": [
+    {
+      "$oid": "67d2987c06e07d5b9d73eae3"
+    },
+    {
+      "$oid": "67d291d48e06f1eccb8c94e3"
+    },
+    {
+      "$oid": "67d588604231c5fbdf4123b1"
+    }
+  ],
+  "savedCourses": [
+    {
+      "$oid": "67d291d48e06f1eccb8c94e3"
+    }
+  ],
+  "photoUrl": "",
+  "createdAt": {
+    "$date": "2025-04-06T06:27:10.532Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-06T07:03:03.318Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "67f28bdb1f26fca83ee0f390"
+  },
+  "username": "Jay",
+  "email": "hello@gmail.com",
+  "password": "$2b$10$6u1XCw9Qr7x.mHVoCAj6p.50YRV/CnusZTY3LjZdrAaJehiY2B.pi",
+  "isVerified": true,
+  "otp": null,
+  "otpExpires": null,
+  "role": "student",
+  "isInstructorApproved": false,
+  "enrolledCourses": [
+    {
+      "$oid": "67d29b081987882ea36ff3e1"
+    },
+    {
+      "$oid": "67f38a2c9f32e737a81eba92"
+    }
+  ],
+  "savedCourses": [
+    {
+      "$oid": "67d291d48e06f1eccb8c94e3"
+    },
+    {
+      "$oid": "67d2987c06e07d5b9d73eae3"
+    },
+    {
+      "$oid": "67d29cfe1987882ea36ff3f2"
+    }
+  ],
+  "photoUrl": "https://res.cloudinary.com/dgvv9nusn/image/upload/v1744008491/sup0ioywgyi9p0z8jiho.jpg",
+  "createdAt": {
+    "$date": "2025-04-06T14:12:43.148Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-07T08:20:22.341Z"
+  },
+  "__v": 5
+},
+{
+  "_id": {
+    "$oid": "67f2ac0d4aa56940b4f1172d"
+  },
+  "username": "jaydip",
+  "email": "jaydip@gmail.com",
+  "password": "$2b$10$A/WHX22xKr2gEnJHRtYebOOtb/eQqYoyU2AN85.iptPwWHiTyVlHy",
+  "isVerified": true,
+  "otp": null,
+  "otpExpires": null,
+  "role": "admin",
+  "isInstructorApproved": false,
+  "enrolledCourses": [
+    {
+      "$oid": "67d291d48e06f1eccb8c94e3"
+    }
+  ],
+  "savedCourses": [
+    {
+      "$oid": "67d29b081987882ea36ff3e1"
+    },
+    {
+      "$oid": "67d2966c06e07d5b9d73e9fc"
+    },
+    {
+      "$oid": "67ea0d34de18ee618c8ea308"
+    }
+  ],
+  "photoUrl": "",
+  "createdAt": {
+    "$date": "2025-04-06T16:30:05.063Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-06T17:05:21.422Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "67f30421c336cd4ee0fedebd"
+  },
+  "username": "xyz",
+  "email": "xyz@gamail.com",
+  "password": "$2b$12$ElU2pVASE12IVa3RE.f/TOYFxFxc6GPXcHA.6BpptVAGVYtNbHSsq",
+  "isVerified": true,
+  "otp": null,
+  "otpExpires": null,
+  "role": "student",
+  "isInstructorApproved": false,
+  "enrolledCourses": [
+    {
+      "$oid": "67d29cfe1987882ea36ff3f2"
+    },
+    {
+      "$oid": "67d588604231c5fbdf4123b1"
+    }
+  ],
+  "savedCourses": [
+    {
+      "$oid": "67d29cfe1987882ea36ff3f2"
+    }
+  ],
+  "photoUrl": "https://res.cloudinary.com/dgvv9nusn/image/upload/v1743980527/gg0skv5r8qzqtmeneiil.jpg",
+  "createdAt": {
+    "$date": "2025-04-06T22:45:53.743Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-06T23:05:01.871Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "67f354b9dbe3fb86a070c0bb"
+  },
+  "username": "Devang",
+  "email": "devur1812@gmail.com",
+  "password": "$2b$10$DlRib2h8qOJHMSIy2fVp6eWlfHkJ6V/5VT1hMib279ZHj6TYrabpq",
+  "isVerified": true,
+  "otp": null,
+  "otpExpires": null,
+  "role": "student",
+  "isInstructorApproved": false,
+  "enrolledCourses": [
+    {
+      "$oid": "67d29b081987882ea36ff3e1"
+    },
+    {
+      "$oid": "67d291d48e06f1eccb8c94e3"
+    },
+    {
+      "$oid": "67ea0d34de18ee618c8ea308"
+    },
+    {
+      "$oid": "67ea0e22de18ee618c8ea3ca"
+    },
+    {
+      "$oid": "67f79545009568996a6a129a"
+    }
+  ],
+  "savedCourses": [
+    {
+      "$oid": "67d29cfe1987882ea36ff3f2"
+    },
+    {
+      "$oid": "67ea0d34de18ee618c8ea308"
+    },
+    {
+      "$oid": "67d2966c06e07d5b9d73e9fc"
+    }
+  ],
+  "photoUrl": "",
+  "createdAt": {
+    "$date": "2025-04-07T04:29:46.011Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-10T09:57:58.138Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "67f387c99f32e737a81eac33"
+  },
+  "username": "prince",
+  "email": "princeraval1999@gmail.com",
+  "password": "$2b$10$2XGD.l4YnluuV82lGweVzuokRbmebZS4ZngUDcEIl0fsQ0MtpZDHq",
+  "isVerified": true,
+  "otp": null,
+  "otpExpires": null,
+  "role": "student",
+  "isInstructorApproved": false,
+  "enrolledCourses": [
+    {
+      "$oid": "67d2966c06e07d5b9d73e9fc"
+    }
+  ],
+  "savedCourses": [],
+  "photoUrl": "",
+  "createdAt": {
+    "$date": "2025-04-07T08:07:37.809Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-07T08:09:06.651Z"
+  },
+  "__v": 0
+}]

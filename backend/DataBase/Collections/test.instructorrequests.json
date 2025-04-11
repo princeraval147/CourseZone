@@ -1,0 +1,60 @@
+[{
+  "_id": {
+    "$oid": "67d7b59478e19597fef94eaa"
+  },
+  "user": {
+    "$oid": "67d7b39878e19597fef94ad2"
+  },
+  "cvUrl": "https://res.cloudinary.com/dgvv9nusn/raw/upload/v1742189973/cv/xqdemxwo3gwbrdqoli34",
+  "message": "i want to instructor",
+  "status": "approved",
+  "createdAt": {
+    "$date": "2025-03-17T05:39:32.846Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ece185d260b983bb516d9e"
+  },
+  "user": {
+    "$oid": "67d285ce2fc34872d4acc0e7"
+  },
+  "cvUrl": "https://res.cloudinary.com/dgvv9nusn/raw/upload/v1743577479/cv/g3rmnnuyhqeiunmfipqn",
+  "message": "Make me instructor",
+  "status": "approved",
+  "createdAt": {
+    "$date": "2025-04-02T07:04:37.718Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67f2aca428fe6b3b1b9240ed"
+  },
+  "user": {
+    "$oid": "67dc4b50c907fe4db5fb3ee6"
+  },
+  "cvUrl": "https://res.cloudinary.com/dgvv9nusn/raw/upload/v1743957274/cv/jhkwvlzylprjjgjtsc20",
+  "message": "I want to become instructor",
+  "status": "approved",
+  "createdAt": {
+    "$date": "2025-04-06T16:32:36.037Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67f388a19f32e737a81eb329"
+  },
+  "user": {
+    "$oid": "67f354b9dbe3fb86a070c0bb"
+  },
+  "cvUrl": "https://res.cloudinary.com/dgvv9nusn/raw/upload/v1744013591/cv/r5mkharroiwxzysat9io",
+  "message": "i want to instructor",
+  "status": "rejected",
+  "createdAt": {
+    "$date": "2025-04-07T08:11:13.262Z"
+  },
+  "__v": 0
+}]
