@@ -62,7 +62,7 @@ CourseZone is a full-featured online course platform built with the MERN stack. 
 JWT_SECRET=your_jwt_secret
 KEY_ID=your_razorpay_key_id
 KEY_SECRET=your_razorpay_key_secret
-PORT=
+PORT
 ```
 
 3. **Frontend Setup:**
@@ -74,7 +74,7 @@ PORT=
 Create a .env file in the frontend root and add your environment variables:
 
 ```
-VITE_API_URL=http://localhost:5173
+VITE_API_URL
 ```
 
 ## Running the Application
